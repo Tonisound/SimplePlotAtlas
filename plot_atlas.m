@@ -7,7 +7,7 @@ function plot_atlas(list_regions,varargin)
 % 'list_regions' - [cell array|{''}|{'all'}] List of region names
 % 'Values' - [numeric array] regions will be color-coded according to this vector
 % 'AtlasType' - [ratcoronal(default)|ratsagittal|mousecoronal|mousesagittal] Type of Atlas
-% 'DisplayObj' - [regions|groups|all(default)] Displays regions, regions groups or both
+% 'DisplayObj' - [regions(default)|groups] Displays regions or groups of regions
 % 'DisplayMode' - [unilateral(default)|bilateral] Displays uni/bilateral regions/groups
 % 'AtlasDir' - [path] Atlas directory containing PlotableAtlas folder
 % 'SaveName' - [path] Figure saving name (can include path & extension)
@@ -47,17 +47,18 @@ end
 value_regions = 1:length(list_regions);
 % value_regions = ones(size(list_regions));
 AtlasType = 'ratcoronal';
-DisplayObj = 'all';
+DisplayObj = 'regions';
 DisplayMode = 'unilateral';
 temp = which('plot_atlas.m');
 dir_atlas = strrep(temp,strcat(filesep,'plot_atlas.m'),'');
 savename = '';
 visiblecolorbar = 'off';
-visiblename = 'on';
+visiblename = 'off';
 visiblemask = 'on';
+linkaxescbar = 'on';
 n_columns = 6;
 list_plates = 15:3:80;
-linewidth = .5;
+linewidth = .1;
 linecolor = [.5 .5 .5];
 fontsize = 8;
 textColor = 'r';
@@ -94,7 +95,7 @@ for i =1:2:length(varargin)
                 end
                 
             case 'displayobj'
-                if sum(strcmp([{'all'},{'regions'},{'groups'}],varargin{i+1}))==0
+                if sum(strcmp([{'regions'},{'groups'}],varargin{i+1}))==0
                     error('Unknown value for property %s.',varargin{i})
                 else
                     DisplayObj = varargin{i+1};
@@ -239,6 +240,11 @@ if strcmp(visiblemask,'on')
 else
     cb3def = 0;
 end
+if strcmp(linkaxescbar,'on')
+    cb4def = 1;
+else
+    cb4def = 0;
+end
 % formatting savename
 if isempty(savename)
     savedir = '';
@@ -317,12 +323,53 @@ cb2 = uicontrol('Style','checkbox','Units','normalized','Value',cb2def,...
     'TooltipString','Display Colorbar','Tag','Checkbox2','Parent',f);
 cb3 = uicontrol('Style','checkbox','Units','normalized','Value',cb3def,...
     'TooltipString','Display Mask','Tag','Checkbox3','Parent',f);
+cb4 = uicontrol('Style','checkbox','Units','normalized','Value',cb4def,...
+    'TooltipString','Linkaxes Cbar','Tag','Checkbox4','Parent',f);
 cb1.Position = [0 .97 .02 .03];
 cb2.Position = [0 .94 .02 .03];
 cb3.Position = [0 .91 .02 .03];
-set(cb1,'Callback',{@cb1_Callback});
+cb4.Position = [0 .88 .02 .03];
+set(cb1,'Callback',{@cb1_Callback,textColor,fontsize});
 set(cb2,'Callback',{@cb2_Callback});
 set(cb3,'Callback',{@cb3_Callback});
+set(cb4,'Callback',{@cb4_Callback});
+
+% Loading Atlas
+% Load lists
+savedir = fullfile(dir_atlas,'Plates',plate_name);
+if exist(fullfile(savedir,sprintf('PlotableAtlas_%s.mat',plate_name)),'file')
+    data_atlas = load(fullfile(savedir,sprintf('PlotableAtlas_%s.mat',plate_name)));
+    fprintf('Plotable Atlas loaded [%s].\n',savedir);
+else
+    warningdlg('Missing Atlas [%s]',fullfile(savedir,sprintf('PlotableAtlas_%s.mat',plate_name)));
+    return;
+end
+
+% Plot objects
+if strcmp(DisplayMode,'unilateral')
+    switch DisplayObj
+        case 'regions'
+            id_show = data_atlas.id_regions;
+            list_show = data_atlas.list_regions;
+            mask_show = double(data_atlas.Mask_regions);
+        case 'groups'
+            id_show = data_atlas.id_groups;
+            list_show = data_atlas.list_groups;
+            mask_show = double(data_atlas.Mask_groups);
+    end
+elseif strcmp(DisplayMode,'bilateral')
+    switch DisplayObj
+        case 'regions'
+            id_show = data_atlas.id_bilateral;
+            list_show = data_atlas.list_bilateral;
+            mask_show = double(data_atlas.Mask_bilateral);
+        case 'groups'
+            id_show = data_atlas.id_groups_bilateral;
+            list_show = data_atlas.list_groups_bilateral;
+            mask_show = double(data_atlas.Mask_groups_bilateral);
+    end
+end
+
 
 % Updating Axes
 for index=1:n_plates
@@ -330,45 +377,19 @@ for index=1:n_plates
     hold(ax,'on');
     
     xyfig = list_plates(index);
-    % Loading Plate
-    if exist(fullfile(dir_atlas,'PlotableAtlas',plate_name,sprintf('%s-%03d.mat',plate_name,xyfig)),'file')
-        data_plate = load(fullfile(dir_atlas,'PlotableAtlas',plate_name,sprintf('%s-%03d.mat',plate_name,xyfig)));
-    else
-        warningdlg('Missing file [%s]',sprintf('%s-%03d.mat',plate_name,xyfig));
-        continue;
+    cur_mask = mask_show(:,:,xyfig);        
+    data_plate = load(fullfile(dir_atlas,'Plates',plate_name,sprintf('Atlas_%03d.mat',xyfig)));
+    switch AtlasType
+        case {'ratcoronal','mousecoronal'}
+            data_plate.AP = data_plate.AP_mm;
+        case {'ratsagittal','mousesagittal'}
+            data_plate.AP = data_plate.ML_mm;
     end
     fprintf('Plotting Atlas Plate Bregma %.2f mm [%d/%d]...',data_plate.AP,index,n_plates);
     
-    % Plot objects
-    if strcmp(DisplayMode,'unilateral')
-        switch DisplayObj
-            case 'regions'
-                data_plate.list_show = data_plate.list_regions;
-                data_plate.mask_show = double(data_plate.mask_regions);
-            case 'groups'
-                data_plate.list_show = data_plate.list_groups;
-                data_plate.mask_show = double(data_plate.mask_groups);
-            case 'all'
-                data_plate.list_show = [data_plate.list_regions;data_plate.list_groups];
-                data_plate.mask_show = double(cat(3,data_plate.mask_regions,data_plate.mask_groups));
-        end
-    elseif strcmp(DisplayMode,'bilateral')
-        switch DisplayObj
-            case 'regions'
-                data_plate.list_show = data_plate.list_bilateral;
-                data_plate.mask_show = double(data_plate.mask_bilateral);
-            case 'groups'
-                data_plate.list_show = data_plate.list_groups_bilateral;
-                data_plate.mask_show = double(data_plate.mask_groups_bilateral);
-            case 'all'
-                data_plate.list_show = [data_plate.list_bilateral;data_plate.list_groups_bilateral];
-                data_plate.mask_show = double(cat(3,data_plate.mask_bilateral,data_plate.mask_groups_bilateral));
-        end
-    end
-    
     % Display all available objects if list_regions={all} option
     if flag_all
-        list_regions = data_plate.list_show;
+        list_regions = list_show;
         % reseting value_regions if needed
         % Setting to 0 if unspecified
         if length(value_regions)~=length(list_regions)
@@ -376,34 +397,47 @@ for index=1:n_plates
         end
     end
     
-    full_mask = zeros(data_plate.sizemask_1,data_plate.sizemask_2);
+    full_mask = zeros(size(data_plate.Mask,1),size(data_plate.Mask,2));
+    all_ids = [];
+    all_regions = [];
+    
     for i =1:length(list_regions)
-        ind_region = find(strcmp(data_plate.list_show,list_regions(i))==1);
+        
+        ind_region = find(strcmp(list_show,list_regions(i))==1);
         if ~isempty(ind_region)
             for j=1:length(ind_region)
-                cur_mask = data_plate.mask_show(:,:,ind_region(j));
-                full_mask(cur_mask==1)=value_regions(i);
+                cur_id = id_show(ind_region(j));
+                cur_region = list_show(ind_region(j));
+                full_mask(cur_mask==cur_id)=value_regions(i);
                 
-                % Display Name
-                cur_region = data_plate.list_show(ind_region(j));
-                [X,Y]=meshgrid(1:size(cur_mask,2),1:size(cur_mask,1));
-                temp_X = X.*cur_mask;
-                temp_X(temp_X==0)=NaN;
-                x = mean(mean(temp_X,'omitnan'),'omitnan');
-                temp_Y = Y.*cur_mask;
-                temp_Y(temp_Y==0)=NaN;
-                y = mean(mean(temp_Y,'omitnan'),'omitnan');
-                t = text(x,y,cur_region,'Parent',ax,'Color',textColor,'FontSize',fontsize,...
-                    'Visible',visiblename,'Tag','Sticker','Parent',ax);
-                %t.BackgroundColor = [.5 .5 .5];
-                t.EdgeColor = textColor;
-                t.LineWidth = .1;
-                t.UserData.Value = 0;
-                t.UserData.cur_mask = cur_mask;
-                t.ButtonDownFcn = {@click_text};
+                all_ids = [all_ids;cur_id];
+                all_regions = [all_regions;cur_region];
+                
+                
+%                 % Display Name
+%                 [X,Y]=meshgrid(1:size(cur_mask,2),1:size(cur_mask,1));
+%                 temp_X = X.*(cur_mask==cur_id);
+%                 temp_X(temp_X==0)=NaN;
+%                 x = mean(mean(temp_X,'omitnan'),'omitnan');
+%                 temp_Y = Y.*(cur_mask==cur_id);
+%                 temp_Y(temp_Y==0)=NaN;
+%                 y = mean(mean(temp_Y,'omitnan'),'omitnan');
+%                 t = text(x,y,cur_region,'Parent',ax,'Color',textColor,'FontSize',fontsize,...
+%                     'Visible',visiblename,'Tag','Sticker','Parent',ax);
+%                 %t.BackgroundColor = [.5 .5 .5];
+%                 t.EdgeColor = textColor;
+%                 t.LineWidth = .1;
+%                 t.UserData.Value = 0;
+%                 t.UserData.cur_mask = cur_mask;
+%                 t.ButtonDownFcn = {@click_text};
             end
         end
     end
+
+    % Storing data
+    ax.UserData.cur_mask = cur_mask;
+    ax.UserData.all_ids = all_ids;
+    ax.UserData.all_regions = all_regions;
     
     % Plotting final mask
     im=imagesc(full_mask,'Tag','FullMask','Parent',ax);
@@ -433,9 +467,10 @@ for index=1:n_plates
 end
 
 % Execute Callbacks
-cb1.Callback(cb1,[]);
-cb2.Callback(cb2,[]);
-cb3.Callback(cb3,[]);
+cb1_Callback(cb1,[],textColor,fontsize);
+cb2_Callback(cb2,[]);
+cb3_Callback(cb3,[]);
+cb4_Callback(cb4,[]);
 
 % Save if savename is specified
 if ~isempty(savename)
@@ -456,20 +491,43 @@ f.Pointer = 'arrow';
 
 end
 
-function cb1_Callback(hObj,~)
+function cb1_Callback(hObj,~,textColor,fontsize)
+
+tic
 
 all_axes = findobj(hObj.Parent,'Type','axes');
 all_obj = findobj(all_axes,'Tag','Sticker');
+delete(all_obj);
+
 if hObj.Value
-    for i = 1:length(all_obj)
-        all_obj(i).Visible = 'on';
-        uistack(all_obj(i),'top');
-    end
-else
-    for i = 1:length(all_obj)
-        all_obj(i).Visible = 'off';
+    for i = 1:length(all_axes)
+        ax = all_axes(i);
+        for j = 1:length(ax.UserData.all_regions)
+            cur_id = ax.UserData.all_ids(j);
+            cur_region = char(ax.UserData.all_regions(j));
+            % Display Name
+%             [X,Y]=meshgrid(1:size(ax.UserData.cur_mask,2),1:size(ax.UserData.cur_mask,1));
+%             temp_X = X.*(ax.UserData.cur_mask==cur_id);
+%             temp_X(temp_X==0)=NaN;
+%             x = mean(mean(temp_X,'omitnan'),'omitnan');
+%             temp_Y = Y.*(ax.UserData.cur_mask==cur_id);
+%             temp_Y(temp_Y==0)=NaN;
+%             y = mean(mean(temp_Y,'omitnan'),'omitnan');
+            x = 1;
+            y=1;
+            t = text(x,y,cur_region,'Parent',ax,'Color',textColor,'FontSize',fontsize,...
+                'Tag','Sticker','Parent',ax);
+            %t.BackgroundColor = [.5 .5 .5];
+            t.EdgeColor = textColor;
+            t.LineWidth = .1;
+            t.UserData.Value = 0;
+            t.UserData.cur_mask = (ax.UserData.cur_mask==cur_id);
+            t.ButtonDownFcn = {@click_text};
+        end 
+        
     end
 end
+toc
 
 end
 
@@ -499,6 +557,38 @@ if hObj.Value
 else
     for i = 1:length(all_obj)
         all_obj(i).Visible = 'off';
+    end
+end
+
+end
+
+function cb4_Callback(hObj,~)
+
+all_axes = findobj(hObj.Parent,'Type','axes');
+all_im = findobj(hObj.Parent,'Type','Image');
+
+all_im_cdata = [];
+for i =1:length(all_im)
+    all_im_cdata = cat(3,all_im_cdata,all_im(i).CData);
+end
+if isempty(all_im_cdata)
+    m=0;
+    M=1;
+else
+    m=min(all_im_cdata(all_im_cdata~=0));
+    M=max(all_im_cdata(all_im_cdata~=0));
+end
+
+if hObj.Value
+    for i = 1:length(all_axes)
+        ax = all_axes(i);
+        ax.CLimMode = 'manual';
+        ax.CLim = [m M];
+    end
+else
+    for i = 1:length(all_axes)
+        ax = all_axes(i);
+        ax.CLimMode = 'auto';
     end
 end
 

@@ -1,14 +1,14 @@
 function build_atlas(varargin)
-% build_atlas() builds a plotable Paxinos Atlas in a plate-by-plate manner
-% Requires Atlas_XXX.mat plates to be stored in RawPlates folder
-% Requires plates.txt & RegionLedger.txt for region correspondence
-% Stores the resultins Atlas in PlotableAtlas folder
+% build_atlas() builds a volumetric plotable Paxinos Atlas
+% Browses individual plates in the Plates folder
+% Browses txt files in directory LedgerDir for region correspondence
+% Stores the resulting Atlas as a numeric volumetric Mask (PlotableAtlas.mat)
 %
 % Possible arguments include
 % 'AtlasType' - [ratcoronal(default)|ratsagittal|mousecoronal|mousesagittal] Type of Atlas
-% 'AtlasDir' - [path] Atlas directory containing PlotableAtlas folder
 % 'LedgerDir' - [path] Ledger directory containing region correspondence txt files
-% 'PlateList' - [array] List of plate numbers to be displayed
+% 'PlateList' - [array|'all'(default)] List of plate numbers to be displayed
+% 'Unlabeled' - [on|off (default)] include unlabeled regions in Atlas
 
 if mod(length(varargin),2)==1
     error('List of input arguments must be grouped in pairs.');
@@ -17,13 +17,16 @@ end
 % Main Parameters
 % Default Parameters
 AtlasType = 'ratcoronal';
-dir_txt = '';
+list_plates = 'all';
+include_unlabeled = 'off';
+
 temp = which('build_atlas.m');
 dir_atlas = strrep(temp,strcat(filesep,'build_atlas.m'),'');
-list_plates = 'all';
+dir_txt = fullfile(dir_atlas,'LedgerDir');
+
 
 % Parsing varargin
-all_properties = [{'atlastype'};{'ledgerdir'};{'atlasdir'};{'platelist'}];
+all_properties = [{'atlastype'};{'ledgerdir'};{'platelist'};{'unlabeled'}];
 for i =1:2:length(varargin)
     if sum(strcmpi(all_properties,varargin{i}))==0
         error('Unknown Property : %s.',varargin{i});
@@ -43,77 +46,72 @@ for i =1:2:length(varargin)
                     dir_txt = varargin{i+1};
                 end
                 
-            case 'atlasdir'
-                if ~exist(varargin{i+1},'dir')
-                    error('Property %s is not an existing directory.',varargin{i})
-                else
-                    dir_atlas = varargin{i+1};
-                end
-                
             case 'platelist'
                 if isnumeric(varargin{i+1}) && sum(floor(varargin{i+1})==varargin{i+1})==length(varargin{i+1})
                     list_plates = varargin{i+1};
                 else
                     error('Property %s is not an array of positive integers.',varargin{i})
-                end             
+                end
+                
+            case 'unlabeled'
+                if sum(strcmp([{'on'},{'off'}],varargin{i+1}))==0
+                    error('Unknown value for property %s.',varargin{i})
+                else
+                    include_unlabeled = varargin{i+1};
+                end  
+            
         end
     end
 end
 
 
 % Secondary Parameters
-% plate_name
+% plate_name & n_plates
 switch AtlasType
     case 'ratcoronal'
         plate_name = 'RatCoronalPaxinos';
-        if strcmp(list_plates,'all')
-            list_plates = 1:161;
-        elseif sum(list_plates<1)>0 || sum(list_plates>161)>0
-            error('PlateList for Atlas %s must contain integer values between 1 and 161',AtlasType);
-        end
+        n_plates = 161;
+
     case 'ratsagittal'
         plate_name = 'RatSagittalPaxinos';
-        if strcmp(list_plates,'all')
-            list_plates = 1:38;
-        elseif sum(list_plates<1)>0 || sum(list_plates>38)>0
-            error('PlateList for Atlas %s must contain integer values between 1 and 38',AtlasType);
-        end
+        n_plates = 38;
+
     case 'mousecoronal'
         plate_name = 'MouseCoronalPaxinos';
-        if strcmp(list_plates,'all')
-            list_plates = 1:100;
-        elseif sum(list_plates<1)>0 || sum(list_plates>100)>0
-            error('PlateList for Atlas %s must contain integer values between 1 and 100',AtlasType);
-        end
+        n_plates = 100;
+
     case 'mousesagittal'
         plate_name = 'MouseSagittalPaxinos';
-        if strcmp(list_plates,'all')
-            list_plates = 1:64;
-        elseif sum(list_plates<1)>0 || sum(list_plates>64)>0
-            error('PlateList for Atlas %s must contain integer values between 1 and 64',AtlasType);
-        end
+        n_plates = 64;
+
+end
+% Setting list_plates if argument is 'all'
+if strcmp(list_plates,'all')
+    list_plates = 1:n_plates;
+elseif sum(list_plates<1)>0 || sum(list_plates>n_plates)>0
+    error('PlateList for Atlas %s must contain integer values between 1 and %d',AtlasType,n_plates);
 end
 
-% Manual Selection if dir_txt is not specified
-% Seed directory where atlas correspondances (txt files) are located
-flag_force = false;
-if isempty(dir_txt) || ~exist(fullfile(dir_txt,plate_name),'dir')
-    fprintf('Select Ledger Directory.\n')
-    dir_txt = uigetdir(dir_atlas,'Select Ledger Directory');
-    if dir_txt==0
-        choice = questdlg('Ledger Directory not selected. Import unlabeled Atlas ?',...
-            'User Confirmation','OK','Cancel','Cancel');
-        if isempty(choice) || ~strcmp(choice,'OK')
-            fprintf('Build Atlas %s cancelled.\n',AtlasType);
-            return;
-        else
-            flag_force = true;
-        end
-        %        errordlg('Invalid Ledger directory');
-        %        return;
-    end
-end
-folder_mat = fullfile(dir_atlas,'RawPlates',plate_name);
+% % Manual Selection if dir_txt is not specified
+% % Seed directory where atlas correspondances (txt files) are located
+% flag_force = false;
+% if isempty(dir_txt) || ~exist(fullfile(dir_txt,plate_name),'dir')
+%     fprintf('Select Ledger Directory.\n')
+%     dir_txt = uigetdir(dir_atlas,'Select Ledger Directory');
+%     if dir_txt==0
+%         choice = questdlg('Ledger Directory not selected. Import unlabeled Atlas ?',...
+%             'User Confirmation','OK','Cancel','Cancel');
+%         if isempty(choice) || ~strcmp(choice,'OK')
+%             fprintf('Build Atlas %s cancelled.\n',AtlasType);
+%             return;
+%         else
+%             flag_force = true;
+%         end
+% %         errordlg('Invalid Ledger directory');
+% %         return;
+%     end
+% end
+folder_mat = fullfile(dir_atlas,'Plates',plate_name);
 folder_txt = fullfile(dir_txt,plate_name);
 
 % Searching for Atlas plates
@@ -124,37 +122,34 @@ if isempty(d)
 end
 
 % Searching for txt files
-if ~flag_force
-    dd = dir(fullfile(folder_txt,'*.txt'));
-    if isempty(dd)
-        errordlg(sprintf('Wrong directory. Missing txt files in [%s].',folder_txt));
-        return;
-    end
+dd = dir(fullfile(folder_txt,'*.txt'));
+if isempty(dd)
+    errordlg(sprintf('Wrong directory. Missing txt files in [%s].',folder_txt));
+    return;
 end
 
 % Creating save directory
-savedir = fullfile(dir_atlas,'PlotableAtlas',plate_name);
-if isdir(savedir)
-    rmdir(savedir,'s');
-end
-mkdir(savedir);
+% savedir = fullfile(dir_atlas,'PlotableAtlas',plate_name);
+% if isdir(savedir)
+%     rmdir(savedir,'s');
+% end
+% mkdir(savedir);
+savedir = folder_mat;
+
+% Initialize
+data_init = load(fullfile(folder_mat,sprintf('Atlas_%03d.mat',1)));
+Mask1full = repmat({''},size(data_init.Mask,1),size(data_init.Mask,2),n_plates);
+Mask2full = repmat({''},size(data_init.Mask,1),size(data_init.Mask,2),n_plates);
+Mask3full = repmat({''},size(data_init.Mask,1),size(data_init.Mask,2),n_plates);
+Mask4full = repmat({''},size(data_init.Mask,1),size(data_init.Mask,2),n_plates);
+    
 
 % Importing plates
 for xyfig = list_plates
     % loading plate
-    data_atlas = load(fullfile(folder_mat,sprintf('Atlas_%03d.mat',xyfig)));
-    
-    % getting coordinate
-    switch AtlasType
-        case {'ratcoronal','mousecoronal'}
-            AP = data_atlas.AP_mm;
-        case {'ratsagittal','mousesagittal'}
-            AP = data_atlas.ML_mm;
-    end
-    line_x=data_atlas.line_x;
-    line_z=data_atlas.line_z;
-    Mask=data_atlas.Mask(:,:,1);
-    
+    data_plate = load(fullfile(folder_mat,sprintf('Atlas_%03d.mat',xyfig)));
+    Mask=data_plate.Mask(:,:,1);
+
     % Adding Regions
     atlas_txt =  fullfile(folder_txt,sprintf('%s-plate%d.txt',plate_name,xyfig));
     region_id = [];
@@ -175,11 +170,9 @@ for xyfig = list_plates
         fclose(fileID);
     end
     
+    % Mask1: Regions unilateral
     % Browsing Mask values
-    list_regions =[];
-    mask_regions=[];
-    list_unlabeled =[];
-    mask_unlabeled=[];
+    Mask1 =repmat({''},size(Mask,1),size(Mask,2));
     for i=1:max(Mask(:),[],'omitnan')
         cur_mask = (Mask==i);
         if sum(cur_mask(:))==0
@@ -191,73 +184,47 @@ for xyfig = list_plates
             warning('Muliple indexing for region %d [%s].',i);
             index_region=index_region(1);
         end
-        if isempty(index_region) || contains(atlas_name(index_region),'region')
-            %cur_region = sprintf('region%03d',i);
-            cur_region = sprintf('r%03d',i);
-            list_unlabeled =[list_unlabeled;{cur_region}];
-            mask_unlabeled=cat(3,mask_unlabeled,cur_mask);
+        if isempty(index_region) || startsWith(atlas_name(index_region),'region')
+            if strcmp(include_unlabeled,'on')
+                cur_region = sprintf('region%d',i);
+            else
+                continue;
+            end
         else
-            cur_region = atlas_name(index_region);
-            list_regions =[list_regions;cur_region];
-            mask_regions=cat(3,mask_regions,cur_mask);
+            cur_region = char(atlas_name(index_region));
+        end
+        Mask1(Mask==i)={cur_region};
+    end
+    this_regions = unique(Mask1(:));
+    this_regions = this_regions(~strcmp(this_regions,''));
+    Mask1full(:,:,xyfig) = Mask1; 
+    
+    % Mask2 : Regions bilateral
+    % Removing -L and -R at the end (and before a '!')
+    Mask2 = Mask1;
+    Mask2 = strrep(Mask2,'-L!','!');
+    Mask2 = strrep(Mask2,'-R!','!');
+    this_regions = strrep(this_regions,'-L!','!');
+    this_regions = strrep(this_regions,'-R!','!');
+    for i = 1:length(this_regions)
+        cur_region = char(this_regions(i));
+        if length(cur_region)>2 && (strcmp(cur_region(end-1:end),'-L')||strcmp(cur_region(end-1:end),'-R'))
+            this_regions(i) = {cur_region(1:end-2)};
+            temp = unique(regexp(char(this_regions(i)),'!','split'));
+            if length(temp)>1
+                Mask2(strcmp(Mask2,cur_region)) = {strjoin(temp,'!')};
+            else
+                Mask2(strcmp(Mask2,cur_region)) = temp;
+            end
         end
     end
-    
-    % Merging list_regions & list_unlabeled
-    list_regions = [list_regions;list_unlabeled];
-    mask_regions = cat(3,mask_regions,mask_unlabeled);
-    
-    % sanity check
-    if ~isempty(list_regions) && length(list_regions)~=size(mask_regions,3)
-        errordlg('sanity check 1 failed');
-        return;
-    end
-    
-    %     % Removing duplicates
-    %     if length(list_regions)~=length(unique(list_regions))
-    %         list_regions
-    %     end
-    
-    % Adding bilateral regions
-    %list_test = unique(regexprep(list_regions,'-L|-R',''))
-    list_test = [];
-    for i = 1:length(list_regions)
-        temp = char(list_regions(i));
-        if length(temp)>1 && (strcmp(temp(end-1:end),'-L')||strcmp(temp(end-1:end),'-R'))
-            list_test = [list_test ; {temp(1:end-2)}];
-        else
-            list_test = [list_test ; {temp}];
-        end
-    end
-    list_bilateral=unique(list_test);
-    
-    mask_bilateral = [];
-    for i = 1:length(list_bilateral)
-        ind_1 = find(strcmp(list_regions,strcat(char(list_bilateral(i)),'-L'))==1);
-        ind_2 = find(strcmp(list_regions,strcat(char(list_bilateral(i)),'-R'))==1);
-        ind_3 = find(strcmp(list_regions,char(list_bilateral(i)))==1);
-        ind_all = [ind_1;ind_2;ind_3];
-        cur_mask = [];
-        for k=1:length(ind_all)
-            cur_mask=cat(3,cur_mask,mask_regions(:,:,ind_all(k)));
-        end
-        cur_mask = sum(cur_mask,3)>0;
-        mask_bilateral = cat(3,mask_bilateral,cur_mask);
-    end
-    
-    %sanitycheck
-    if ~isempty(list_bilateral) && length(list_bilateral)~=size(mask_bilateral,3)
-        errordlg('sanity check 2 failed');
-        return;
-    end
+    Mask2full(:,:,xyfig) = Mask2;
     
     % Adding Region Groups
-    ledger_txt =  fullfile(dir_txt,'RegionLedger.txt');
-    list_groups = [];
-    mask_groups = [];
-    list_groups_bilateral = [];
-    mask_groups_bilateral = [];
+    Mask3 =repmat({''},size(Mask,1),size(Mask,2));
+    Mask4 =repmat({''},size(Mask,1),size(Mask,2));
     
+    ledger_txt =  fullfile(dir_txt,'RegionLedger.txt');    
     if exist(ledger_txt,'file')
         fileID = fopen(ledger_txt);
         %header
@@ -267,63 +234,98 @@ for xyfig = list_plates
             cline = regexp(hline,'\t','split');
             c1 = strtrim(cline(1));
             % c2 = strtrim(cline(2));
-            %c3 = strtrim(cline(3));
+            % c3 = strtrim(cline(3));
             c4 = strtrim(cline(4));
             temp = regexp(char(c4),' ','split')';
-            ind_cmp = [];
-            ind_cmp2 = [];
+            % Mask3
+            all_masks = [];
             for i =1:length(temp)
-                ind_cmp = [ind_cmp;find(strcmp(list_regions,temp(i))==1)];
-                ind_cmp2 = [ind_cmp2;find(strcmp(list_bilateral,temp(i))==1)];
+                cur_mask = strcmp(Mask1,temp(i));
+                all_masks = cat(3,all_masks,cur_mask);
             end
-            
-            cur_mask = [];
-            if ~isempty(ind_cmp)
-                cur_mask = sum(mask_regions(:,:,ind_cmp),3)>0;
-                list_groups = [list_groups;c1];
-                mask_groups = cat(3,mask_groups,cur_mask);
+            cur_mask = sum(all_masks,3)>0;
+            Mask3(cur_mask) = c1;
+            % Mask4            
+            all_masks = [];
+            for i =1:length(temp)
+                cur_mask = strcmp(Mask2,temp(i));
+                all_masks = cat(3,all_masks,cur_mask);
             end
-            cur_mask2 = [];
-            if ~isempty(ind_cmp2)
-                cur_mask2 = sum(mask_bilateral(:,:,ind_cmp2),3)>0;
-                list_groups_bilateral = [list_groups_bilateral;c1];
-                mask_groups_bilateral = cat(3,mask_groups_bilateral,cur_mask2);
-            end
+            cur_mask = sum(all_masks,3)>0;
+            Mask4(cur_mask) = c1;
+
         end
         fclose(fileID);
     end
-    fprintf('Atlas Plate imported [%s-%03d/%03d].\n',AtlasType,xyfig,length(d));
-    
-    % sanity check
-    if ~isempty(list_groups) && length(list_groups)~=size(mask_groups,3)
-        errordlg('sanity check 3 failed');
-        return;
-    end
-    % sanity check
-    if ~isempty(list_groups_bilateral) && length(list_groups_bilateral)~=size(mask_groups_bilateral,3)
-        errordlg('sanity check 4 failed');
-        return;
-    end
-    
-    mask_regions = uint8(mask_regions);
-    mask_unlabeled = uint8(mask_unlabeled);
-    mask_bilateral = uint8(mask_bilateral);
-    mask_groups = uint8(mask_groups);
-    mask_groups_bilateral = uint8(mask_groups_bilateral);
-    sizemask_1 = size(Mask,1);
-    sizemask_2 = size(Mask,2);
-    
-    save(fullfile(savedir,sprintf('%s-%03d.mat',plate_name,xyfig)),...
-        'xyfig','line_x','line_z','AP','sizemask_1','sizemask_2',...
-        'list_regions','mask_regions',...'list_unlabeled','mask_unlabeled',...
-        'list_bilateral','mask_bilateral',...
-        'list_groups','mask_groups',...
-        'list_groups_bilateral','mask_groups_bilateral','-v7.3');
+    Mask3full(:,:,xyfig) = Mask3;
+    Mask4full(:,:,xyfig) = Mask4;
+    fprintf('Atlas Plate imported [%s-%03d/%03d].\n',plate_name,xyfig,length(d));    
 end
 
+% Efficient Storing
+% Mask1
+Maskfull = Mask1full;
+all_regions = unique(Maskfull(:));
+all_regions = sort(all_regions(~strcmp(all_regions,'')));
+all_ids = NaN(size(all_regions));
+Masknumeric = zeros(size(Maskfull,1),size(Maskfull,2),size(Maskfull,3));
+for i =1:length(all_regions)
+    all_ids(i) = i;
+    Masknumeric(strcmp(Maskfull,char(all_regions(i))))=all_ids(i);
+    fprintf('Bulding Mask Unilateral Regions - [%s (%d/%d)]\n',char(all_regions(i)),i,length(all_regions));
+end
+id_regions = all_ids;
+list_regions = all_regions;
+Mask_regions = Masknumeric;
+% Mask2
+Maskfull = Mask2full;
+all_regions = unique(Maskfull(:));
+all_regions = sort(all_regions(~strcmp(all_regions,'')));
+all_ids = NaN(size(all_regions));
+Masknumeric = zeros(size(Maskfull,1),size(Maskfull,2),size(Maskfull,3));
+for i =1:length(all_regions)
+    all_ids(i) = i+.1;
+    Masknumeric(strcmp(Maskfull,char(all_regions(i))))=all_ids(i);
+    fprintf('Bulding Mask Bilateral Regions - [%s (%d/%d)]\n',char(all_regions(i)),i,length(all_regions));
+end
+id_bilateral = all_ids;
+list_bilateral = all_regions;
+Mask_bilateral = Masknumeric;
+% Mask3
+Maskfull = Mask3full;
+all_regions = unique(Maskfull(:));
+all_regions = sort(all_regions(~strcmp(all_regions,'')));
+all_ids = NaN(size(all_regions));
+Masknumeric = zeros(size(Maskfull,1),size(Maskfull,2),size(Maskfull,3));
+for i =1:length(all_regions)
+    all_ids(i) = i+.2;
+    Masknumeric(strcmp(Maskfull,char(all_regions(i))))=all_ids(i);
+    fprintf('Bulding Mask Unilateral Groups - [%s (%d/%d)]\n',char(all_regions(i)),i,length(all_regions));
+end
+id_groups = all_ids;
+list_groups = all_regions;
+Mask_groups = Masknumeric;
+% Mask4
+Maskfull = Mask4full;
+all_regions = unique(Maskfull(:));
+all_regions = sort(all_regions(~strcmp(all_regions,'')));
+all_ids = NaN(size(all_regions));
+Masknumeric = zeros(size(Maskfull,1),size(Maskfull,2),size(Maskfull,3));
+for i =1:length(all_regions)
+    all_ids(i) = i+.3;
+    Masknumeric(strcmp(Maskfull,char(all_regions(i))))=all_ids(i);
+    fprintf('Bulding Mask Bilateral Groups - [%s (%d/%d)]\n',char(all_regions(i)),i,length(all_regions));
+end
+id_groups_bilateral = all_ids;
+list_groups_bilateral = all_regions;
+Mask_groups_bilateral = Masknumeric;
+
 % Saving plotable Atlas in full
-% save(fullfile(savedir,sprintf('PlotableAtlas_%s.mat',plate_name)),'Atlas','-append');
-% fprintf('Plotable Atlas (%d plates) saved [%s].\n',length(d),savedir);
+save(fullfile(savedir,sprintf('PlotableAtlas_%s.mat',plate_name)),...
+    'AtlasType','plate_name','list_plates','dir_txt','dir_atlas',...
+    'id_regions','id_bilateral','id_groups','id_groups_bilateral',...
+    'list_regions','list_bilateral','list_groups','list_groups_bilateral',...
+    'Mask_regions','Mask_bilateral','Mask_groups','Mask_groups_bilateral','-v7.3');
 fprintf('Plotable Atlas succesfully imported [%s].\n',savedir);
 
 end

@@ -1,12 +1,13 @@
-function list_regions = generate_lists(varargin)
+function this_regions = generate_lists(varargin)
 % generate_lists() generates a list of regions as a cell arrays based on
 % input arguments
 %
 % Possible arguments include
 % 'AtlasType' - [ratcoronal(default)|ratsagittal|mousecoronal|mousesagittal] Type of Atlas
-% 'DisplayObj' - [regions|groups|all(default)] Displays regions, regions groups or both
+% 'DisplayObj' - [regions(default)|groups] Displays regions, regions groups or both
 % 'DisplayMode' - [unilateral(default)|bilateral] Displays uni/bilateral regions/groups
 % 'PlateList' - [array] List of plate numbers to be displayed
+% 'Unlabeled' - [on|off (default)] include unlabeled regions in Atlas
 
 if mod(length(varargin),2)==1
     error('List of input arguments must be grouped in pairs.');
@@ -16,8 +17,11 @@ end
 % Default Parameters
 AtlasType = 'ratcoronal';
 list_plates = 'all';
-DisplayObj = 'all';
+DisplayObj = 'regions';
 DisplayMode = 'unilateral';
+temp = which('generate_lists.m');
+dir_atlas = strrep(temp,strcat(filesep,'generate_lists.m'),'');
+
 
 % Parsing varargin
 all_properties = [{'atlastype'};{'displayobj'};{'displaymode'};{'platelist'}];
@@ -41,7 +45,7 @@ for i =1:2:length(varargin)
                 end
                 
             case 'displayobj'
-                if sum(strcmp([{'all'},{'regions'},{'groups'}],varargin{i+1}))==0
+                if sum(strcmp([{'regions'},{'groups'}],varargin{i+1}))==0
                     error('Unknown value for property %s.',varargin{i})
                 else
                     DisplayObj = varargin{i+1};
@@ -59,38 +63,77 @@ end
 
 
 % Secondary Parameters
-% plate_name
+% plate_name & n_plates
 switch AtlasType
     case 'ratcoronal'
         plate_name = 'RatCoronalPaxinos';
-        if strcmp(list_plates,'all')
-            list_plates = 1:161;
-        elseif sum(list_plates<1)>0 || sum(list_plates>161)>0
-            error('PlateList for Atlas %s must contain integer values between 1 and 161',AtlasType);
-        end
+        n_plates = 161;
+
     case 'ratsagittal'
         plate_name = 'RatSagittalPaxinos';
-        if strcmp(list_plates,'all')
-            list_plates = 1:38;
-        elseif sum(list_plates<1)>0 || sum(list_plates>38)>0
-            error('PlateList for Atlas %s must contain integer values between 1 and 38',AtlasType);
-        end
+        n_plates = 38;
+
     case 'mousecoronal'
         plate_name = 'MouseCoronalPaxinos';
-        if strcmp(list_plates,'all')
-            list_plates = 1:100;
-        elseif sum(list_plates<1)>0 || sum(list_plates>100)>0
-            error('PlateList for Atlas %s must contain integer values between 1 and 100',AtlasType);
-        end
+        n_plates = 100;
+
     case 'mousesagittal'
         plate_name = 'MouseSagittalPaxinos';
-        if strcmp(list_plates,'all')
-            list_plates = 1:64;
-        elseif sum(list_plates<1)>0 || sum(list_plates>64)>0
-            error('PlateList for Atlas %s must contain integer values between 1 and 64',AtlasType);
-        end
+        n_plates = 64;
+
+end
+% Setting list_plates if argument is 'all'
+if strcmp(list_plates,'all')
+    list_plates = 1:n_plates;
+elseif sum(list_plates<1)>0 || sum(list_plates>n_plates)>0
+    error('PlateList for Atlas %s must contain integer values between 1 and %d',AtlasType,n_plates);
 end
 
-list_regions = plate_name;
+% Load lists
+savedir = fullfile(dir_atlas,'Plates',plate_name);
+data_atlas = load(fullfile(savedir,sprintf('PlotableAtlas_%s.mat',plate_name)));
+
+% Restricting to list_plates
+% Mask1
+Maskfull = data_atlas.Mask_regions(:,:,list_plates);
+all_indexes = unique(Maskfull(Maskfull~=0));
+list_regions = data_atlas.list_regions(all_indexes(all_indexes~=0));
+% Mask2
+Maskfull = data_atlas.Mask_bilateral(:,:,list_plates);
+all_indexes = unique(Maskfull(Maskfull~=0));
+list_bilateral = [];
+for i = 1:length(all_indexes)
+    list_bilateral = [list_bilateral;data_atlas.list_bilateral(data_atlas.id_bilateral==all_indexes(i))];
+end
+% Mask3
+Maskfull = data_atlas.Mask_groups(:,:,list_plates);
+all_indexes = unique(Maskfull(Maskfull~=0));
+list_groups = [];
+for i = 1:length(all_indexes)
+    list_groups = [list_groups;data_atlas.list_groups(data_atlas.id_groups==all_indexes(i))];
+end
+% Mask4
+Maskfull = data_atlas.Mask_groups_bilateral(:,:,list_plates);
+all_indexes = unique(Maskfull(Maskfull~=0));
+list_groups_bilateral = [];
+for i = 1:length(all_indexes)
+    list_groups_bilateral = [list_groups_bilateral;data_atlas.list_groups_bilateral(data_atlas.id_groups_bilateral==all_indexes(i))];
+end
+
+if strcmp(DisplayMode,'unilateral')
+    switch DisplayObj
+        case 'regions'
+            this_regions = list_regions;
+        case 'groups'
+            this_regions = list_groups;
+    end
+elseif strcmp(DisplayMode,'bilateral')
+    switch DisplayObj
+        case 'regions'
+            this_regions = list_bilateral;
+        case 'groups'
+            this_regions = list_groups_bilateral;
+    end
+end
 
 end
