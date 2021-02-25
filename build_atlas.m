@@ -9,6 +9,7 @@ function build_atlas(varargin)
 % 'LedgerDir' - [path] Ledger directory containing region correspondence txt files
 % 'PlateList' - [array|'all'(default)] List of plate numbers to be displayed
 % 'Unlabeled' - [on|off (default)] include unlabeled regions in Atlas
+% 'Ambiguous' - [on(default) |off] include ambiguous regions (reg1!reg2) in Atlas
 
 if mod(length(varargin),2)==1
     error('List of input arguments must be grouped in pairs.');
@@ -19,6 +20,7 @@ end
 AtlasType = 'ratcoronal';
 list_plates = 'all';
 include_unlabeled = 'off';
+include_ambiguous = 'on';
 
 temp = which('build_atlas.m');
 dir_atlas = strrep(temp,strcat(filesep,'build_atlas.m'),'');
@@ -26,7 +28,7 @@ dir_txt = fullfile(dir_atlas,'LedgerDir');
 
 
 % Parsing varargin
-all_properties = [{'atlastype'};{'ledgerdir'};{'platelist'};{'unlabeled'}];
+all_properties = [{'atlastype'};{'ledgerdir'};{'platelist'};{'unlabeled'};{'ambiguous'}];
 for i =1:2:length(varargin)
     if sum(strcmpi(all_properties,varargin{i}))==0
         error('Unknown Property : %s.',varargin{i});
@@ -58,8 +60,14 @@ for i =1:2:length(varargin)
                     error('Unknown value for property %s.',varargin{i})
                 else
                     include_unlabeled = varargin{i+1};
-                end  
-            
+                end
+                
+            case 'ambiguous'
+                if sum(strcmp([{'on'},{'off'}],varargin{i+1}))==0
+                    error('Unknown value for property %s.',varargin{i})
+                else
+                    include_ambiguous = varargin{i+1};
+                end       
         end
     end
 end
@@ -142,6 +150,37 @@ Mask1full = repmat({''},size(data_init.Mask,1),size(data_init.Mask,2),n_plates);
 Mask2full = repmat({''},size(data_init.Mask,1),size(data_init.Mask,2),n_plates);
 Mask3full = repmat({''},size(data_init.Mask,1),size(data_init.Mask,2),n_plates);
 Mask4full = repmat({''},size(data_init.Mask,1),size(data_init.Mask,2),n_plates);
+
+
+% Browsing Ledgers
+ledger_txt =  fullfile(dir_txt,'RegionLedger.txt');
+all_c1 = [];
+all_c4 = [];
+if exist(ledger_txt,'file')
+    fileID = fopen(ledger_txt);
+    %header
+    fgetl(fileID);
+    while ~feof(fileID)
+        hline = fgetl(fileID);
+        cline = regexp(hline,'\t','split');
+        all_c1 = [all_c1;strtrim(cline(1))];
+        all_c4 = [all_c4;strtrim(cline(4))];
+    end
+    fclose(fileID);
+end
+ledger_txt_2 =  fullfile(dir_txt,'RegionLedger2.txt');
+if strcmp(include_ambiguous,'on') && exist(ledger_txt_2,'file')
+    fileID = fopen(ledger_txt_2);
+    %header
+    fgetl(fileID);
+    while ~feof(fileID)
+        hline = fgetl(fileID);
+        cline = regexp(hline,'\t','split');
+        all_c1 = [all_c1;strtrim(cline(1))];
+        all_c4 = [all_c4;strtrim(cline(4))];
+    end
+    fclose(fileID);
+end
     
 
 % Importing plates
@@ -223,39 +262,26 @@ for xyfig = list_plates
     % Adding Region Groups
     Mask3 =repmat({''},size(Mask,1),size(Mask,2));
     Mask4 =repmat({''},size(Mask,1),size(Mask,2));
-    
-    ledger_txt =  fullfile(dir_txt,'RegionLedger.txt');    
-    if exist(ledger_txt,'file')
-        fileID = fopen(ledger_txt);
-        %header
-        fgetl(fileID);
-        while ~feof(fileID)
-            hline = fgetl(fileID);
-            cline = regexp(hline,'\t','split');
-            c1 = strtrim(cline(1));
-            % c2 = strtrim(cline(2));
-            % c3 = strtrim(cline(3));
-            c4 = strtrim(cline(4));
-            temp = regexp(char(c4),' ','split')';
-            % Mask3
-            all_masks = [];
-            for i =1:length(temp)
-                cur_mask = strcmp(Mask1,temp(i));
-                all_masks = cat(3,all_masks,cur_mask);
-            end
-            cur_mask = sum(all_masks,3)>0;
-            Mask3(cur_mask) = c1;
-            % Mask4            
-            all_masks = [];
-            for i =1:length(temp)
-                cur_mask = strcmp(Mask2,temp(i));
-                all_masks = cat(3,all_masks,cur_mask);
-            end
-            cur_mask = sum(all_masks,3)>0;
-            Mask4(cur_mask) = c1;
-
+    for i=1:length(all_c1)
+        c1 = all_c1(i);
+        c4 = all_c4(i);
+        temp = regexp(char(c4),' ','split')';
+        % Mask3
+        all_masks = [];
+        for k =1:length(temp)
+            cur_mask = strcmp(Mask1,temp(k));
+            all_masks = cat(3,all_masks,cur_mask);
         end
-        fclose(fileID);
+        cur_mask = sum(all_masks,3)>0;
+        Mask3(cur_mask) = c1;
+        % Mask4
+        all_masks = [];
+        for k =1:length(temp)
+            cur_mask = strcmp(Mask2,temp(k));
+            all_masks = cat(3,all_masks,cur_mask);
+        end
+        cur_mask = sum(all_masks,3)>0;
+        Mask4(cur_mask) = c1;
     end
     Mask3full(:,:,xyfig) = Mask3;
     Mask4full(:,:,xyfig) = Mask4;

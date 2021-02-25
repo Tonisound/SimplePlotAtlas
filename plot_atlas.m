@@ -55,7 +55,7 @@ savename = '';
 visiblecolorbar = 'off';
 visiblename = 'off';
 visiblemask = 'on';
-linkaxescbar = 'on';
+linkaxescbar = 'off';
 n_columns = 6;
 list_plates = 15:3:80;
 linewidth = .1;
@@ -385,7 +385,7 @@ for index=1:n_plates
         case {'ratsagittal','mousesagittal'}
             data_plate.AP = data_plate.ML_mm;
     end
-    fprintf('Plotting Atlas Plate Bregma %.2f mm [%d/%d]...',data_plate.AP,index,n_plates);
+    fprintf('Plotting Atlas Plate %.2f mm [%d/%d]...',data_plate.AP,index,n_plates);
     
     % Display all available objects if list_regions={all} option
     if flag_all
@@ -450,9 +450,11 @@ for index=1:n_plates
     
     switch AtlasType
         case {'ratcoronal','mousecoronal'}
-            ax.Title.String = sprintf('Bregma %.2f mm [%03d]',data_plate.AP,xyfig);
+            %ax.Title.String = sprintf('AP %.2f mm [%03d]',data_plate.AP,xyfig);
+            ax.Title.String = sprintf('%.2f mm',data_plate.AP);
         case {'ratsagittal','mousesagittal'}
-            ax.Title.String = sprintf('Lateral %.2f mm [%03d]',data_plate.AP,xyfig);
+            %ax.Title.String = sprintf('AP %.2f mm [%03d]',data_plate.AP,xyfig);
+            ax.Title.String = sprintf('%.2f mm',data_plate.AP);
     end
     ax.YDir = 'reverse';
     ax.XDir = 'reverse';
@@ -474,17 +476,31 @@ cb4_Callback(cb4,[]);
 
 % Save if savename is specified
 if ~isempty(savename)
-    if ~isdir(savedir)
-        mkdir(savedir);
-        warning('Directory %s created.',savedir)
+    
+    cb1.Visible='off';
+    cb2.Visible='off';
+    cb3.Visible='off';
+    cb4.Visible='off';
+    
+    [a,b,c]=fileparts(savename);
+    if ~isdir(a)
+        mkdir(a);
+        warning('Directory %s created.',a)
+    end
+    if isempty(c)
+        fullname = fullfile(a,strcat(b,'.pdf'));
+    else
+        fullname = fullfile(a,strcat(b,c));
     end
     
-    if ~contains(fName,'.')
-        fullname = fullfile(savedir,strcat(fName,'.pdf'));
-    else
-        fullname = fullfile(savedir,strcat(fName));
-    end
     saveas(f,fullname);
+    fprintf('Plot_Atlas saved [%s].\n',fullname);
+    
+    cb1.Visible='on';
+    cb2.Visible='on';
+    cb3.Visible='on';
+    cb4.Visible='on';
+    
 end
 
 f.Pointer = 'arrow';
@@ -506,15 +522,13 @@ if hObj.Value
             cur_id = ax.UserData.all_ids(j);
             cur_region = char(ax.UserData.all_regions(j));
             % Display Name
-%             [X,Y]=meshgrid(1:size(ax.UserData.cur_mask,2),1:size(ax.UserData.cur_mask,1));
-%             temp_X = X.*(ax.UserData.cur_mask==cur_id);
-%             temp_X(temp_X==0)=NaN;
-%             x = mean(mean(temp_X,'omitnan'),'omitnan');
-%             temp_Y = Y.*(ax.UserData.cur_mask==cur_id);
-%             temp_Y(temp_Y==0)=NaN;
-%             y = mean(mean(temp_Y,'omitnan'),'omitnan');
-            x = 1;
-            y=1;
+            [X,Y]=meshgrid(1:size(ax.UserData.cur_mask,2),1:size(ax.UserData.cur_mask,1));
+            temp_X = X.*(ax.UserData.cur_mask==cur_id);
+            temp_X(temp_X==0)=NaN;
+            x = mean(mean(temp_X,'omitnan'),'omitnan');
+            temp_Y = Y.*(ax.UserData.cur_mask==cur_id);
+            temp_Y(temp_Y==0)=NaN;
+            y = mean(mean(temp_Y,'omitnan'),'omitnan');
             t = text(x,y,cur_region,'Parent',ax,'Color',textColor,'FontSize',fontsize,...
                 'Tag','Sticker','Parent',ax);
             %t.BackgroundColor = [.5 .5 .5];
@@ -583,7 +597,7 @@ if hObj.Value
     for i = 1:length(all_axes)
         ax = all_axes(i);
         ax.CLimMode = 'manual';
-        ax.CLim = [m M];
+        ax.CLim = [m-.0001 M+.0001];
     end
 else
     for i = 1:length(all_axes)
