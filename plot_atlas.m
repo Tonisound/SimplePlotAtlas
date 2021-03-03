@@ -240,10 +240,11 @@ if strcmp(visiblemask,'on')
 else
     cb3def = 0;
 end
+cb4def = 1;
 if strcmp(linkaxescbar,'on')
-    cb4def = 1;
+    cb5def = 1;
 else
-    cb4def = 0;
+    cb5def = 0;
 end
 % formatting savename
 if isempty(savename)
@@ -324,15 +325,20 @@ cb2 = uicontrol('Style','checkbox','Units','normalized','Value',cb2def,...
 cb3 = uicontrol('Style','checkbox','Units','normalized','Value',cb3def,...
     'TooltipString','Display Mask','Tag','Checkbox3','Parent',f);
 cb4 = uicontrol('Style','checkbox','Units','normalized','Value',cb4def,...
+    'TooltipString','Display Plate','Tag','Checkbox4','Parent',f);
+cb5 = uicontrol('Style','checkbox','Units','normalized','Value',cb5def,...
     'TooltipString','Linkaxes Cbar','Tag','Checkbox4','Parent',f);
 cb1.Position = [0 .97 .02 .03];
 cb2.Position = [0 .94 .02 .03];
 cb3.Position = [0 .91 .02 .03];
 cb4.Position = [0 .88 .02 .03];
+cb5.Position = [0 .85 .02 .03];
 set(cb1,'Callback',{@cb1_Callback,textColor,fontsize});
 set(cb2,'Callback',{@cb2_Callback});
 set(cb3,'Callback',{@cb3_Callback});
 set(cb4,'Callback',{@cb4_Callback});
+set(cb5,'Callback',{@cb5_Callback});
+
 
 % Loading Atlas
 % Load lists
@@ -445,7 +451,7 @@ for index=1:n_plates
     uistack(im,'bottom');
     
     % Ploting Atlas
-    line('XData',data_plate.line_x,'YData',data_plate.line_z,...
+    line('XData',data_plate.line_x,'YData',data_plate.line_z,'Tag','Plate',...
         'Color',linecolor,'Linewidth',linewidth,'Parent',ax);
     
     switch AtlasType
@@ -473,6 +479,7 @@ cb1_Callback(cb1,[],textColor,fontsize);
 cb2_Callback(cb2,[]);
 cb3_Callback(cb3,[]);
 cb4_Callback(cb4,[]);
+cb5_Callback(cb5,[]);
 
 % Save if savename is specified
 if ~isempty(savename)
@@ -481,6 +488,7 @@ if ~isempty(savename)
     cb2.Visible='off';
     cb3.Visible='off';
     cb4.Visible='off';
+    cb5.Visible='off';
     
     [a,b,c]=fileparts(savename);
     if ~isdir(a)
@@ -500,7 +508,7 @@ if ~isempty(savename)
     cb2.Visible='on';
     cb3.Visible='on';
     cb4.Visible='on';
-    
+    cb5.Visible='on';
 end
 
 f.Pointer = 'arrow';
@@ -508,8 +516,6 @@ f.Pointer = 'arrow';
 end
 
 function cb1_Callback(hObj,~,textColor,fontsize)
-
-tic
 
 all_axes = findobj(hObj.Parent,'Type','axes');
 all_obj = findobj(all_axes,'Tag','Sticker');
@@ -541,7 +547,6 @@ if hObj.Value
         
     end
 end
-toc
 
 end
 
@@ -577,6 +582,22 @@ end
 end
 
 function cb4_Callback(hObj,~)
+
+all_axes = findobj(hObj.Parent,'Type','axes');
+all_obj = findobj(all_axes,'Tag','Plate');
+if hObj.Value
+    for i = 1:length(all_obj)
+        all_obj(i).Visible = 'on';
+    end
+else
+    for i = 1:length(all_obj)
+        all_obj(i).Visible = 'off';
+    end
+end
+
+end
+
+function cb5_Callback(hObj,~)
 
 all_axes = findobj(hObj.Parent,'Type','axes');
 all_im = findobj(hObj.Parent,'Type','Image');

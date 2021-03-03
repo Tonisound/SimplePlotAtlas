@@ -7,7 +7,6 @@ function this_regions = generate_lists(varargin)
 % 'DisplayObj' - [regions(default)|groups] Displays regions, regions groups or both
 % 'DisplayMode' - [unilateral(default)|bilateral] Displays uni/bilateral regions/groups
 % 'PlateList' - [array] List of plate numbers to be displayed
-% 'Unlabeled' - [on|off (default)] include unlabeled regions in Atlas
 
 if mod(length(varargin),2)==1
     error('List of input arguments must be grouped in pairs.');
@@ -137,3 +136,14 @@ elseif strcmp(DisplayMode,'bilateral')
 end
 
 end
+
+% l = generate_lists('DisplayObj','groups','DisplayMode','bilateral');
+% folder_save = '/Users/tonio/Desktop/RegionGroups';
+% 
+% for i =1:length(l)
+%     cur_region = l(i);
+%     savename=fullfile(folder_save,strcat(char(cur_region),'.png'));
+%     plot_atlas(cur_region,'DisplayObj','groups','DisplayMode','bilateral',...
+%         'SaveName',savename,'FontSize',4,'PaperOrientation','landscape',...
+%         'PlateList',10:99,'NColumns',10,'LineWidth',.001);
+% end
