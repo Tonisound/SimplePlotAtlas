@@ -3,7 +3,7 @@
 3	PRh-R
 4	DLEnt-R
 5	TeA-R
-6	MEnt-R!CEnt-L!RSD-L
+6	MEnt-R*
 7	region7
 8	V2L-R
 9	V1B-R
@@ -11,7 +11,7 @@
 11	s5-R
 12	region12
 13	region13
-14	mcp-R!tfp!mcp-L
+14	mcp*
 15	region15
 16	region16
 17	v-R
@@ -22,7 +22,7 @@
 22	ll-R
 23	DLL-R
 24	ILL-R
-25	ECIC1-R!ECIC3-L
+25	ECIC1-R*
 26	region26
 27	Sag-R
 28	region28
@@ -32,7 +32,7 @@
 32	m5-R
 33	vsc-R
 34	V2MM-R
-35	MPL-R!DMTg-L
+35	MPL-R*
 36	KF-R
 37	region37
 38	A7-R
@@ -61,7 +61,7 @@
 61	region61
 62	region62
 63	Pn-R
-64	VLPAG-R!VLPAG-L
+64	VLPAG*
 65	LPAG-R
 66	LDTg-R
 67	ml-R
@@ -72,7 +72,7 @@
 72	RtTg-R
 73	mlf-R
 74	ReIC
-75	PMnR-R!DRC!PMnR-L
+75	PMnR*
 76	DTgP-R
 77	ts-R
 78	VTg-R
@@ -97,7 +97,7 @@
 97	ts-L
 98	LPAG-L
 99	mlf-L
-100	DMTg-L!MPL-R
+100	DMTg-L*
 101	PnO-L
 102	LDTg-L
 103	Pn-L
@@ -105,7 +105,7 @@
 105	LDTgV-L
 106	region106
 107	MPB-L
-108	MEnt-L!CEnt-R!RSD-R
+108	MEnt-L*
 109	region109
 110	4n-L
 111	region111
@@ -113,7 +113,7 @@
 113	V2MM-L
 114	LPB-L
 115	CnFD-L
-116	ECIC1-L!ECIC3-R
+116	ECIC1-L*
 117	CnFV-L
 118	region118
 119	CnFI-L

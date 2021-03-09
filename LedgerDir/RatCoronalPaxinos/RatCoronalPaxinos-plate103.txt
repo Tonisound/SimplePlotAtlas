@@ -1,9 +1,9 @@
 1	region1
-2	Ect-R!PRh-L
+2	Ect-R*
 3	TeA-R
-4	DLEnt-R!MEnt-L
+4	DLEnt-R*
 5	region5
-6	DLEnt-R!MEnt-L
+6	DLEnt-R*
 7	V2L-R
 8	CEnt-R
 9	region9
@@ -13,14 +13,14 @@
 13	s5-R
 14	Post-R
 15	PaS-R
-16	mcp-R!tfp!mcp-L
+16	mcp*
 17	region17
 18	region18
 19	region19
 20	4n-R
 21	V1M-R
 22	Sag-R
-23	ll-R!PLV-L
+23	PLV-R*
 24	ILL-R
 25	DLL-R
 26	ll-R
@@ -37,7 +37,7 @@
 37	CnFD-R
 38	V2MM-R
 39	RSD-R
-40	cll-R!MPL-L
+40	cll-R*
 41	CnFV-R
 42	rs-R
 43	A7-R
@@ -56,7 +56,7 @@
 56	region56
 57	LPAG-R
 58	region58
-59	VLPAG-R!VLPAG-L
+59	VLPAG*
 60	region60
 61	tth-R
 62	region62
@@ -108,7 +108,7 @@
 108	CnFD-L
 109	region109
 110	CnFV-L
-111	PLV-L!ll-R
+111	PLV-L*
 112	PTg-L
 113	ECIC2-L
 114	CnFI-L
@@ -116,7 +116,7 @@
 116	rs-L
 117	V1M-L
 118	VLL-L
-119	cll-L!MPL-R
+119	cll-L*
 120	A7-L
 121	ECIC1-L
 122	ll-L

@@ -4,7 +4,7 @@
 4	TeA-R
 5	Ect-R
 6	DLEnt-R
-7	RadCA1-R!RadCa2-L
+7	RadCA1-R*
 8	PRh-R
 9	Pir2-R
 10	AuD-R
@@ -124,7 +124,7 @@
 124	Eth-R
 125	p1RT
 126	V2MM-R
-127	APTD-R!APTV-L
+127	APTD-R*
 128	cg-R
 129	region129
 130	OT-R
@@ -142,7 +142,7 @@
 142	mp-R
 143	RPF-R
 144	MCPC-R
-145	MM!ML
+145	ML*
 146	RSGc-R
 147	PCom-R
 148	region148
@@ -195,7 +195,7 @@
 195	opt-L
 196	region196
 197	OT-L
-198	APTD-L!APTV-R
+198	APTD-L*
 199	ml-L
 200	SNCD-L
 201	cp-L
@@ -258,7 +258,7 @@
 258	TeA-L
 259	Ect-L
 260	DLEnt-L
-261	RadCA1-L!RadCA2-R
+261	RadCA1-L*
 262	PRh-L
 263	Pir2-L
 264	AuD-L

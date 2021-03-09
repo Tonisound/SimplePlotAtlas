@@ -15,7 +15,7 @@
 15	V1B-R
 16	region16
 17	s5-R
-18	mcp-R!tfp!mcp-L
+18	mcp*
 19	region19
 20	PaS-R
 21	V1M-R
@@ -42,7 +42,7 @@
 42	RSD-R
 43	CnFI-R
 44	region44
-45	CnFD-R!cll-L!MPL-L
+45	CnFD-R*
 46	CIC-R
 47	CnFV-R
 48	rs-R
@@ -71,7 +71,7 @@
 71	RtTg-R
 72	tth-R
 73	region73
-74	Com!cic
+74	cic*
 75	DPPn-R
 76	mlf-R
 77	LDTg-R
@@ -80,7 +80,7 @@
 80	VTg-R
 81	v
 82	Aq
-83	PMnR-R!PMnR-L
+83	PMnR*
 84	DRD
 85	DRV
 86	region86
@@ -113,7 +113,7 @@
 113	region113
 114	RSD-L
 115	scp-L
-116	CnFD-L!cll-R!MPL-R
+116	CnFD-L*
 117	region117
 118	V2MM-L
 119	CIC-L

@@ -13,10 +13,10 @@
 13	DCl-R
 14	VCl-R
 15	region15
-16	ec-R!cc!ec-L
+16	cc*
 17	DEn-R
 18	lo-R
-19	CPu-R!CB-L
+19	CPu-R*
 20	region20
 21	region21
 22	region22
@@ -25,7 +25,7 @@
 25	LSS-R
 26	Tu2-R
 27	Tu3-R
-28	mfb-R!VP-L
+28	VP-R*
 29	region29
 30	IPAC-R
 31	M1-R
@@ -43,7 +43,7 @@
 43	region43
 44	region44
 45	aca-R
-46	HDB-R!VDB-L!MS!VDB-L!HDB-R
+46	MS*
 47	LV-R
 48	SIB-R
 49	Cg1-R
@@ -61,7 +61,7 @@
 61	PLd-R
 62	LPO-R
 63	region63
-64	Ld-R!Ld-L
+64	Ld*
 65	VOLT
 66	SHi
 67	region67
@@ -77,7 +77,7 @@
 77	PLd-L
 78	region78
 79	M2-L
-80	mfb-L!VP-R
+80	VP-L*
 81	SIB-L
 82	AcbSh-L
 83	cg-L
@@ -86,7 +86,7 @@
 86	LSV-L
 87	STMA-L
 88	aca-L
-89	CPu-L!CB-R
+89	CPu-L*
 90	AcbC-L
 91	region91
 92	region92

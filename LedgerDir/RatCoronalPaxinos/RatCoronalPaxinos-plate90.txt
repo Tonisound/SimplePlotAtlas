@@ -31,7 +31,7 @@
 31	bic-R
 32	SubB-R
 33	BIC-R
-34	InG-R!DpG-L!DpWh-L!InG-L!DpG-R!DpWh-R
+34	DpG*
 35	MiTg-R
 36	InWh-R
 37	mRt-R

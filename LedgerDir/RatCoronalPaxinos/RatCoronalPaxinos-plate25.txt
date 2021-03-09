@@ -15,8 +15,8 @@
 15	lo-R
 16	VCl-R
 17	DEn-R
-18	ec-R!cc!ec-L
-19	CPu-R!LAcbSh-L!AcbSh-L!CB-L
+18	cc*
+19	CPu-R*
 20	region20
 21	region21
 22	LSS-R
@@ -25,7 +25,7 @@
 25	Tu2-R
 26	Tu3-R
 27	LSS-R
-28	VP-R!mfb-L
+28	VP-R*
 29	ICj-R
 30	M1-R
 31	region31
@@ -49,7 +49,7 @@
 49	LSV-R
 50	S1B-R
 51	LSD-R
-52	MS!VDB!HDB-R!HDB-L
+52	MS*
 53	region53
 54	region54
 55	PLd-R
@@ -63,7 +63,7 @@
 63	LSD-L
 64	PLd-L
 65	M2-L
-66	CPu-L!LAcbSh-R!AcbSh-R!CB-R
+66	CPu-L*
 67	region67
 68	SIB-L
 69	region69
@@ -71,7 +71,7 @@
 71	LSV-L
 72	LV-L
 73	Tu3-L
-74	VP-L!mfb-R
+74	VP-L*
 75	ICj-L
 76	region76
 77	AcbC-L

@@ -24,7 +24,7 @@
 24	Tu3-R
 25	Tu1-R
 26	region26
-27	mfb-R!VP-L
+27	VP-R*
 28	ICj-R
 29	M1-R
 30	region30
@@ -68,7 +68,7 @@
 68	region68
 69	region69
 70	SIB-R
-71	HDB-R!VDB-L!MS!VDB-L!HDB-R
+71	MS*
 72	region72
 73	region73
 74	region74
@@ -99,7 +99,7 @@
 99	Tu1-L
 100	region100
 101	region101
-102	VP-L!mfb-R
+102	VP-L*
 103	region103
 104	region104
 105	region105

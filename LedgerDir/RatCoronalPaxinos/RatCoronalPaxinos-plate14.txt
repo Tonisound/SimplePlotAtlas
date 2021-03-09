@@ -14,14 +14,14 @@
 14	lo-R
 15	M1-R
 16	Cl-R
-17	ec-R!gcc!ec-L
+17	gcc*
 18	DEn-R
 19	CPu-R
 20	Tu1-R
 21	IEn-R
 22	Tu2-R
 23	Tu3-R
-24	VP-R!mfb-L
+24	VP-R*
 25	region25
 26	region26
 27	AcbC-R

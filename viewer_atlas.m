@@ -23,12 +23,16 @@ str_mode = [{'unilateral'},{'bilateral'}];
 str_plates = '10:1:99';
 % Starting Parameters
 val_atlas = 1;
-val_obj = 1;
-val_mode = 1;
+val_obj = 2;
+val_mode = 2;
 
 % % Tab2 Parameters
 temp = which('viewer_atlas.m');
 Params.dir_atlas = strrep(temp,strcat(filesep,'viewer_atlas.m'),'');
+Params.dir_values = fullfile(Params.dir_atlas,'Values');
+if ~exist(Params.dir_values,'dir')
+    mkdir(Params.dir_values);
+end
 
 % Setting up figure
 f = figure('Units','normalized',...
@@ -90,7 +94,15 @@ uicontrol('Units','normalized',...
     'UserData',val_mode,...
     'Tag','Popup3');
 uicontrol('Units','normalized',...
-    'Position',[.02 1-4*h1 .96 h1],...
+    'Position',[0 1-4*h1 1 h1],...
+    'Style','popup',...
+    'Parent',panel1,...
+    'String','-',...
+    'Enable','off',...
+    'TooltipString','Value to Display',...
+    'Tag','Popup4');
+uicontrol('Units','normalized',...
+    'Position',[.02 1-5*h1 .96 h1],...
     'Style','edit',...
     'Parent',panel1,...
     'String',str_plates,...
@@ -98,15 +110,20 @@ uicontrol('Units','normalized',...
     'UserData',str_plates,...
     'Tag','Edit1');
 uicontrol('Units','normalized',...
-    'Position',[.02 1-5*h1 .96 h1],...
+    'Position',[0 1-6*h1 .5 h1],...
     'Style','pushbutton',...
     'Parent',panel1,...
-    'String','Load',...
-    'TooltipString','Load Atlas & Regions',...
+    'String','Load Plates',...
     'Tag','Button1');
+uicontrol('Units','normalized',...
+    'Position',[.5 1-6*h1 .5 h1],...
+    'Style','pushbutton',...
+    'Parent',panel1,...
+    'String','Load Values',...
+    'Tag','Button1b');
 
 table1 = uitable('Units','normalized',...
-    'Position',[.02 3*h1 .96 1-8.25*h1],...
+    'Position',[.02 4*h1 .96 1-10.1*h1],...
     'ColumnFormat',{'char'},...
     'ColumnWidth',{100},...
     'ColumnEditable',false,...
@@ -121,6 +138,30 @@ table1.UserData.Selection = [];
 table1.Units = 'pixels';
 table1.ColumnWidth ={table1.Position(3)};
 table1.Units = 'normalized';
+
+uicontrol('Units','normalized',...
+    'Position',[0 3*h1 .2 h1],...
+    'Style','edit',...
+    'Parent',panel1,...
+    'String','0',...
+    'TooltipString','CLim(1)',...
+    'UserData','0',...
+    'Tag','Edit2');
+uicontrol('Units','normalized',...
+    'Position',[.8 3*h1 .2 h1],...
+    'Style','edit',...
+    'Parent',panel1,...
+    'String','1',...
+    'TooltipString','CLim(2)',...
+    'UserData','1',...
+    'Tag','Edit3');
+ax = axes('Parent',panel1,'Visible','off');
+c = colorbar(ax,'Parent',panel1,'Location','south');
+c.Position = [.25 3.2*h1 .5 .6*h1];
+c.Box = 'off';
+c.Ticks = [];
+c.Tag = 'Colorbar1';
+
 uicontrol('Units','normalized',...
     'Position',[.02 2*h1 .5 h1],...
     'Style','checkbox',...
@@ -129,36 +170,57 @@ uicontrol('Units','normalized',...
     'TooltipString','Axes disposition',...
     'Tag','Checkbox1');
 uicontrol('Units','normalized',...
-    'Position',[.7 2*h1 .1 h1],...
+    'Position',[.5 2*h1 .1 h1],...
+    'Style','checkbox',...
+    'Parent',panel1,...
+    'Value',0,...
+    'TooltipString','Only !',...
+    'Tag','Checkbox1b');
+uicontrol('Units','normalized',...
+    'Position',[.6 2*h1 .1 h1],...
     'Style','checkbox',...
     'Parent',panel1,...
     'Value',1,...
     'TooltipString','Plate on/off',...
     'Tag','Checkbox2');
 uicontrol('Units','normalized',...
-    'Position',[.8 2*h1 .1 h1],...
+    'Position',[.7 2*h1 .1 h1],...
     'Style','checkbox',...
     'Parent',panel1,...
     'Value',1,...
     'TooltipString','Mask on/off',...
     'Tag','Checkbox3');
 uicontrol('Units','normalized',...
-    'Position',[.9 2*h1 .1 h1],...
+    'Position',[.8 2*h1 .1 h1],...
     'Style','checkbox',...
     'Parent',panel1,...
     'Value',0,...
     'TooltipString','Sticker on/off',...
     'Tag','Checkbox4');
+uicontrol('Units','normalized',...
+    'Position',[.9 2*h1 .1 h1],...
+    'Style','checkbox',...
+    'Parent',panel1,...
+    'Value',0,...
+    'TooltipString','CLim mode (manual/auto)',...
+    'Tag','Checkbox5');
 
 uicontrol('Units','normalized',...
-    'Position',[.02 h1 .96 h1],...
+    'Position',[0 h1 .5 h1],...
     'Style','pushbutton',...
     'Parent',panel1,...
     'String','Reset',...
     'TooltipString','Reset Values',...
     'Tag','Button0');
 uicontrol('Units','normalized',...
-    'Position',[.02 0 .86 h1],...
+    'Position',[.5 h1 .5 h1],...
+    'Style','pushbutton',...
+    'Parent',panel1,...
+    'String','Save',...
+    'TooltipString','Save Figure',...
+    'Tag','Button0b');
+uicontrol('Units','normalized',...
+    'Position',[0 0 .9 h1],...
     'Style','pushbutton',...
     'Parent',panel1,...
     'String','Plot',...
@@ -170,15 +232,21 @@ uicontrol('Units','normalized',...
     'Parent',panel1,...
     'Value',0,...
     'TooltipString','Lock plot',...
-    'Tag','Checkbox5');
+    'Tag','Checkbox6');
 
 % Callback attribution
 handles = guihandles(f);
 table1.CellSelectionCallback={@template_uitable_select,handles};
+handles.Edit2.Callback = {@checkbox5_callback,handles};
+handles.Edit3.Callback = {@checkbox5_callback,handles};
+
 handles.MainFigure.KeyPressFcn={@key_press_fcn,handles};
 
+handles.Popup4.Callback = {@update_popup4_callback,handles};
 handles.Button0.Callback = {@reset_controls,handles};
-handles.Button1.Callback = {@load_callback,handles};
+handles.Button0b.Callback = {@save_callback,handles};
+handles.Button1.Callback = {@loadPlates_callback,handles};
+handles.Button1b.Callback = {@loadValues_callback,handles};
 handles.Button2.Callback = {@plot_callback,handles};
 
 handles.Checkbox1.Callback = {@checkbox1_callback,handles};
@@ -186,6 +254,7 @@ handles.Checkbox2.Callback = {@checkbox2_callback,handles};
 handles.Checkbox3.Callback = {@checkbox3_callback,handles};
 handles.Checkbox4.Callback = {@checkbox4_callback,handles};
 handles.Checkbox5.Callback = {@checkbox5_callback,handles};
+handles.Checkbox6.Callback = {@checkbox6_callback,handles};
 
 end
 
@@ -194,9 +263,19 @@ function reset_controls(~,~,handles)
 handles.Popup1.Value = handles.Popup1.UserData;
 handles.Popup2.Value = handles.Popup2.UserData;
 handles.Popup3.Value = handles.Popup3.UserData;
+handles.Popup4.String = '-';
+handles.Popup4.Value = 1;
+handles.Popup4.Enable = 'off';
+
 handles.Edit1.String = handles.Edit1.UserData;
+handles.Edit2.String = handles.Edit2.UserData;
+handles.Edit3.String = handles.Edit3.UserData;
 handles.Table1.Data = [];
 handles.Table1.UserData.Selection = [];
+handles.Table1.Units = 'pixels';
+handles.Table1.ColumnWidth ={handles.Table1.Position(3)};
+handles.Table1.Units = 'normalized';
+
 delete(handles.Panel2.Children);
 Params = handles.MainFigure.UserData.Params;
 handles.MainFigure.UserData = [];
@@ -204,7 +283,7 @@ handles.MainFigure.UserData.Params = Params;
 
 end
 
-function load_callback(~,~,handles)
+function loadPlates_callback(~,~,handles)
 
 f = handles.MainFigure;
 AtlasType = char(handles.Popup1.String(handles.Popup1.Value,:));
@@ -215,12 +294,24 @@ n_plates = length(list_plates);
 %list_regions = handles.Table1.Data(handles.Table1.UserData.Selection);
 
 try
-    handles.Table1.Data = generate_lists('AtlasType',AtlasType,'DisplayObj',DisplayObj,...
+    list_select = generate_lists('AtlasType',AtlasType,'DisplayObj',DisplayObj,...
         'DisplayMode',DisplayMode,'PlateList',list_plates);
+    % Restricting list_select
+    if handles.Checkbox1b.Value
+        list_select = list_select(contains(list_select,'!'));
+    end
+    handles.Table1.Data = list_select;
+    handles.Table1.Units = 'pixels';
+    handles.Table1.ColumnWidth ={handles.Table1.Position(3)};
+    handles.Table1.Units = 'normalized';
     fprintf('Regions loaded from Plate List [%s] AtlasType [%s] DisplayObj [%s] DisplayMode [%s].\n',handles.Edit1.String,AtlasType,DisplayObj,DisplayMode);   
 catch
     error('Unable to load regions Plate List [%s] AtlasType [%s] DisplayObj [%s] DisplayMode [%s].',handles.Edit1.String,AtlasType,DisplayObj,DisplayMode);
 end
+
+handles.Popup4.String = '-';
+handles.Popup4.Value = 1;
+handles.Popup4.Enable = 'off';
 
 % Loading Atlas
 dir_atlas = f.UserData.Params.dir_atlas;
@@ -317,11 +408,13 @@ for ii = 1:n_rows
                 data_plate.AP = data_plate.ML_mm;
         end
         ax.UserData.data_plate = data_plate;
+        ax.UserData.index = index;
         fprintf('Atlas Plate %d/%d mm loaded [%.2f mm].\n',index,n_plates,data_plate.AP);
         
         % Ploting Atlas
-        line('XData',data_plate.line_x,'YData',data_plate.line_z,...
+        l = line('XData',data_plate.line_x,'YData',data_plate.line_z,...
             'Tag','Plate','Color',linecolor,'Linewidth',linewidth,'Parent',ax);
+        l.ButtonDownFcn = {@click_plate,handles};
         
         switch AtlasType
             case {'ratcoronal','mousecoronal'}
@@ -360,6 +453,103 @@ f.Pointer = 'arrow';
 
 end
 
+function loadValues_callback(~,~,handles)
+
+% Load file
+%fid = fopen(fullfile(folder_save,strcat(f.Name,'.txt')),'w');
+[FileName,PathName,FilterIndex] = uigetfile(fullfile(handles.MainFigure.UserData.Params.dir_values,'*.txt'));
+
+% Read file
+ledger_txt =  fullfile(PathName,FileName);
+% all_c1 = [];
+% all_c4 = [];
+fileID = fopen(ledger_txt);
+%header
+header = regexp(fgetl(fileID),'\t','split');
+list_group = [];
+for i=1:length(header)
+    temp = strtrim(char(header(i)));
+    if i==1 || strcmp(temp,'')
+        % Ignore first/empty row
+        continue;
+    else
+        list_group = [list_group ;{temp}];
+    end
+end
+
+list_regions = [];
+tt_data = [];
+while ~feof(fileID)
+    hline = fgetl(fileID);
+    cline = regexp(hline,'\t','split');
+    list_regions = [list_regions;strtrim(cline(1))];
+    tt_data_line = [];
+    for j =1:length(list_group)
+        tt_data_line = [tt_data_line,eval(char(cline(j+1)))];
+    end
+    tt_data = [tt_data ;tt_data_line];
+end
+fclose(fileID);
+
+% Finding matching regions
+this_regions = handles.Table1.Data(:,1);
+this_tt_data = [];
+for k=1:length(this_regions)
+    ind_list = find(strcmp(list_regions,this_regions(k))==1);
+    if ~isempty(ind_list)
+        this_tt_data = [this_tt_data;tt_data(ind_list(1),:)];
+    else
+        this_tt_data = [this_tt_data;zeros(1,size(tt_data_line,2))];
+    end
+end
+fprintf('Value Regions loaded [File:%s].\n',ledger_txt);
+
+
+handles.Popup4.String = list_group;
+handles.Popup4.Value = 1;
+handles.Popup4.Enable = 'on';
+
+% Storing
+handles.MainFigure.UserData.values_txt = ledger_txt;
+handles.MainFigure.UserData.this_tt_data = this_tt_data;
+update_popup4_callback([],[],handles);
+
+end
+
+function update_popup4_callback(~,~,handles)
+
+this_tt_data = handles.MainFigure.UserData.this_tt_data(:,handles.Popup4.Value);
+handles.Table1.Data = [handles.Table1.Data(:,1),num2cell(this_tt_data)];
+% Adjust Columns
+handles.Table1.ColumnWidth ='auto';
+
+end
+
+function save_callback(~,~,handles)
+
+f = handles.MainFigure;
+str1 = char(handles.Popup4.String(handles.Popup4.Value,:));
+str2 = char(handles.Popup2.String(handles.Popup2.Value,:));
+str3 = char(handles.Popup3.String(handles.Popup3.Value,:));
+
+if isfield(f.UserData,'values_txt')
+    [A,B,C] = fileparts(f.UserData.values_txt);
+    defaultans = sprintf('%s-%s[%s-%s]',B,str1,str2,str3);
+else
+    defaultans = sprintf('%s-%s[%s-%s]','Plates',str1,str2,str3);
+end
+
+prompt={'Saving Menu'};
+name = 'FileName';
+answer = inputdlg(prompt,name,[1 100],{defaultans});
+
+if ~isempty(answer)
+    saveas(f,strcat(char(answer),'.pdf'));
+    fprintf('Figure Saved [%s]',strcat(char(answer),'.pdf'));
+end
+
+end
+
 function key_press_fcn(~,evnt,handles)
 
 f = handles.MainFigure;
@@ -382,7 +572,7 @@ switch evnt.Key
         f.UserData.CurrentAxisIndex = min(n_plates,f.UserData.CurrentAxisIndex+n_columns);
 end
 update_current_axis(handles);
-checkbox1_callback(handles.Checkbox1,[],handles);
+%checkbox1_callback(handles.Checkbox1,[],handles);
 
 end
 
@@ -396,9 +586,9 @@ all_axes = handles.MainFigure.UserData.all_axes;
 all_obj = findobj(all_axes,'Tag','Box');
 delete(all_obj);
 ax = all_axes(handles.MainFigure.UserData.CurrentAxisIndex);
-line('XData',[ax.XLim(1) ax.XLim(2) ax.XLim(2) ax.XLim(1)],...
-    'YData',[ax.YLim(1) ax.YLim(1) ax.YLim(2) ax.YLim(2)],...
-    'Color','r','Parent',ax,'Tag','Box')
+line('XData',[ax.XLim(1) ax.XLim(2) ax.XLim(2) ax.XLim(1) ax.XLim(1)],...
+    'YData',[ax.YLim(1) ax.YLim(1) ax.YLim(2) ax.YLim(2) ax.YLim(1)],...
+    'Color','r','Parent',ax,'Tag','Box','LineWidth',1)
 
 end
 
@@ -416,6 +606,9 @@ n_plates = length(list_plates);
 % Retrieving
 if ~isfield(f.UserData,'all_axes')
     warning('Load Atlas Plates and Regions before plotting.');
+    return;
+elseif isempty(handles.Table1.UserData.Selection)
+    warning('Select Regions to plot.');
     return;
 end
 id_show = f.UserData.id_show;
@@ -437,6 +630,15 @@ for index=1:n_plates
     cur_mask = mask_show(:,:,xyfig);        
     data_plate = ax.UserData.data_plate;
     
+    if size(handles.Table1.Data,2)>1
+        value_regions = cell2mat(handles.Table1.Data(handles.Table1.UserData.Selection,2));
+        M = max(value_regions(:));
+        m = min(value_regions(:));
+        handles.Edit2.String = sprintf('%.2f',m);
+        handles.Edit3.String = sprintf('%.2f',M);
+        handles.Colorbar1.Limits = [m M];
+    end
+    
     % Building full_mask
     full_mask = zeros(size(data_plate.Mask,1),size(data_plate.Mask,2));
     all_ids = [];
@@ -447,14 +649,22 @@ for index=1:n_plates
             for j=1:length(ind_region)
                 cur_id = id_show(ind_region(j));
                 cur_region = list_show(ind_region(j));
-                %full_mask(cur_mask==cur_id)=value_regions(i);
-                full_mask(cur_mask==cur_id)=1;
                 
+                if size(handles.Table1.Data,2)==1
+                    full_mask(cur_mask==cur_id)=1;
+                else
+                    full_mask(cur_mask==cur_id)=value_regions(i);
+                end
+
                 all_ids = [all_ids;cur_id];
                 all_regions = [all_regions;cur_region];
                 
             end
         end
+    end
+    
+    if size(handles.Table1.Data,2)>1
+        ax.CLim = [m M];
     end
 
     % Storing data
@@ -464,11 +674,12 @@ for index=1:n_plates
     
     % Plotting final mask
     im=imagesc(full_mask,'Tag','FullMask','Parent',ax);
-    im.AlphaData = double(full_mask>0);
+    im.AlphaData = double(full_mask~=0);
     %uistack(im,'top');
 end
 checkbox3_callback(handles.Checkbox3,[],handles);
 checkbox4_callback(handles.Checkbox4,[],handles);
+checkbox5_callback(handles.Checkbox5,[],handles);
 toc
 
 f.Pointer = 'arrow';
@@ -483,7 +694,7 @@ else
     hObj.UserData.Selection = [];
 end
 
-if handles.Checkbox5.Value
+if handles.Checkbox6.Value
     plot_callback([],[],handles);
 end
 
@@ -507,8 +718,7 @@ if hObj.Value
     box.Visible = 'off';
     for i =1:length(all_axes)
         if i==handles.MainFigure.UserData.CurrentAxisIndex
-            all_axes(i).Position = [margin_w 0 1-margin_w 1-margin_h];
-            
+            all_axes(i).Position = [margin_w 0 1-margin_w 1-margin_h];    
         else
             all_axes(i).Position = [1 1 1 1];
         end
@@ -558,7 +768,7 @@ end
 function checkbox4_callback(hObj,~,handles)
 
 textColor = 'r';
-fontsize = 6;
+fontsize = 10;
 all_axes = handles.MainFigure.UserData.all_axes;
 all_obj = findobj(all_axes,'Tag','Sticker');
 delete(all_obj);
@@ -597,12 +807,43 @@ end
 
 function checkbox5_callback(hObj,~,handles)
 
+if ~isfield(handles.MainFigure.UserData,'all_axes')
+    return;
+end
+
+handles.Colorbar1.Limits = [str2double(handles.Edit2.String) str2double(handles.Edit3.String)];
+all_axes = handles.MainFigure.UserData.all_axes;
+if hObj.Value
+    % clim mode auto
+    for i = 1:length(all_axes)
+        all_axes(i).CLimMode = 'auto';
+    end
+    fprintf('CLimMode set to auto.\n');
+else
+    % clim mode manual
+    for i = 1:length(all_axes)
+        all_axes(i).CLimMode = 'manual';
+        all_axes(i).CLim = [str2double(handles.Edit2.String) str2double(handles.Edit3.String)];
+    end
+    fprintf('CLimMode set to manual.\n');
+end
+
+end
+
+function checkbox6_callback(hObj,~,handles)
+
 if hObj.Value
     handles.Button2.Enable = 'off';
 else
     handles.Button2.Enable = 'on';
 end
 
+end
+
+function click_plate(hObj,~,handles)
+    ax = hObj.Parent;
+    handles.MainFigure.UserData.CurrentAxisIndex = ax.UserData.index;
+    update_current_axis(handles);
 end
 
 function click_text(hObj,~)

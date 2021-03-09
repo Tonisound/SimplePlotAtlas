@@ -11,7 +11,7 @@
 11	APir-R
 12	V2L-R
 13	region13
-14	dcw-R!cg-L!fmj-L!dhc-L
+14	dcw-R*
 15	alv-R
 16	OrCA1-R
 17	region17
@@ -28,7 +28,7 @@
 28	region28
 29	PMCo-R
 30	region30
-31	OrCA3-R!PoDG-L
+31	OrCA3-R*
 32	RadCA3-R
 33	region33
 34	region34
@@ -57,7 +57,7 @@
 57	region57
 58	region58
 59	MZMG-R
-60	Op-R!bsc-L!opt-L
+60	opt-R*
 61	region61
 62	MGV-R
 63	region63
@@ -76,7 +76,7 @@
 76	cp-R
 77	region77
 78	EpP-R
-79	p1Rt-R!Po-L!PoT-L
+79	PoT-R*
 80	MGM-R
 81	SG-R
 82	SNL-R
@@ -90,8 +90,8 @@
 90	PLi-R
 91	PPT-R
 92	OT-R
-93	APTD-R!APTV-L
-94	InG-R!InG-L
+93	APTD-R*
+94	InG*
 95	SNCD-R
 96	region96
 97	InWh-R
@@ -122,7 +122,7 @@
 122	csc
 123	pc-R
 124	mp-R
-125	DMPAG!LPAG
+125	DMPAG*
 126	PIF-R
 127	PaC-R
 128	InCSh-R
@@ -146,7 +146,7 @@
 146	RSGb-L
 147	region147
 148	Zo-L
-149	p1Rt-L!Po-R!PoT-R
+149	PoT-L*
 150	region150
 151	Dk-L
 152	region152
@@ -156,7 +156,7 @@
 156	SuG-L
 157	mlf-L
 158	fr-L
-159	Op-L!bsc-R!opt-R
+159	opt-L*
 160	InCSh-L
 161	PBP-L
 162	RSD-L
@@ -189,7 +189,7 @@
 189	region189
 190	region190
 191	region191
-192	APTD-L!APTV-R
+192	APTD-L*
 193	SNCD-L
 194	OT-L
 195	PLi-L
@@ -265,7 +265,7 @@
 265	APir-L
 266	V2L-L
 267	region267
-268	dcw-L!cg-R!fmj-R!dhc-R
+268	dcw-L*
 269	alv-L
 270	OrCA1-L
 271	region271
@@ -282,7 +282,7 @@
 282	region282
 283	PMCo-L
 284	region284
-285	PoDG-L!OrCA3-R
+285	OrCA3-L*
 286	RadCA3-L
 287	region287
 288	region288

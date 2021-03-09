@@ -8,7 +8,7 @@
 8	DLEnt-R
 9	PtPC-R
 10	V2L-R
-11	dcw-R!fmj-L!dhc-L
+11	fmj-R*
 12	alv-R
 13	OrCA1-R
 14	PyCA1-R
@@ -43,7 +43,7 @@
 43	cp-R
 44	Op-R
 45	MGM-R
-46	mRt-R!dtgx!mRt-L
+46	mRt*
 47	SG-R
 48	bic-R
 49	region49
@@ -52,7 +52,7 @@
 52	region52
 53	PIL-R
 54	SNL-R
-55	Zo-R!InG-L!InG-L!Zo-R
+55	InG*
 56	region56
 57	SNR-R
 58	V2ML-R
@@ -65,7 +65,7 @@
 65	SNCD-R
 66	region66
 67	region67
-68	DpG-R!DpG-L
+68	DpG*
 69	region69
 70	V2MM-R
 71	RSGa-R
@@ -79,17 +79,17 @@
 79	RSGc-R
 80	RSD-R
 81	region81
-82	DpG-R!DpG-L
+82	DpG*
 83	region83
 84	tth-R
 85	region85
 86	region86
 87	region87
-88	PBP-R!vtgx-L
+88	PBP-R*
 89	SNCM-R
 90	RMC-R
 91	region91
-92	DMPAG!LPAG
+92	DMPAG*
 93	DLPAG-R
 94	region94
 95	RPC-R
@@ -119,7 +119,7 @@
 119	RSGb-L
 120	Su3-L
 121	region121
-122	PBP-L!vtgx-R
+122	PBP-*
 123	mlf-L
 124	3PC-L
 125	region125
@@ -156,7 +156,7 @@
 156	PBP-L
 157	region157
 158	region158
-159	dcw-L!fmj-R!dhc-R
+159	fmj-L*
 160	region160
 161	Post-L
 162	region162

@@ -4,7 +4,7 @@
 4	S1ULp-R
 5	DI-R
 6	AIP-R
-7	Pir1-R!PLCo-L!PLH-L!mfb-L!TuLH-L
+7	PLH-R*
 8	S1BF-R
 9	Pir2-R
 10	Pir3-R
@@ -14,7 +14,7 @@
 14	VEn-R
 15	LaDL-R
 16	region16
-17	ec-R!cg-L!cc!cg-L!ec-R
+17	cc*
 18	region18
 19	region19
 20	CPu-R
@@ -34,13 +34,13 @@
 34	CeL-R
 35	STIA-R
 36	CeM-R
-37	LV-R!chp-L
+37	LV-R*
 38	ACo-R
 39	st-R
 40	region40
 41	Rt-R
 42	f-R
-43	fi-R!alv-L!alv-L!fi-R
+43	fi*
 44	region44
 45	region45
 46	MeAD-R
@@ -58,7 +58,7 @@
 58	PyCA3-R
 59	sox-R
 60	SLu-R
-61	Rad-R!MoDG-L!PoDG-L
+61	MoDG-R*
 62	ZIR-R
 63	vlh-R
 64	PyCA2-R
@@ -76,7 +76,7 @@
 76	MoDG-R
 77	PeFLM-R
 78	RChL-R
-79	CL-R!PC-L!CM!PC-L!CL-R
+79	CM*
 80	region80
 81	f-R
 82	M2-R
@@ -114,7 +114,7 @@
 114	Re
 115	DA-R
 116	ArcL-R
-117	MHb-R!MHb-L
+117	MHb*
 118	PaXi
 119	PV
 120	region120
@@ -145,7 +145,7 @@
 145	region145
 146	VMHDM-L
 147	GrDG-L
-148	Rad-L!MoDG-R!PoDG-R
+148	MoDG-L*
 149	region149
 150	AM-L
 151	MDM-L
@@ -154,7 +154,7 @@
 154	VMHC-L
 155	SubD-L
 156	SubV-L
-157	Pir1-L!PLCo1-R!PLH-R!mfb-R!TuLH-R
+157	PLH-L*
 158	region158
 159	sm-L
 160	RChL-L
@@ -202,7 +202,7 @@
 202	opt-L
 203	ic-L
 204	EP-L
-205	LV-L!chp-R
+205	LV-L*
 206	MeAV-L
 207	region207
 208	MeAD-L

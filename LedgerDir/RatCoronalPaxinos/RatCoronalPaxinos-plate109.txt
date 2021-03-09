@@ -16,7 +16,7 @@
 16	VCA-R
 17	4/5Cb-R
 18	mcp-R
-19	DMTg-R!tz!PnC!ts!DMTg-L
+19	DMTg*
 20	region20
 21	s5-R
 22	2/3Cb-R
@@ -28,7 +28,7 @@
 28	KF-R
 29	vsc-R
 30	vsc-R
-31	ECIC1-R!ECIC3-L
+31	ECIC3-R*
 32	LPBE-R
 33	m5-R
 34	MPBE-R
@@ -40,7 +40,7 @@
 40	Su5-R
 41	scp-R
 42	5Ma-R
-43	SubCD-R!SubCV-L
+43	SubCD-R*
 44	5Te-R
 45	LPBC-R
 46	LVPO-R
@@ -115,8 +115,8 @@
 115	Bar-L
 116	region116
 117	SubCA-L
-118	ECIC1-L!ECIC3-R
-119	SubCD-L!SubCV-R
+118	ECIC3-L*
+119	SubCD-L*
 120	CIC-L
 121	MPB-L
 122	LPBI-L

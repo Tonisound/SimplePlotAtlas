@@ -5,14 +5,14 @@
 5	DI-R
 6	S1BF-R
 7	AIP-R
-8	Pir1-R!CxA1-L
+8	Pir1-R*
 9	Pir2-R
 10	Pir2-R
 11	lo-R
 12	S1DZ-R
 13	DCl-R
 14	VCl-R
-15	ec-R!cc!ec-L
+15	cc*
 16	DEn-R
 17	CPu-R
 18	S1FL-R
@@ -39,7 +39,7 @@
 39	EAC-R
 40	SIB-R
 41	HDB-R
-42	LV-R!3V!LV-L
+42	LV*
 43	st-R
 44	region44
 45	M1-R
@@ -47,7 +47,7 @@
 47	ESO-R
 48	LPO-R
 49	VLH-R
-50	fi!SFi
+50	SFi*
 51	region51
 52	region52
 53	STMPL-R
@@ -147,7 +147,7 @@
 147	IPACM-L
 148	IPACL-L
 149	ACo-L
-150	Pir1-L!CxA1-R
+150	Pir1-L*
 151	acp-L
 152	lo-L
 153	CxA2-L

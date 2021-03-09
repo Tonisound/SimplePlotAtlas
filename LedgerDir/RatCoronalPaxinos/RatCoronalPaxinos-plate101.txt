@@ -20,7 +20,7 @@
 20	V1M-R
 21	PaS-R
 22	v-R
-23	mcp-R!tfp!mcp-L
+23	mcp*
 24	region24
 25	region25
 26	region26
@@ -32,9 +32,9 @@
 32	RSGa-R
 33	region33
 34	region34
-35	ECIC1-R!ECIC3-L
+35	ECIC1-R*
 36	MiTg-R
-37	MPL-R!cll-L!ll-L
+37	MPL-R*
 38	DLL-R
 39	m5-R
 40	VLL-R
@@ -61,12 +61,12 @@
 61	lfp-R
 62	region62
 63	LPAG-R
-64	VLPAG-R!VLPAG-L
+64	VLPAG*
 65	region65
 66	region66
 67	region67
 68	region68
-69	Com!cic
+69	cic*
 70	DCIC-R
 71	RtTgP-R
 72	RtTg-R
@@ -83,7 +83,7 @@
 83	PMnR-R
 84	Aq
 85	DRD
-86	DRV!MnR
+86	MnR*
 87	region87
 88	region88
 89	Rbd-L
@@ -109,7 +109,7 @@
 109	region109
 110	scp-L
 111	RSD-L
-112	ECIC3-L!ECIC1-R
+112	ECIC3-L*
 113	isRt-L
 114	V2MM-L
 115	region115
@@ -125,7 +125,7 @@
 125	V1M-L
 126	PTg-L
 127	rs-L
-128	MPL-L!cll-R!ll-R
+128	MPL-L*
 129	region129
 130	VLL-L
 131	ECIC2-L

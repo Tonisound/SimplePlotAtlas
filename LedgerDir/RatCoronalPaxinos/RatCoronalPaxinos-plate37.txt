@@ -5,7 +5,7 @@
 5	S1ULp-R
 6	AIP-R
 7	Pir1-R
-8	S1BF-R!S1DZ-L!S1FL-L
+8	S1BF-R*
 9	Pir2-R
 10	Pir3-R
 11	region11

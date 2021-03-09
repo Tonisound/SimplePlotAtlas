@@ -6,7 +6,7 @@
 6	V2L-R
 7	DIEnt-R
 8	VIEnt-R
-9	dcw-R!fmj-L!alv-L
+9	dcw-R*
 10	STr-R
 11	V1B-R
 12	MEnt-R
@@ -36,16 +36,16 @@
 36	region36
 37	PrCnF-R
 38	RR-R
-39	Zo-R!Op-L!Op-L!Zo-R
+39	Op*
 40	region40
-41	InG-R!InWh-L
+41	InWh-R*
 42	SuG-R
 43	RSGa-R
 44	isRt-R
-45	DpG-R!DpG-L
+45	DpG*
 46	V2ML-R
 47	lfp-R
-48	mcp-R!tfp!mcp-L
+48	mcp*
 49	PTg-R
 50	V2MM-R
 51	region51
@@ -105,7 +105,7 @@
 105	PDR-L
 106	RSGb-L
 107	tth-L
-108	InG-L!InWh-R
+108	InWh-L*
 109	isRt-L
 110	ts-L
 111	region111
@@ -141,7 +141,7 @@
 141	RSGa-L
 142	region142
 143	region143
-144	dcw-L!fmj-R!alv-R
+144	dcw-L*
 145	RR-L
 146	ECIC-L
 147	MiTg-L

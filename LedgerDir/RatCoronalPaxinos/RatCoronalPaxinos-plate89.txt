@@ -8,7 +8,7 @@
 8	DIEnt-R
 9	AuD-R
 10	V2L-R
-11	dcw-R!fmj-L!dhc-L!alv-L
+11	fmj-R*
 12	OrCA1-R
 13	VS-R
 14	PyCA1-R
@@ -37,9 +37,9 @@
 37	region37
 38	SubB-R
 39	BIC-R
-40	mRt-R!dtgx-L
+40	mRt-R*
 41	s5-R
-42	InG-R!DpG-L!DpWh-L!DpWh-L!DpG-R!InG-R
+42	DpG*
 43	InWh-R
 44	Zo-R
 45	Op-R
@@ -125,7 +125,7 @@
 125	3PC-L
 126	DLPAG-L
 127	LPAG-L
-128	mRt-L!dtgx-R
+128	mRt-L*
 129	IPL-L
 130	SuG-L
 131	Su3-L
@@ -175,7 +175,7 @@
 175	region175
 176	region176
 177	region177
-178	dcw-L!fmj-R!dhc-R!alv-R
+178	fmj-L*
 179	V2ML-L
 180	s5-L
 181	region181

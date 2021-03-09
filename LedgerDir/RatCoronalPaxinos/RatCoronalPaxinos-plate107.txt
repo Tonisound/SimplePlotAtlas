@@ -3,7 +3,7 @@
 3	region3
 4	Ect-R
 5	region5
-6	DLEnt-R!CEnt-L!RSD-L
+6	DLEnt-R*
 7	region7
 8	V2L-R
 9	region9
@@ -13,13 +13,13 @@
 13	region13
 14	4/5Cb-R
 15	tz-R
-16	mcp-R!tfp!mcp-L
+16	mcp*
 17	s5-R
 18	2/3Cb-R
 19	region19
 20	region20
 21	V1M-R
-22	ECIC1-R!ECIC3-L
+22	ECIC3-R*
 23	region23
 24	region24
 25	region25
@@ -33,7 +33,7 @@
 33	region33
 34	ll-R
 35	vsc-R
-36	A7-R!SubCD-L!SubCV-L
+36	SubCD-R*
 37	LPBE-R
 38	LPBCr-R
 39	region39
@@ -51,7 +51,7 @@
 51	MVPO-R
 52	LPBI-R
 53	CAT-R
-54	DMTg-R!ts!DMTg-L
+54	DMTg*
 55	LPBV-R
 56	2Cb
 57	PnO-R
@@ -98,7 +98,7 @@
 98	Tz-L
 99	Me5-L
 100	MPB-L
-101	A7-L!SubCD-R!SubCV-R
+101	SubCD-L*
 102	CAT-L
 103	LPBI-L
 104	scp-L
@@ -106,8 +106,8 @@
 106	LPBV-L
 107	V2MM-L
 108	Su5-L
-109	DLEnt-L!CEnt-R!RSD-R
-110	ECIC1-L!ECIC3-R
+109	DLEnt-L*
+110	ECIC3-L*
 111	V1M-L
 112	ll-L
 113	P5-L

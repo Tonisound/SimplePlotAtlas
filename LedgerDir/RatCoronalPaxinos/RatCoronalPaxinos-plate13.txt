@@ -8,7 +8,7 @@
 8	AIV-R
 9	Pir1-R
 10	M1-R
-11	Pir2-R!Tu2-L
+11	Pir2-R*
 12	lo-R
 13	Pir3-R
 14	Cl-R
@@ -19,7 +19,7 @@
 19	Tu3-R
 20	CPu-R
 21	IEn-R
-22	VP-R!mfb-L
+22	mfb-R*
 23	AcbC-R
 24	AcbSh-R
 25	aca-R
@@ -66,7 +66,7 @@
 66	region66
 67	Tu1-L
 68	AcbSh-L
-69	Tu2-L!Pir2-R
+69	Pir2-L
 70	region70
 71	fmi-L
 72	region72
@@ -80,7 +80,7 @@
 80	region80
 81	region81
 82	aca-L
-83	mfb-L!VP-R
+83	mfb-L*
 84	M1-L
 85	IEn-L
 86	Cl-L

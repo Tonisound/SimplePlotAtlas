@@ -1,7 +1,7 @@
 1	region1
 2	Ect-R
 3	PRh-R
-4	DLEnt-R!CEnt-L!RSD-L
+4	DLEnt-R*
 5	TeA-R
 6	region6
 7	V2L-R
@@ -14,14 +14,14 @@
 14	region14
 15	region15
 16	region16
-17	mcp-R!PnO-L!DMTg-L!ts-L!PMnR-L!tfp!PMnR-L!ts-R!DMTg-R!PnO-R!mcp-R
+17	PnO*
 18	2/3Cb-R
 19	V1M-R
 20	region20
 21	Sag-R
 22	ll-R
 23	v-R
-24	ECIC1-R!ECIC3-L!ECIC3-L!ECIC1-R
+24	ECIC3*
 25	region25
 26	region26
 27	DLL-R
@@ -94,7 +94,7 @@
 94	V2MM-L
 95	MPB-L
 96	LPBC-L
-97	DLEnt-L!CEnt-R!RSD-R
+97	DLEnt-L*
 98	CAT-L
 99	PLV-L
 100	MVPO-L

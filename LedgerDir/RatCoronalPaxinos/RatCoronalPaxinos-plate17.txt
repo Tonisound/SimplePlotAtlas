@@ -13,11 +13,11 @@
 13	Pir3-R
 14	lo-R
 15	M1-R
-16	ec-R!gcc!ec-L
+16	gcc*
 17	DCl-R
 18	DEn-R
 19	VCl-R
-20	CPu-R!LAcbSh-L!AcbSh-L
+20	CPu-R*
 21	IEn-R
 22	region22
 23	region23
@@ -78,7 +78,7 @@
 78	DPl-L
 79	region79
 80	ICj-L
-81	CPu-L!AcbSh-R!LAcbSh-R
+81	CPu-L*
 82	Vp-L
 83	Tu2-L
 84	M2-L

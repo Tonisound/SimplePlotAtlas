@@ -10,7 +10,7 @@
 10	region10
 11	APir-R
 12	region12
-13	dcw-R!cg-L!fmj-L!dhc-L
+13	fmj-R*
 14	alv-R
 15	Or-R
 16	region16
@@ -57,7 +57,7 @@
 57	region57
 58	MZMG-R
 59	MGV-R
-60	Op-R!bsc-L
+60	Op-R*
 61	MGD-R
 62	region62
 63	LPMC-R
@@ -71,7 +71,7 @@
 71	region71
 72	region72
 73	region73
-74	p1Rt-R!Po-L
+74	p1Rt-R*
 75	region75
 76	DS-R
 77	MGM-R
@@ -83,7 +83,7 @@
 83	PoT-R
 84	V2ML-R
 85	SNR-R
-86	InG-R!DpWh-L!DpWh-L!InG-R
+86	InG*
 87	PLi-R
 88	APT-R
 89	SNCD-R
@@ -109,7 +109,7 @@
 109	PIF-R
 110	mp-R
 111	PBP-R
-112	DMPAG!LPAG
+112	DMPAG*
 113	InCSh-R
 114	PN-R
 115	InC-R
@@ -144,7 +144,7 @@
 144	region144
 145	PIF-L
 146	mlf-L
-147	Op-L!bsc-R
+147	Op-L*
 148	InCSh-L
 149	PBP-L
 150	PN-L
@@ -164,7 +164,7 @@
 164	RMC-L
 165	cp-L
 166	ml-L
-167	fmj-L!dhc-R!cg-R!dcw-R
+167	fmj-L*
 168	DpG-L
 169	PaR-L
 170	V2MM-L

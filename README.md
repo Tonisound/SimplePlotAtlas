@@ -1,10 +1,12 @@
 Package Build and Plot Atlas
-Version 1.4 - Date 03/03/2021
+Version 1.5.1 - Date 09/03/2021
 Contact: antoine.bergel@espci.fr
 
 This package contains two main functions
 - build_atlas takes as input raw plates (saved in Plates folder) and generates a plotable atlas for easy display
 - plot_atlas takes as input the plotable atlas (saved in Plates folder) and generates a compact plate-by-plate display that can be color-coded
+- viewer_atlas takes no input and displays the Plotable Atlas and values for regions in a simple GUI.
+
 The list of parameters for each function is detailed in help build_atlas.m and help plot_atlas.m
 Each plate is composed of regions (unilateral or bilateral) and groups of regions (unilateral or bilateral)
 Groups and region names are specified in txt files in the Ledger Directory.

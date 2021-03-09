@@ -26,7 +26,7 @@
 26	bic-R
 27	ll-R
 28	m5-R
-29	PL-R!ll-L
+29	PL-R*
 30	BIC-R
 31	PBG-R
 32	VLL-R
@@ -56,13 +56,13 @@
 56	xscp
 57	DpG-R
 58	InWh-R
-59	InG-R!InG-L
+59	InG*
 60	Zo-R
 61	DpWh-R
 62	Op-R
 63	region63
 64	region64
-65	VLPAG-R!VLPAG-L
+65	VLPAG*
 66	region66
 67	SPTg-R
 68	SuG-R
@@ -141,7 +141,7 @@
 141	CnFV-L
 142	MiTg-L
 143	CIC-L
-144	PL-L!ll-R
+144	PL-L*
 145	ll-L
 146	VLL-L
 147	TrLL-L
@@ -150,7 +150,7 @@
 150	bic-L
 151	m5-L
 152	m5-L
-153	dcw-L!fmj-R
+153	dcw-L*
 154	bic-L
 155	region155
 156	s5-L

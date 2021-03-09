@@ -11,7 +11,7 @@
 11	S1BF-R
 12	Pir3-R
 13	DEn-R
-14	ec-R!dcw-L!cc!dcw-L!ec-R
+14	cc*
 15	CPu-R
 16	region16
 17	region17
@@ -31,12 +31,12 @@
 31	PLCo2-R
 32	PLCo3-R
 33	PLCo1-R
-34	LV-R!chp-L
+34	LV-R*
 35	LV-R
 36	LPtA-R
 37	BMP-R
 38	st-R
-39	fi-R!fi-L
+39	fi*
 40	Or-R
 41	region41
 42	st-R
@@ -47,7 +47,7 @@
 47	region47
 48	region48
 49	region49
-50	ic-R!cp-L
+50	ic-R*
 51	AHiAL-R
 52	region52
 53	Rad-R
@@ -87,15 +87,15 @@
 87	MPtA-R
 88	LPMR-R
 89	region89
-90	PLH-R!PHD!PLH-L
+90	PLH*
 91	scp-R
 92	region92
-93	mfb-R!ns-L
+93	mfb-R*
 94	VPPC-R
 95	VM-R
 96	Te-R
 97	RSD-R
-98	CL-R!PC-L!CM!PC-L!CL-R
+98	CM*
 99	PeFLH-R
 100	PMV-R
 101	f-R
@@ -105,7 +105,7 @@
 105	PeF-R
 106	fr-R
 107	MDL-R
-108	RSGc-R!RSGc-L
+108	RSGc*
 109	mt-R
 110	PH-R
 111	region111
@@ -119,7 +119,7 @@
 119	MHb-R
 120	DM-R
 121	ArcMP-R
-122	D3V!chp
+122	D3V*
 123	region123
 124	infS
 125	IMD
@@ -165,7 +165,7 @@
 165	LPMR-L
 166	PoDG-L
 167	Te-L
-168	mfb-L!ns-R
+168	mfb-L*
 169	VPM-L
 170	ml-L
 171	ZID-L
@@ -174,7 +174,7 @@
 174	region174
 175	PyCA3-L
 176	region176
-177	ic-L!cp-R
+177	ic-L*
 178	region178
 179	LPLR-L
 180	MePV-L
@@ -217,7 +217,7 @@
 217	region217
 218	region218
 219	LaVM-L
-220	LV-L!chp-R
+220	LV-L*
 221	ic-L
 222	CPu-L
 223	LaDL-L

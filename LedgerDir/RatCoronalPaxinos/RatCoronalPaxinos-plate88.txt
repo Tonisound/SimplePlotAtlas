@@ -8,7 +8,7 @@
 8	AuD-R
 9	DIEnt-R
 10	V2L-R
-11	dcw-R!fmj-L!dhc-L
+11	fmj-R*
 12	alv-R
 13	region13
 14	region14
@@ -52,12 +52,12 @@
 52	region52
 53	Post-R
 54	SubB-R
-55	mRt-R!dtgd-L!xscp!dtgd-L!mRt-R
+55	mRt*
 56	region56
 57	BIC-R
 58	s5-R
 59	Op-R
-60	InG-R!DpG-L!DpG-L!InG-R
+60	DpG*
 61	Zo-R
 62	cp-R
 63	SuG-R
@@ -86,7 +86,7 @@
 86	region86
 87	RSGc-R
 88	region88
-89	DpWh-R!DpWh-L
+89	DpWh*
 90	RSD-R
 91	region91
 92	PaR-R
@@ -105,7 +105,7 @@
 105	region105
 106	region106
 107	RMC-R
-108	VLPAG!CLi
+108	VLPAG*
 109	InC-R
 110	IPL-R
 111	DMPAG
@@ -162,7 +162,7 @@
 162	region162
 163	SNCV-L
 164	SNCD-L
-165	dcw-L!fmj-R!dhc-R
+165	fmj-L*
 166	region166
 167	region167
 168	V2ML-L
