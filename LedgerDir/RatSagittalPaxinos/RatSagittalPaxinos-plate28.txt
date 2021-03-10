@@ -1,7 +1,7 @@
 1	region1
 2	region2
 3	region3
-4	LO!Pir3
+4	LO*
 5	Pir2
 6	IEn
 7	region7
@@ -12,9 +12,9 @@
 12	aci
 13	region13
 14	Tu3
-15	CPu!VP!PLH
+15	CPu*
 16	M1
-17	fmi!cc!fmj!dhc
+17	cc*
 18	AcbC
 19	AcbSh
 20	region20
@@ -30,7 +30,7 @@
 30	region30
 31	STL
 32	EA
-33	LV!chp
+33	LV*
 34	st
 35	f
 36	Rt
@@ -40,8 +40,8 @@
 40	AM
 41	opt
 42	VL
-43	CA1Or!CA1Rad!CA2Or!CA2Rad!CA3Or!CA3Rad!PoDG!MoDG!LMol
-44	LDVL!LPMR
+43	CA1Rad*
+44	LDVL*
 45	sox
 46	CA3Py
 47	SLu
@@ -88,8 +88,8 @@
 88	region88
 89	region89
 90	region90
-91	DpG!mRt
-92	APTD!APTV
+91	mRt*
+92	APT*
 93	Eth
 94	region94
 95	V2MM
@@ -146,7 +146,7 @@
 146	Su5
 147	MPB
 148	MSO
-149	cbw!LPB
+149	cbw*
 150	region150
 151	scp
 152	5N

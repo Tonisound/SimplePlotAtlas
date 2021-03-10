@@ -8,14 +8,14 @@
 8	GI
 9	DI
 10	S1FL
-11	Pir1!Pir3
+11	Pir3*
 12	region12
 13	Pir2
 14	S1ULp
 15	Cl
 16	region16
-17	ec!fmi!cc!fmj!fi
-18	CPu!BLA
+17	cc*
+18	CPu*
 19	DEn
 20	region20
 21	S1BF
@@ -45,7 +45,7 @@
 45	st
 46	BMP
 47	LV
-48	CA1Or!CA1Rad!CA2Or!CA2Rad!CA3Or!CA3Rad!PoDG!MoDG!LMol
+48	MoDG*
 49	opt
 50	CA3Py
 51	region51
@@ -81,8 +81,8 @@
 81	RSD
 82	PRh
 83	ECt
-84	Fl!psf!icf!Crus2!MoCb
-85	SimA!SimB!Crus1
+84	Fl*
+85	SimA*
 86	region86
 87	cbw
 88	region88

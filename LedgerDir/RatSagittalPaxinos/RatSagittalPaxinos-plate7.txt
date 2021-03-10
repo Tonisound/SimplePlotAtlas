@@ -2,7 +2,7 @@
 2	FrA
 3	Fr3
 4	M2
-5	LO!Pir1
+5	LO*
 6	M1
 7	lo
 8	AID
@@ -17,9 +17,9 @@
 17	S1J
 18	region18
 19	Cl
-20	fmi!cc!alv!fi
+20	cc*
 21	DEn
-22	CPu!I
+22	CPu*
 23	Tu2
 24	IEn
 25	Tu1
@@ -33,8 +33,8 @@
 33	region33
 34	acp
 35	S1HL
-36	AA!CA3
-37	GP!B
+36	AA*
+37	GP*
 38	LOT2
 39	region39
 40	EA
@@ -42,7 +42,7 @@
 42	ACo
 43	CeM
 44	ic
-45	MeAD!MePV
+45	MeAD*
 46	MeAV
 47	st
 48	region48
@@ -56,7 +56,7 @@
 56	region56
 57	MePD
 58	region58
-59	CA1Or!CA1!Rad!CA2Or!CA2Rad!CA3Or!CA3Rad!PoDG!MoDG!LMol
+59	CA1Rad*
 60	VPM
 61	opt
 62	CA3Py
@@ -65,7 +65,7 @@
 65	LDVL
 66	SLu
 67	region67
-68	ZID!ZIV
+68	ZI*
 69	region69
 70	region70
 71	PMCo
@@ -157,7 +157,7 @@
 157	Post
 158	MiTg
 159	ll
-160	mcp!icp!cbw!IntDL
+160	cbw*
 161	ILL
 162	sp5
 163	DLL

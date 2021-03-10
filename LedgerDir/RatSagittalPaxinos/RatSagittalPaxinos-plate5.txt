@@ -3,7 +3,7 @@
 3	Fr3
 4	AID
 5	S1J
-6	AIV!Pir1!Pir3
+6	Pir3*
 7	DI
 8	region8
 9	lo
@@ -11,7 +11,7 @@
 11	S1ULp
 12	S1FL
 13	Cl
-14	ec!fmi!cc!fmj
+14	cc*
 15	DEn
 16	CPu
 17	IEn
@@ -37,7 +37,7 @@
 37	S1BF
 38	B
 39	I
-40	ic!cp
+40	ic*
 41	region41
 42	Rt
 43	S1Tr
@@ -45,14 +45,14 @@
 45	region45
 46	BMP
 47	LV
-48	fi!alv
-49	PLCo!LMol!MoDG!PoDG!CA3Or!CA2Or!CA1Or
+48	fi*
+49	MoDG*
 50	VPL
 51	I
 52	opt
 53	LPtA
 54	MePD
-55	CA1Or!CA1Rad!CA2Or!CA2Rad!CA3Or!CA3Rad!PoDG!LMol
+55	CA1Rad*
 56	DLG
 57	CA3Py
 58	AHiAL
@@ -61,7 +61,7 @@
 61	CA2Py
 62	ZI
 63	PMCo
-64	LV!st
+64	LV*
 65	SLu
 66	str
 67	region67
@@ -70,7 +70,7 @@
 70	region70
 71	region71
 72	SubG
-73	CA1Rad!CA2Rad!CA3Rad
+73	CA1Rad*
 74	region74
 75	AHiPM
 76	region76
@@ -123,7 +123,7 @@
 123	region123
 124	region124
 125	region125
-126	DS!Post
+126	DS*
 127	region127
 128	region128
 129	region129
@@ -134,7 +134,7 @@
 134	region134
 135	PrS
 136	V1B
-137	cbw!icp!mcp
+137	cbw*
 138	s5
 139	tz
 140	CEnt

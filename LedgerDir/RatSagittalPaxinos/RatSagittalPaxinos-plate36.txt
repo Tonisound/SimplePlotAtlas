@@ -2,7 +2,7 @@
 2	M1
 3	Fr3
 4	AID
-5	AIV!Pir1!Pir3
+5	Pir3*
 6	DI
 7	S1J
 8	GI
@@ -15,9 +15,9 @@
 15	region15
 16	lo
 17	region17
-18	ec!cc!ic!opt!fmj!alv!fi
+18	cc*
 19	region19
-20	CPu!ASt
+20	CPu*
 21	DEn
 22	region22
 23	region23
@@ -39,9 +39,9 @@
 39	I
 40	region40
 41	region41
-42	GP!B
+42	GP*
 43	region43
-44	BLA!BLP
+44	BLA*
 45	region45
 46	ACo
 47	PLCo1
@@ -59,11 +59,11 @@
 59	BMP
 60	region60
 61	PtPD
-62	CA1Or!CA1Rad!CA2Or!CA2Rad!CA3Or!CA3Rad!SLu!PoDG
+62	CA1Or*
 63	LV
 64	region64
 65	region65
-66	LMol!MoDG!Mol
+66	MoDG*
 67	CA3Py
 68	region68
 69	region69
@@ -101,7 +101,7 @@
 101	CEnt
 102	region102
 103	CEnt
-104	Post!Ect
+104	Post*
 105	V2L
 106	RSD
 107	cerebellum
