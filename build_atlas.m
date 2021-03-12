@@ -137,7 +137,7 @@ Mask3full = repmat({''},size(data_init.Mask,1),size(data_init.Mask,2),n_plates);
 Mask4full = repmat({''},size(data_init.Mask,1),size(data_init.Mask,2),n_plates);
 
 
-% Browsing Ledgers
+% Browsing Ledger
 all_c1 = [];
 all_c4 = [];
 if exist(ledger_txt,'file')
@@ -153,6 +153,9 @@ if exist(ledger_txt,'file')
     fclose(fileID);
     fprintf('Ledger File loaded [%s].\n',ledger_txt);
 end
+
+% Re-writing new ledger file
+% reformat_ledger(ledger_txt)
     
 
 % Importing plates

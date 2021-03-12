@@ -294,19 +294,30 @@ n_plates = length(list_plates);
 %list_regions = handles.Table1.Data(handles.Table1.UserData.Selection);
 
 try
-    list_select = generate_lists('AtlasType',AtlasType,'DisplayObj',DisplayObj,...
-        'DisplayMode',DisplayMode,'PlateList',list_plates);
-    % Restricting list_select
-    if handles.Checkbox1b.Value
-        list_select = list_select(contains(list_select,'!'));
-    end
-    handles.Table1.Data = list_select;
-    handles.Table1.Units = 'pixels';
-    handles.Table1.ColumnWidth ={handles.Table1.Position(3)};
-    handles.Table1.Units = 'normalized';
-    fprintf('Regions loaded from Plate List [%s] AtlasType [%s] DisplayObj [%s] DisplayMode [%s].\n',handles.Edit1.String,AtlasType,DisplayObj,DisplayMode);   
+    [list_select,occurences_select] = generate_lists('AtlasType',AtlasType,'DisplayObj',DisplayObj,...
+        'DisplayMode',DisplayMode,'PlateList',list_plates);   
 catch
     error('Unable to load regions Plate List [%s] AtlasType [%s] DisplayObj [%s] DisplayMode [%s].',handles.Edit1.String,AtlasType,DisplayObj,DisplayMode);
+end
+
+% Restricting list_select
+if handles.Checkbox1b.Value
+    list_select = list_select(contains(list_select,'!'));
+end
+% handles.Table1.Data = list_select;
+% handles.Table1.Data = [list_select,num2cell(occurences_select)];
+handles.Table1.Data = [list_select,cellstr(num2str(occurences_select))];
+handles.Table1.Units = 'pixels';
+handles.Table1.ColumnWidth ={.75*handles.Table1.Position(3) .25*handles.Table1.Position(3)};
+handles.Table1.Units = 'normalized';
+fprintf('Regions loaded from Plate List [%s] AtlasType [%s] DisplayObj [%s] DisplayMode [%s].\n',handles.Edit1.String,AtlasType,DisplayObj,DisplayMode);
+
+% Removing field
+if isfield(handles.MainFigure.UserData,'values_txt')
+    rmfield(handles.MainFigure.UserData,'values_txt');
+end
+if isfield(handles.MainFigure.UserData,'this_tt_data')
+    rmfield(handles.MainFigure.UserData,'this_tt_data');
 end
 
 handles.Popup4.String = '-';
@@ -630,13 +641,15 @@ for index=1:n_plates
     cur_mask = mask_show(:,:,xyfig);        
     data_plate = ax.UserData.data_plate;
     
-    if size(handles.Table1.Data,2)>1
+    if isfield(handles.MainFigure.UserData,'values_txt')%size(handles.Table1.Data,2)>1
         value_regions = cell2mat(handles.Table1.Data(handles.Table1.UserData.Selection,2));
         M = max(value_regions(:));
         m = min(value_regions(:));
         handles.Edit2.String = sprintf('%.2f',m);
         handles.Edit3.String = sprintf('%.2f',M);
         handles.Colorbar1.Limits = [m M];
+    else
+        value_regions = ones(length(list_regions),1);
     end
     
     % Building full_mask
@@ -649,22 +662,11 @@ for index=1:n_plates
             for j=1:length(ind_region)
                 cur_id = id_show(ind_region(j));
                 cur_region = list_show(ind_region(j));
-                
-                if size(handles.Table1.Data,2)==1
-                    full_mask(cur_mask==cur_id)=1;
-                else
-                    full_mask(cur_mask==cur_id)=value_regions(i);
-                end
-
+                full_mask(cur_mask==cur_id)=value_regions(i);
                 all_ids = [all_ids;cur_id];
-                all_regions = [all_regions;cur_region];
-                
+                all_regions = [all_regions;cur_region]; 
             end
         end
-    end
-    
-    if size(handles.Table1.Data,2)>1
-        ax.CLim = [m M];
     end
 
     % Storing data
@@ -676,6 +678,10 @@ for index=1:n_plates
     im=imagesc(full_mask,'Tag','FullMask','Parent',ax);
     im.AlphaData = double(full_mask~=0);
     %uistack(im,'top');
+    
+    if isfield(handles.MainFigure.UserData,'values_txt')%size(handles.Table1.Data,2)>1
+        ax.CLim = [m M];
+    end
 end
 checkbox3_callback(handles.Checkbox3,[],handles);
 checkbox4_callback(handles.Checkbox4,[],handles);

@@ -1,4 +1,4 @@
-function this_regions = generate_lists(varargin)
+function [this_regions,this_occurences] = generate_lists(varargin)
 % generate_lists() generates a list of regions as a cell arrays based on
 % input arguments
 %
@@ -97,42 +97,66 @@ data_atlas = load(fullfile(savedir,sprintf('PlotableAtlas_%s.mat',plate_name)));
 Maskfull = data_atlas.Mask_regions(:,:,list_plates);
 all_indexes = unique(Maskfull(Maskfull~=0));
 list_regions = data_atlas.list_regions(all_indexes(all_indexes~=0));
+id_regions = data_atlas.id_regions(all_indexes(all_indexes~=0));
+
 % Mask2
 Maskfull = data_atlas.Mask_bilateral(:,:,list_plates);
 all_indexes = unique(Maskfull(Maskfull~=0));
 list_bilateral = [];
+id_bilateral = [];
 for i = 1:length(all_indexes)
     list_bilateral = [list_bilateral;data_atlas.list_bilateral(data_atlas.id_bilateral==all_indexes(i))];
+    id_bilateral = [id_bilateral;all_indexes(i)];
 end
 % Mask3
 Maskfull = data_atlas.Mask_groups(:,:,list_plates);
 all_indexes = unique(Maskfull(Maskfull~=0));
 list_groups = [];
+id_groups = [];
 for i = 1:length(all_indexes)
     list_groups = [list_groups;data_atlas.list_groups(data_atlas.id_groups==all_indexes(i))];
+    id_groups = [id_groups;all_indexes(i)];
 end
 % Mask4
 Maskfull = data_atlas.Mask_groups_bilateral(:,:,list_plates);
 all_indexes = unique(Maskfull(Maskfull~=0));
 list_groups_bilateral = [];
+id_groups_bilateral = [];
 for i = 1:length(all_indexes)
     list_groups_bilateral = [list_groups_bilateral;data_atlas.list_groups_bilateral(data_atlas.id_groups_bilateral==all_indexes(i))];
+    id_groups_bilateral = [id_groups_bilateral;all_indexes(i)];
 end
 
 if strcmp(DisplayMode,'unilateral')
     switch DisplayObj
         case 'regions'
             this_regions = list_regions;
+            this_Mask = data_atlas.Mask_regions(:,:,list_plates);
+            this_id = id_regions;
         case 'groups'
             this_regions = list_groups;
+            this_Mask = data_atlas.Mask_bilateral(:,:,list_plates);
+            this_id = id_groups;
     end
 elseif strcmp(DisplayMode,'bilateral')
     switch DisplayObj
         case 'regions'
             this_regions = list_bilateral;
+            this_Mask = data_atlas.Mask_groups(:,:,list_plates);
+            this_id = id_bilateral;
         case 'groups'
             this_regions = list_groups_bilateral;
+            this_Mask = data_atlas.Mask_groups_bilateral(:,:,list_plates);
+            this_id = id_groups_bilateral;
     end
+end
+
+% Counting occurences
+%this_occurences = ones(size(this_regions));
+this_occurences = [];
+for i =1:length(this_id)
+    occurence = squeeze(sum(sum(this_Mask==this_id(i),1),2));
+    this_occurences = [this_occurences;sum(occurence>0)];
 end
 
 end
