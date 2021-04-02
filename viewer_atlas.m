@@ -174,7 +174,7 @@ uicontrol('Units','normalized',...
     'Style','checkbox',...
     'Parent',panel1,...
     'Value',0,...
-    'TooltipString','Only !',...
+    'TooltipString','Title on/off',...
     'Tag','Checkbox1b');
 uicontrol('Units','normalized',...
     'Position',[.6 2*h1 .1 h1],...
@@ -250,6 +250,7 @@ handles.Button1b.Callback = {@loadValues_callback,handles};
 handles.Button2.Callback = {@plot_callback,handles};
 
 handles.Checkbox1.Callback = {@checkbox1_callback,handles};
+handles.Checkbox1b.Callback = {@checkbox1b_callback,handles};
 handles.Checkbox2.Callback = {@checkbox2_callback,handles};
 handles.Checkbox3.Callback = {@checkbox3_callback,handles};
 handles.Checkbox4.Callback = {@checkbox4_callback,handles};
@@ -301,9 +302,6 @@ catch
 end
 
 % Restricting list_select
-if handles.Checkbox1b.Value
-    list_select = list_select(contains(list_select,'!'));
-end
 % handles.Table1.Data = list_select;
 % handles.Table1.Data = [list_select,num2cell(occurences_select)];
 handles.Table1.Data = [list_select,cellstr(num2str(occurences_select))];
@@ -647,7 +645,7 @@ for index=1:n_plates
         m = min(value_regions(:));
         handles.Edit2.String = sprintf('%.2f',m);
         handles.Edit3.String = sprintf('%.2f',M);
-        handles.Colorbar1.Limits = [m M];
+%         handles.Colorbar1.Limits = [m M];
     else
         value_regions = ones(length(list_regions),1);
     end
@@ -739,6 +737,21 @@ end
 
 end
 
+function checkbox1b_callback(hObj,~,handles)
+
+all_axes = handles.MainFigure.UserData.all_axes;
+if hObj.Value
+    for i = 1:length(all_axes)
+        all_axes(i).Title.Visible = 'on';
+    end
+else
+    for i = 1:length(all_axes)
+        all_axes(i).Title.Visible = 'off';
+    end
+end
+
+end
+
 function checkbox2_callback(hObj,~,handles)
 
 all_axes = handles.MainFigure.UserData.all_axes;
@@ -817,7 +830,7 @@ if ~isfield(handles.MainFigure.UserData,'all_axes')
     return;
 end
 
-handles.Colorbar1.Limits = [str2double(handles.Edit2.String) str2double(handles.Edit3.String)];
+% handles.Colorbar1.Limits = [str2double(handles.Edit2.String) str2double(handles.Edit3.String)];
 all_axes = handles.MainFigure.UserData.all_axes;
 if hObj.Value
     % clim mode auto

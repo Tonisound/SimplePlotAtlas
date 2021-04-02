@@ -1,0 +1,54 @@
+Group_name	Atlas_name	Plates	Region
+AuCortex 	 - 	 - 	 Au1 Auv AuD
+V1Cortex 	 - 	 - 	 V1 V1B V1M
+V2Cortex 	 - 	 - 	 V2L V2MM V2ML
+S1Cortex 	 - 	 - 	 S1 S1BF S1Tr S1HL S1FL S1J S1ULp S1Sh S1DZ
+S2Cortex 	 - 	 - 	 S2 
+MotorCortex 	 - 	 - 	  M1 M2
+PtCortex 	 - 	 - 	  PtPR PtPD LPtA MPtA
+TeCortex 	 - 	 - 	  TeA
+EctCortex 	 - 	 - 	  Ect
+PrhCortex 	 - 	 - 	  PRh
+EntCortex 	 - 	 - 	  DLEnt DIEnt VIEnt MEnt
+InsularCortex 	 - 	 - 	  DI GI AIP AID AIV
+RSCortex 	 - 	 - 	  RSD RSGb RSGa RSGc
+CgCortex 	 - 	 - 	  Cg1 Cg2 cg
+LimbicCortex 	 - 	 - 	  PrL DP Post IL FR3
+TeniaTecta 	 - 	 - 	  DTT1 DTT2 DTT3
+Endopiriform 	 - 	 - 	  Den Ien Ven Pir1 Pir2 Pir3 APir3 APir RaPir
+Claustrum 	 - 	 - 	  DCl VCl Cl
+Septum 	 - 	 - 	  TS MS LSI LSI1 LSI2 LSI3 LSI4 LSD LSV Ld PLd SHy StHy
+AmygdaloCortical 	 - 	 - 	PCo PLCo1 PLCo2 PLCo3 ACo PLCo PMCo CXA1 CXA2 CXA3
+Amygdala 	 - 	 - 	  EA EAC EAM CeC CeL CeM AA MePV MePD MeAD MeAV LaDL LaVL LaVM BMA BLA BMV BLV BMP I IM
+AmygdaloHippocampal 	 - 	 - 	AHiAL AHi AHiPL AHiPM
+HipFimbria 	 - 	 - 	  SFi fi Or
+CA1 	 - 	 - 	  CA1
+CA2 	 - 	 - 	  CA2
+CA3 	 - 	 - 	  CA3
+DG 	 - 	 - 	 DG
+Subiculum 	 - 	 - 	 PrS VS DS
+Striatum 	 - 	 - 	LSS CPu
+SupColliculus 	 - 	 - 	 SuG Op DpG InWh InG DpWh
+PAG 	 - 	 - 	 PAG LPAG DPAG DLPAG DMPAG Dk 3N InC Su3 Lth MCPC
+DThalamus 	 - 	 - 	LDVL LDDM AVVL AVDM AMV PT RPF APTD AD IAD LPLC LPMR LPMC str
+CThalamus 	 - 	 - 	DMDL CL CM PC PVA PV AM IMD MD MDC MDM DMDL
+VThalamus 	 - 	 - 	PoT Po VPL VPM VPPC VA VL Re VRe Rh PaXi Sub Xi Eth REth sm eml Li CLi PIL
+Habenulla 	 - 	 - 	LHb LHbM MHb LHbL 
+PretectalN 	 - 	 - 	PPT OPT OT OPC AngT MPT
+SubstantiaNigra 	 - 	 - 	 SNR SNL SNCD SNCV
+GeniculateN 	 - 	 - 	DLG MGV MGD MGMZ MGMD bic SubG SubB SubD SubV VG VG1 VG2 VG3 IGL
+DHypothalamus 	 - 	 - 	 RMC RPC STh scp PaR A13 A1 A11 F PaMM PaAP PaMP PaPo SPF DA RI SPFPC fr rs PF PH PLH PeFLH Pe PeF AVPe PHD JPLH MCLH
+VHypothalamus 	 - 	 - 	 AHA AHC AHP LA ANS DMC DMD DMV VMH VMHC VMHSh VMHDM VMHVL ArcM RRF tth Rt
+VTegmentalArea 	 - 	 - 	 VTAR PBP PBPI PBPm PN
+ZonaIncerta 	 - 	 - 	 ZI ZIC ZIR ZID ZIV SubI
+BasalForebrain 	 - 	 - 	 HDB VDB GP VP cp EP B IPAC IPACM IPACL Nv mfb PIF IF IPL ICj Acb AcbSh SIB
+MLemn 	 - 	 - 	 Mlemn
+mch 	 - 	 - 	 mch
+CCallosum 	 - 	 - 	 alv fmj fmi dcw dhc chp ic f 
+Mammillary 	 - 	 - 	 SuMM MM SuML PMV mt
+OpticChiasm	 - 	 - 	 SCh SChVM SChDL RCh RChL sox och
+Ventricles 	 - 	 - 	 D3V 3V LV
+AComm 	 - 	 - 	 csc pc PrC Pcom ac acp aca cc 
+PreopticN 	 - 	 - 	opt MCPO LPO MPOL MPOM MPA VOLT MnPO PDPO VLPO LO ESO SO MPO
+OlfactoryBulb  	 - 	 - 	loCx MTu Tu1 Tu2 Tu3 LOT1 LOT2 LOT3
+StriTer  	 - 	 - 	st STIA STMPM STMAL STMAM STLV STLI STMA STMPL STMPI STLD PS
