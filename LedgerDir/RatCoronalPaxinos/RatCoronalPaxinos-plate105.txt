@@ -32,7 +32,7 @@
 32	m5-R
 33	vsc-R
 34	V2MM-R
-35	MPL-R*
+35	DMTg-R*
 36	KF-R
 37	region37
 38	A7-R

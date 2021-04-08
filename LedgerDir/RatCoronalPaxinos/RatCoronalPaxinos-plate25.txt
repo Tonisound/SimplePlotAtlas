@@ -47,7 +47,7 @@
 47	region47
 48	LSI
 49	LSV-R
-50	S1B-R
+50	SIB-R
 51	LSD-R
 52	MS*
 53	region53

@@ -11,7 +11,7 @@
 11	Pir3-R
 12	PtPR-R
 13	APir-R
-14	PtPD-
+14	PtPD-R
 15	region15
 16	region16
 17	LV-R

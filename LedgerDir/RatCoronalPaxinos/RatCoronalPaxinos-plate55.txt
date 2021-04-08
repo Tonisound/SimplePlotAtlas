@@ -160,7 +160,7 @@
 160	region160
 161	VMHC-L
 162	region162
-163	SUbD-L
+163	SubD-L
 164	A13-L
 165	region165
 166	SubV-L

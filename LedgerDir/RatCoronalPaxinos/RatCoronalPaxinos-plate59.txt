@@ -235,7 +235,7 @@
 235	region235
 236	region236
 237	region237
-238	Sth-L
+238	STh-L
 239	region239
 240	region240
 241	region241

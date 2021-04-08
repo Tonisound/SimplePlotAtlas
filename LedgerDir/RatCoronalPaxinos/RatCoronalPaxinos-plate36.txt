@@ -87,7 +87,7 @@
 87	MPOM-R
 88	region88
 89	VMPO-R
-90	LTer-R
+90	LTer
 91	region91
 92	region92
 93	3V

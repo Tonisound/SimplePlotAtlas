@@ -1,5 +1,5 @@
 Package Build and Plot Atlas
-Version 1.6.1 - Date 13/03/2021
+Version 1.8.1 - Date 08/04/2021
 Contact: antoine.bergel@espci.fr
 
 This package contains two main functions

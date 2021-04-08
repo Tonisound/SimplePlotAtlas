@@ -13,7 +13,7 @@
 13	DEn-R
 14	region14
 15	cc*
-16	S1Fl-L
+16	S1FL-R
 17	region17
 18	CPu-R
 19	region19
@@ -66,7 +66,7 @@
 66	LSV-R
 67	LSD-R
 68	Cg1-R
-69	ac-R
+69	ac
 70	VLPO-R
 71	PS-R
 72	region72

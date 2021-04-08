@@ -11,7 +11,7 @@
 11	region11
 12	region12
 13	DCl-R
-14	VCI-R
+14	VCl-R
 15	region15
 16	DEn-R
 17	region17
@@ -44,7 +44,7 @@
 44	region44
 45	region45
 46	region46
-47	mfba-R
+47	MCPO-R
 48	AA-R
 49	VP-R
 50	GP-R
@@ -173,7 +173,7 @@
 173	region173
 174	region174
 175	region175
-176	VCI-L
+176	VCl-L
 177	region177
 178	region178
 179	region179

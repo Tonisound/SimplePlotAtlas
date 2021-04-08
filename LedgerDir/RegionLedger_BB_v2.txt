@@ -1,54 +1,361 @@
 Group_name	Atlas_name	Plates	Region
-AuCortex 	 - 	 - 	 Au1 Auv AuD
-V1Cortex 	 - 	 - 	 V1 V1B V1M
-V2Cortex 	 - 	 - 	 V2L V2MM V2ML
-S1Cortex 	 - 	 - 	 S1 S1BF S1Tr S1HL S1FL S1J S1ULp S1Sh S1DZ
+AuCortex 	 - 	 - 	 Au1
+AuCortex 	 - 	 - 	 Auv
+AuCortex 	 - 	 - 	 AuD
+V1Cortex 	 - 	 - 	 V1
+V1Cortex 	 - 	 - 	 V1B
+V1Cortex 	 - 	 - 	 V1M
+V2Cortex 	 - 	 - 	 V2L
+V2Cortex 	 - 	 - 	 V2MM
+V2Cortex 	 - 	 - 	 V2ML
+S1Cortex 	 - 	 - 	 S1
+S1CortexBF 	 - 	 - 	 S1BF
+S1CortexTr 	 - 	 - 	 S1Tr 
+S1CortexLi 	 - 	 - 	 S1HL 
+S1CortexLi 	 - 	 - 	 S1FL
+S1CortexJ 	 - 	 - 	 S1J
+S1CortexULp 	 - 	 - 	 S1ULp
+S1CortexSh 	 - 	 - 	 S1Sh
+S1CortexDZ 	 - 	 - 	 S1DZ
 S2Cortex 	 - 	 - 	 S2 
-MotorCortex 	 - 	 - 	  M1 M2
-PtCortex 	 - 	 - 	  PtPR PtPD LPtA MPtA
+MotorCortex 	 - 	 - 	  M1
+MotorCortex 	 - 	 - 	  M2
+PtCortex 	 - 	 - 	  PtPR
+PtCortex 	 - 	 - 	  PtPD
+PtCortex 	 - 	 - 	  LPtA
+PtCortex 	 - 	 - 	  MPtA
 TeCortex 	 - 	 - 	  TeA
 EctCortex 	 - 	 - 	  Ect
 PrhCortex 	 - 	 - 	  PRh
-EntCortex 	 - 	 - 	  DLEnt DIEnt VIEnt MEnt
-InsularCortex 	 - 	 - 	  DI GI AIP AID AIV
-RSCortex 	 - 	 - 	  RSD RSGb RSGa RSGc
-CgCortex 	 - 	 - 	  Cg1 Cg2 cg
-LimbicCortex 	 - 	 - 	  PrL DP Post IL FR3
-TeniaTecta 	 - 	 - 	  DTT1 DTT2 DTT3
-Endopiriform 	 - 	 - 	  Den Ien Ven Pir1 Pir2 Pir3 APir3 APir RaPir
-Claustrum 	 - 	 - 	  DCl VCl Cl
-Septum 	 - 	 - 	  TS MS LSI LSI1 LSI2 LSI3 LSI4 LSD LSV Ld PLd SHy StHy
-AmygdaloCortical 	 - 	 - 	PCo PLCo1 PLCo2 PLCo3 ACo PLCo PMCo CXA1 CXA2 CXA3
-Amygdala 	 - 	 - 	  EA EAC EAM CeC CeL CeM AA MePV MePD MeAD MeAV LaDL LaVL LaVM BMA BLA BMV BLV BMP I IM
-AmygdaloHippocampal 	 - 	 - 	AHiAL AHi AHiPL AHiPM
-HipFimbria 	 - 	 - 	  SFi fi Or
+EntCortex 	 - 	 - 	  DLEnt
+EntCortex 	 - 	 - 	  DIEnt
+EntCortex 	 - 	 - 	  VIEnt
+EntCortex 	 - 	 - 	  MEnt
+InsularCortex 	 - 	 - 	  DI
+InsularCortex 	 - 	 - 	  GI
+InsularCortex 	 - 	 - 	  AIP
+InsularCortex 	 - 	 - 	  AID
+InsularCortex 	 - 	 - 	  AIV
+RSCortex 	 - 	 - 	  RSD
+RSCortex 	 - 	 - 	  RSGb
+RSCortex 	 - 	 - 	  RSGa
+RSCortex 	 - 	 - 	  RSGc
+CgCortex 	 - 	 - 	  Cg1
+CgCortex 	 - 	 - 	  Cg2
+CgCortex 	 - 	 - 	  cg
+LimbicCortex 	 - 	 - 	  PrL
+LimbicCortex 	 - 	 - 	  DP
+LimbicCortex 	 - 	 - 	  Post
+LimbicCortex 	 - 	 - 	  IL
+LimbicCortex 	 - 	 - 	  FR3
+TeniaTecta 	 - 	 - 	  DTT1
+TeniaTecta 	 - 	 - 	  DTT2
+TeniaTecta 	 - 	 - 	  DTT3
+Endopiriform 	 - 	 - 	  Den
+Endopiriform 	 - 	 - 	  Ien
+Endopiriform 	 - 	 - 	  Ven
+Endopiriform 	 - 	 - 	  Pir1
+Endopiriform 	 - 	 - 	  Pir2
+Endopiriform 	 - 	 - 	  Pir3
+Endopiriform 	 - 	 - 	  APir3
+Endopiriform 	 - 	 - 	  APir
+Endopiriform 	 - 	 - 	  RaPir
+Claustrum 	 - 	 - 	  DCl
+Claustrum 	 - 	 - 	  VCl
+Claustrum 	 - 	 - 	  Cl
+Septum 	 - 	 - 	  TS
+Septum 	 - 	 - 	  MS
+Septum 	 - 	 - 	  LSI
+Septum 	 - 	 - 	  LSI1
+Septum 	 - 	 - 	  LSI2
+Septum 	 - 	 - 	  LSI3
+Septum 	 - 	 - 	  LSI4
+Septum 	 - 	 - 	  LSD
+Septum 	 - 	 - 	  LSV
+Septum 	 - 	 - 	  Ld
+Septum 	 - 	 - 	  PLd
+Septum 	 - 	 - 	  SHy
+Septum 	 - 	 - 	  StHy
+AmygdaloCortical 	 - 	 - 	PCo 
+AmygdaloCortical 	 - 	 - 	PLCo1  
+AmygdaloCortical 	 - 	 - 	PLCo2 
+AmygdaloCortical 	 - 	 - 	PLCo3  
+AmygdaloCortical 	 - 	 - 	ACo  
+AmygdaloCortical 	 - 	 - 	PLCo  
+AmygdaloCortical 	 - 	 - 	PMCo  
+AmygdaloCortical 	 - 	 - 	CXA1
+AmygdaloCortical 	 - 	 - 	CXA2
+AmygdaloCortical 	 - 	 - 	CXA3
+Amygdala 	 - 	 - 	  EA
+Amygdala 	 - 	 - 	  EAC
+Amygdala 	 - 	 - 	  EAM
+Amygdala 	 - 	 - 	  CeC
+Amygdala 	 - 	 - 	  CeL
+Amygdala 	 - 	 - 	  CeM
+Amygdala 	 - 	 - 	  AA
+Amygdala 	 - 	 - 	  MePV
+Amygdala 	 - 	 - 	  MePD
+Amygdala 	 - 	 - 	  MeAD
+Amygdala 	 - 	 - 	  MeAV
+Amygdala 	 - 	 - 	  LaDL
+Amygdala 	 - 	 - 	  LaVL
+Amygdala 	 - 	 - 	  LaVM
+Amygdala 	 - 	 - 	  BMA
+Amygdala 	 - 	 - 	  BLA
+Amygdala 	 - 	 - 	  BMV
+Amygdala 	 - 	 - 	  BLV
+Amygdala 	 - 	 - 	  BMP
+Amygdala 	 - 	 - 	  I
+Amygdala 	 - 	 - 	  IM
+AmygdaloHippocampal 	 - 	 - 	AHiAL  
+AmygdaloHippocampal 	 - 	 - 	AHi
+AmygdaloHippocampal 	 - 	 - 	AHiPL
+AmygdaloHippocampal 	 - 	 - 	AHiPM
+HipFimbria 	 - 	 - 	  SFi
+HipFimbria 	 - 	 - 	  fi
+HipFimbria 	 - 	 - 	  Or
 CA1 	 - 	 - 	  CA1
 CA2 	 - 	 - 	  CA2
 CA3 	 - 	 - 	  CA3
 DG 	 - 	 - 	 DG
-Subiculum 	 - 	 - 	 PrS VS DS
-Striatum 	 - 	 - 	LSS CPu
-SupColliculus 	 - 	 - 	 SuG Op DpG InWh InG DpWh
-PAG 	 - 	 - 	 PAG LPAG DPAG DLPAG DMPAG Dk 3N InC Su3 Lth MCPC
-DThalamus 	 - 	 - 	LDVL LDDM AVVL AVDM AMV PT RPF APTD AD IAD LPLC LPMR LPMC str
-CThalamus 	 - 	 - 	DMDL CL CM PC PVA PV AM IMD MD MDC MDM DMDL
-VThalamus 	 - 	 - 	PoT Po VPL VPM VPPC VA VL Re VRe Rh PaXi Sub Xi Eth REth sm eml Li CLi PIL
-Habenulla 	 - 	 - 	LHb LHbM MHb LHbL 
-PretectalN 	 - 	 - 	PPT OPT OT OPC AngT MPT
-SubstantiaNigra 	 - 	 - 	 SNR SNL SNCD SNCV
-GeniculateN 	 - 	 - 	DLG MGV MGD MGMZ MGMD bic SubG SubB SubD SubV VG VG1 VG2 VG3 IGL
-DHypothalamus 	 - 	 - 	 RMC RPC STh scp PaR A13 A1 A11 F PaMM PaAP PaMP PaPo SPF DA RI SPFPC fr rs PF PH PLH PeFLH Pe PeF AVPe PHD JPLH MCLH
-VHypothalamus 	 - 	 - 	 AHA AHC AHP LA ANS DMC DMD DMV VMH VMHC VMHSh VMHDM VMHVL ArcM RRF tth Rt
-VTegmentalArea 	 - 	 - 	 VTAR PBP PBPI PBPm PN
-ZonaIncerta 	 - 	 - 	 ZI ZIC ZIR ZID ZIV SubI
-BasalForebrain 	 - 	 - 	 HDB VDB GP VP cp EP B IPAC IPACM IPACL Nv mfb PIF IF IPL ICj Acb AcbSh SIB
+Subiculum 	 - 	 - 	 PrS
+Subiculum 	 - 	 - 	 VS
+Subiculum 	 - 	 - 	 DS
+Striatum 	 - 	 - 	LSS
+Striatum 	 - 	 - 	CPu
+SupColliculus 	 - 	 - 	 SuG
+SupColliculus 	 - 	 - 	 Op
+SupColliculus 	 - 	 - 	 DpG
+SupColliculus 	 - 	 - 	 InWh
+SupColliculus 	 - 	 - 	 InG
+SupColliculus 	 - 	 - 	 DpWh
+PAG 	 - 	 - 	 PAG
+PAG 	 - 	 - 	 LPAG
+PAG 	 - 	 - 	 DPAG
+PAG 	 - 	 - 	 DLPAG
+PAG 	 - 	 - 	 DMPAG
+PAG 	 - 	 - 	 Dk
+PAG 	 - 	 - 	 3N
+PAG 	 - 	 - 	 InC
+PAG 	 - 	 - 	 Su3
+PAG 	 - 	 - 	 Lth
+PAG 	 - 	 - 	 MCPC
+DThalamus 	 - 	 - 	LDVL
+DThalamus 	 - 	 - 	LDDM
+DThalamus 	 - 	 - 	AVVL
+DThalamus 	 - 	 - 	AVDM
+DThalamus 	 - 	 - 	AMV
+DThalamus 	 - 	 - 	PT	 
+DThalamus 	 - 	 - 	RPF
+DThalamus 	 - 	 - 	APTD
+DThalamus 	 - 	 - 	AD
+DThalamus 	 - 	 - 	IAD
+DThalamus 	 - 	 - 	LPLC
+DThalamus 	 - 	 - 	LPMR
+DThalamus 	 - 	 - 	LPMC
+DThalamus 	 - 	 - 	str
+CThalamus 	 - 	 - 	DMDL 
+CThalamus 	 - 	 - 	CL
+CThalamus 	 - 	 - 	CM
+CThalamus 	 - 	 - 	PC
+CThalamus 	 - 	 - 	PVA
+CThalamus 	 - 	 - 	PV
+CThalamus 	 - 	 - 	AM
+CThalamus 	 - 	 - 	IMD
+CThalamus 	 - 	 - 	MD
+CThalamus 	 - 	 - 	MDC
+CThalamus 	 - 	 - 	MDM
+CThalamus 	 - 	 - 	DMDL
+VThalamus 	 - 	 - 	PoT 
+VThalamus 	 - 	 - 	Po
+VThalamus 	 - 	 - 	VPL
+VThalamus 	 - 	 - 	VPM
+VThalamus 	 - 	 - 	VPPC
+VThalamus 	 - 	 - 	VA
+VThalamus 	 - 	 - 	VL
+VThalamus 	 - 	 - 	Re
+VThalamus 	 - 	 - 	VRe
+VThalamus 	 - 	 - 	Rh
+VThalamus 	 - 	 - 	PaXi
+VThalamus 	 - 	 - 	Sub
+VThalamus 	 - 	 - 	Xi
+VThalamus 	 - 	 - 	Eth
+VThalamus 	 - 	 - 	REth
+VThalamus 	 - 	 - 	sm
+VThalamus 	 - 	 - 	eml
+VThalamus 	 - 	 - 	Li
+VThalamus 	 - 	 - 	CLi
+VThalamus 	 - 	 - 	PIL
+Habenulla 	 - 	 - 	LHb 
+Habenulla 	 - 	 - 	LHbM 
+Habenulla 	 - 	 - 	MHb
+Habenulla 	 - 	 - 	LHbL 
+PretectalN 	 - 	 - 	PPT
+PretectalN 	 - 	 - 	OPT
+PretectalN 	 - 	 - 	OT
+PretectalN 	 - 	 - 	OPC 
+PretectalN 	 - 	 - 	AngT
+PretectalN 	 - 	 - 	MPT
+SubstantiaNigra 	 - 	 - 	 SNR
+SubstantiaNigra 	 - 	 - 	 SNL
+SubstantiaNigra 	 - 	 - 	 SNCD
+SubstantiaNigra 	 - 	 - 	 SNCV
+GeniculateN 	 - 	 - 	DLG
+GeniculateN 	 - 	 - 	MGV
+GeniculateN 	 - 	 - 	MGD
+GeniculateN 	 - 	 - 	MGMZ
+GeniculateN 	 - 	 - 	MGMD
+GeniculateN 	 - 	 - 	bic
+GeniculateN 	 - 	 - 	SubG
+GeniculateN 	 - 	 - 	SubB
+GeniculateN 	 - 	 - 	SubD
+GeniculateN 	 - 	 - 	SubV
+GeniculateN 	 - 	 - 	VG
+GeniculateN 	 - 	 - 	VG1
+GeniculateN 	 - 	 - 	VG2
+GeniculateN 	 - 	 - 	VG3
+GeniculateN 	 - 	 - 	IGL
+DHypothalamus 	 - 	 - 	 RMC
+DHypothalamus 	 - 	 - 	 RPC
+DHypothalamus 	 - 	 - 	 STh
+DHypothalamus 	 - 	 - 	 scp
+DHypothalamus 	 - 	 - 	 PaR
+DHypothalamus 	 - 	 - 	 F
+DHypothalamus 	 - 	 - 	 A13
+DHypothalamus 	 - 	 - 	 A1
+DHypothalamus 	 - 	 - 	 A11
+DHypothalamus 	 - 	 - 	 F
+DHypothalamus 	 - 	 - 	 PaMM
+DHypothalamus 	 - 	 - 	 PaAP
+DHypothalamus 	 - 	 - 	 PaMP
+DHypothalamus 	 - 	 - 	 PaPo
+DHypothalamus 	 - 	 - 	 SPF
+DHypothalamus 	 - 	 - 	 DA
+DHypothalamus 	 - 	 - 	 RI
+DHypothalamus 	 - 	 - 	 SPFPC
+DHypothalamus 	 - 	 - 	 fr
+LHypothalamus 	 - 	 - 	 rs
+LHypothalamus 	 - 	 - 	 PF
+LHypothalamus 	 - 	 - 	 PH
+LHypothalamus 	 - 	 - 	 PLH
+LHypothalamus 	 - 	 - 	 PeFLH
+LHypothalamus 	 - 	 - 	 Pe
+LHypothalamus 	 - 	 - 	 PeF
+LHypothalamus 	 - 	 - 	 AVPe
+LHypothalamus 	 - 	 - 	 PHD
+LHypothalamus 	 - 	 - 	 JPLH
+LHypothalamus 	 - 	 - 	 MCLH
+VHypothalamus 	 - 	 - 	 AHA
+VHypothalamus 	 - 	 - 	 AHC
+VHypothalamus 	 - 	 - 	 AHP
+VHypothalamus 	 - 	 - 	 LA
+VHypothalamus 	 - 	 - 	 ANS
+VHypothalamus 	 - 	 - 	 DMC
+VHypothalamus 	 - 	 - 	 DMD
+VHypothalamus 	 - 	 - 	 DMV
+VHypothalamus 	 - 	 - 	 VMH
+VHypothalamus 	 - 	 - 	 VMHC
+VHypothalamus 	 - 	 - 	 VMHSh
+VHypothalamus 	 - 	 - 	 VMHDM
+VHypothalamus 	 - 	 - 	 VMHVL
+VHypothalamus 	 - 	 - 	 ArcM
+VHypothalamus 	 - 	 - 	 RRF
+VHypothalamus 	 - 	 - 	 tth
+VHypothalamus 	 - 	 - 	 Rt
+VTegmentalArea 	 - 	 - 	 VTAR
+VTegmentalArea 	 - 	 - 	 PBP
+VTegmentalArea 	 - 	 - 	 PBPI
+VTegmentalArea 	 - 	 - 	 PBPm
+VTegmentalArea 	 - 	 - 	 PN
+ZonaIncerta 	 - 	 - 	 ZI
+ZonaIncerta 	 - 	 - 	 ZIC
+ZonaIncerta 	 - 	 - 	 ZIR
+ZonaIncerta 	 - 	 - 	 ZID
+ZonaIncerta 	 - 	 - 	 ZIV
+ZonaIncerta 	 - 	 - 	 SubI
+BasalForebrain 	 - 	 - 	 HDB
+BasalForebrain 	 - 	 - 	 VDB
+BasalForebrain 	 - 	 - 	 GP
+BasalForebrain 	 - 	 - 	 VP
+BasalForebrain 	 - 	 - 	 cp
+BasalForebrain 	 - 	 - 	 EP
+BasalForebrain 	 - 	 - 	 B
+BasalForebrain 	 - 	 - 	 IPAC
+BasalForebrain 	 - 	 - 	 IPACM
+BasalForebrain 	 - 	 - 	 IPACL
+BasalForebrain 	 - 	 - 	 Nv
+BasalForebrain 	 - 	 - 	 mfb
+BasalForebrain 	 - 	 - 	 PIF
+BasalForebrain 	 - 	 - 	 IF
+BasalForebrain 	 - 	 - 	 IPL
+BasalForebrain 	 - 	 - 	 ICj
+BasalForebrain 	 - 	 - 	 Acb
+BasalForebrain 	 - 	 - 	 AcbSh
+BasalForebrain 	 - 	 - 	 SIB
 MLemn 	 - 	 - 	 Mlemn
 mch 	 - 	 - 	 mch
-CCallosum 	 - 	 - 	 alv fmj fmi dcw dhc chp ic f 
-Mammillary 	 - 	 - 	 SuMM MM SuML PMV mt
-OpticChiasm	 - 	 - 	 SCh SChVM SChDL RCh RChL sox och
-Ventricles 	 - 	 - 	 D3V 3V LV
-AComm 	 - 	 - 	 csc pc PrC Pcom ac acp aca cc 
-PreopticN 	 - 	 - 	opt MCPO LPO MPOL MPOM MPA VOLT MnPO PDPO VLPO LO ESO SO MPO
-OlfactoryBulb  	 - 	 - 	loCx MTu Tu1 Tu2 Tu3 LOT1 LOT2 LOT3
-StriTer  	 - 	 - 	st STIA STMPM STMAL STMAM STLV STLI STMA STMPL STMPI STLD PS
+CCallosum 	 - 	 - 	 alv 
+CCallosum 	 - 	 - 	 fmj
+CCallosum 	 - 	 - 	 fmi
+CCallosum 	 - 	 - 	 dcw
+CCallosum 	 - 	 - 	 dhc
+CCallosum 	 - 	 - 	 chp
+CCallosum 	 - 	 - 	 ic
+CCallosum 	 - 	 - 	 f 
+Mammillary 	 - 	 - 	 SuMM 
+Mammillary 	 - 	 - 	 MM
+Mammillary 	 - 	 - 	 SuML
+Mammillary 	 - 	 - 	 PMV
+Mammillary 	 - 	 - 	 mt
+OptChiasm 	 - 	 - 	 SCh 
+OptChiasm 	 - 	 - 	 SChVM
+OptChiasm 	 - 	 - 	 SChDL
+OptChiasm 	 - 	 - 	 RCh
+OptChiasm 	 - 	 - 	 RChL
+OptChiasm 	 - 	 - 	 sox
+OptChiasm 	 - 	 - 	 och
+Ventricles 	 - 	 - 	 D3V 
+Ventricles 	 - 	 - 	 3V 
+Ventricles 	 - 	 - 	 LV
+AComm 	 - 	 - 	 csc 
+AComm 	 - 	 - 	 pc
+AComm 	 - 	 - 	 PrC
+AComm 	 - 	 - 	 Pcom
+AComm 	 - 	 - 	 ac
+AComm 	 - 	 - 	 acp
+AComm 	 - 	 - 	 aca
+AComm 	 - 	 - 	 cc 
+PreopticN 	 - 	 - 	opt 
+PreopticN 	 - 	 - 	MCPO
+PreopticN 	 - 	 - 	LPO
+PreopticN 	 - 	 - 	MPOL
+PreopticN 	 - 	 - 	MPOM
+PreopticN 	 - 	 - 	MPA
+PreopticN 	 - 	 - 	VOLT
+PreopticN 	 - 	 - 	MnPO
+PreopticN 	 - 	 - 	PDPO
+PreopticN 	 - 	 - 	VLPO
+PreopticN 	 - 	 - 	LO
+PreopticN 	 - 	 - 	ESO
+PreopticN 	 - 	 - 	SO
+PreopticN 	 - 	 - 	MPO
+OlfactoryBulb  	 - 	 - 	loCx
+OlfactoryBulb  	 - 	 - 	MTu
+OlfactoryBulb  	 - 	 - 	Tu1
+OlfactoryBulb  	 - 	 - 	Tu2
+OlfactoryBulb  	 - 	 - 	Tu3
+OlfactoryBulb  	 - 	 - 	LOT1
+OlfactoryBulb  	 - 	 - 	LOT2
+OlfactoryBulb  	 - 	 - 	LOT3
+StriTer  	 - 	 - 	st 
+StriTer  	 - 	 - 	STIA
+StriTer  	 - 	 - 	STMPM
+StriTer  	 - 	 - 	STMAL
+StriTer  	 - 	 - 	STMAM
+StriTer  	 - 	 - 	STLV
+StriTer  	 - 	 - 	STLI
+StriTer  	 - 	 - 	STMA
+StriTer  	 - 	 - 	STMPL
+StriTer  	 - 	 - 	STMPI
+StriTer  	 - 	 - 	STLD
+StriTer  	 - 	 - 	PS

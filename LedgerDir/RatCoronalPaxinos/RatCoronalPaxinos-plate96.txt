@@ -110,7 +110,7 @@
 110	region110
 111	region111
 112	PTg-L
-113	PRCnF-L
+113	PrCnF-L
 114	V2ML-L
 115	rs-L
 116	ll-L

@@ -30,7 +30,7 @@
 30	mofr
 31	region31
 32	Cg1-L
-33	PRL-L
+33	PrL-L
 34	MO-L
 35	DTT1-L
 36	region36

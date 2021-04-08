@@ -67,7 +67,7 @@
 67	region67
 68	region68
 69	STh-R
-70	DG-R
+70	MoDG-R*
 71	region71
 72	MPtA-R
 73	LPMR-R
@@ -171,7 +171,7 @@
 171	PoDG-L
 172	region172
 173	LPLR-L
-174	DG-L
+174	MoDG-L*
 175	PyCA3-L
 176	PLCo1-L
 177	LPtA-L

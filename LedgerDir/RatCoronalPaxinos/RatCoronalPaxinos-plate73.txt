@@ -19,7 +19,7 @@
 19	region19
 20	region20
 21	region21
-22	PyCA1v-R
+22	PyCA1-R
 23	region23
 24	region24
 25	PyCA2-R
@@ -45,7 +45,7 @@
 45	region45
 46	region46
 47	region47
-48	PYCA1d-R
+48	PyCA1-R
 49	region49
 50	region50
 51	region51
@@ -122,7 +122,7 @@
 122	REth-R
 123	ml-R
 124	Eth-R
-125	p1RT
+125	p1Rt
 126	V2MM-R
 127	APTD-R*
 128	cg-R
@@ -273,7 +273,7 @@
 273	region273
 274	region274
 275	region275
-276	RadCa1v-L
+276	RadCa1-L
 277	region277
 278	region278
 279	RadCA2-L

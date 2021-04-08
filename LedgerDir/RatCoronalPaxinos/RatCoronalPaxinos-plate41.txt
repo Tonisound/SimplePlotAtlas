@@ -1,5 +1,5 @@
 1	region1
-2	S-R
+2	S2-R
 3	GI-R
 4	S1ULp-R
 5	DI-R
@@ -70,7 +70,7 @@
 70	region70
 71	mch-R
 72	PT-R
-73	MPOM-l
+73	MPOM-R
 74	PVA-R
 75	SChDL-R
 76	PaAP-R

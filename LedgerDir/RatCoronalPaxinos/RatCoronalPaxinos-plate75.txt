@@ -122,7 +122,7 @@
 122	region122
 123	V2MM-R
 124	OT-R
-125	p1RT*
+125	p1Rt*
 126	DS-R
 127	region127
 128	PBP-R
@@ -148,7 +148,7 @@
 148	region148
 149	pc
 150	InC-R
-151	P1PAG
+151	p1PAG
 152	region152
 153	Lth-R
 154	fr-R

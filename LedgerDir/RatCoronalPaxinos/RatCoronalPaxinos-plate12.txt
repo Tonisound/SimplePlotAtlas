@@ -55,7 +55,7 @@
 55	region55
 56	DP-L
 57	DTT1-L
-58	NV-L
+58	Nv-L
 59	DTT2-L
 60	region60
 61	M2-L

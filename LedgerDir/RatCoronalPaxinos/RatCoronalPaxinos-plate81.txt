@@ -54,7 +54,7 @@
 54	cp-R
 55	region55
 56	SG-R
-57	mRT*
+57	mRt*
 58	MGM-R
 59	region59
 60	region60
@@ -79,7 +79,7 @@
 79	cg-R
 80	PaR-R
 81	ml-R
-82	SNCDv-R
+82	SNCD-R
 83	region83
 84	3n-R
 85	PBP-R
@@ -143,7 +143,7 @@
 143	cp-L
 144	region144
 145	ml-L
-146	SNCDv-L
+146	SNCD-L
 147	cg-L
 148	PaR-L
 149	fmj-L*

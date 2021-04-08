@@ -120,7 +120,7 @@
 120	region120
 121	region121
 122	DS-R
-123	p1RT-R
+123	p1Rt-R
 124	PBP-R
 125	PPT-R
 126	InWh-R
@@ -136,7 +136,7 @@
 136	PN-R
 137	RSGb-R
 138	region138
-139	INCSh-R
+139	InCSh-R
 140	region140
 141	ML
 142	csp*
@@ -160,7 +160,7 @@
 160	MA3-L
 161	Dk-L
 162	region162
-163	p1RT-L
+163	p1Rt-L
 164	region164
 165	Lth-L
 166	RSD-L

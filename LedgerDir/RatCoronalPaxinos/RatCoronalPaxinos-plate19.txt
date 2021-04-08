@@ -68,7 +68,7 @@
 68	region68
 69	Tu1-L*
 70	region70
-71	Icj-L
+71	ICj-L
 72	Tu2-L
 73	LSD-L
 74	ICjM-L

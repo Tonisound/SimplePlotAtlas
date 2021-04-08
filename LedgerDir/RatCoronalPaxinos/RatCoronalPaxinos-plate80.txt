@@ -19,7 +19,7 @@
 19	region19
 20	region20
 21	region21
-22	PyCa1-R
+22	PyCA1-R
 23	RadCA1-R
 24	region24
 25	VS-R

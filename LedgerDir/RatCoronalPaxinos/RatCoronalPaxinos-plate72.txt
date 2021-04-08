@@ -134,7 +134,7 @@
 134	Lth-R
 135	Dk-R
 136	hbc-R
-137	SuMM-R
+137	SuMM
 138	D3V*
 139	pm-R
 140	mtg-R

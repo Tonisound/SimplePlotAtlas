@@ -8,7 +8,7 @@
 8	S1BF-R
 9	Pir2-R
 10	Pir3-R
-11	Den-R
+11	DEn-R
 12	VEn-R
 13	cc*
 14	CPu-R

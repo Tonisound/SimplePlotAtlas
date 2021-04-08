@@ -58,7 +58,7 @@
 58	region58
 59	B9-R
 60	tth-R
-61	xscp-R
+61	xscp
 62	ml-R
 63	region63
 64	LPAG-R

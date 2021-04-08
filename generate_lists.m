@@ -135,14 +135,14 @@ if strcmp(DisplayMode,'unilateral')
             this_id = id_regions;
         case 'groups'
             this_regions = list_groups;
-            this_Mask = data_atlas.Mask_bilateral(:,:,list_plates);
+            this_Mask = data_atlas.Mask_groups(:,:,list_plates);
             this_id = id_groups;
     end
 elseif strcmp(DisplayMode,'bilateral')
     switch DisplayObj
         case 'regions'
             this_regions = list_bilateral;
-            this_Mask = data_atlas.Mask_groups(:,:,list_plates);
+            this_Mask = data_atlas.Mask_bilateral(:,:,list_plates);
             this_id = id_bilateral;
         case 'groups'
             this_regions = list_groups_bilateral;

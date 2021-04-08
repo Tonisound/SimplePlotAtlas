@@ -79,7 +79,7 @@
 79	region79
 80	ICj-L
 81	CPu-L*
-82	Vp-L
+82	VP-L
 83	Tu2-L
 84	M2-L
 85	LSD-L

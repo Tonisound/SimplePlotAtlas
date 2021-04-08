@@ -48,7 +48,7 @@
 48	region48
 49	SubB-R
 50	region50
-51	mRT*
+51	mRt*
 52	region52
 53	region53
 54	bic-R

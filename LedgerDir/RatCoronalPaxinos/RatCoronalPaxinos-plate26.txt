@@ -1,6 +1,6 @@
 1	region1
 2	S2-R
-3	S1Ulp-R
+3	S1ULp-R
 4	GI-R
 5	region5
 6	DI-R

@@ -97,7 +97,7 @@
 97	dhc-R
 98	APTD-R*
 99	region99
-100	plRt-R
+100	p1Rt-R
 101	region101
 102	OT-R
 103	V2MM-R
@@ -122,7 +122,7 @@
 122	MPT-R
 123	region123
 124	SNCD-R
-125	plRtbis-R
+125	p1Rt-R
 126	SuG-R
 127	PCom-R
 128	mp-R
@@ -159,7 +159,7 @@
 159	pc-L
 160	PBP-L
 161	fr-L
-162	plRt-L
+162	p1Rt-L
 163	region163
 164	PN-L
 165	region165
@@ -175,7 +175,7 @@
 175	PCom-L
 176	InG-L
 177	MCPC-L
-178	plRt-L
+178	p1Rt-L
 179	SuG-L
 180	RPC-L
 181	dhc-L

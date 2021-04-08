@@ -5,7 +5,7 @@
 5	DLEnt-R
 6	V2L-R
 7	VIEnt-R
-8	dcw-Rfmj-L
+8	dcw-R*
 9	region9
 10	V1B-R
 11	MEnt-R

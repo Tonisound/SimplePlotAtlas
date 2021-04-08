@@ -3,7 +3,7 @@
 3	CEnt-R
 4	Ect-R
 5	V2L-R
-6	FL-R
+6	Fl-R
 7	region7
 8	Fl-R
 9	RSD-R
@@ -64,7 +64,7 @@
 64	2Cb
 65	Tz-R
 66	me5-R
-67	3Cb-R
+67	3Cb
 68	DCIC-R
 69	region69
 70	SubCA-R

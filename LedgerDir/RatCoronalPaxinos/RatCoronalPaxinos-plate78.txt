@@ -92,7 +92,7 @@
 92	PPT-R
 93	V2MM-R
 94	a-R
-95	p1RT-R
+95	p1Rt-R
 96	ml-R
 97	InWh-R
 98	DpG-R
@@ -129,7 +129,7 @@
 129	RLi*
 130	mtg-R
 131	MA3-R
-132	IF-R
+132	IF
 133	PlPAG
 134	region134
 135	region135
@@ -138,7 +138,7 @@
 138	region138
 139	MA3-L
 140	RSD-L
-141	p1RT-L
+141	p1Rt-L
 142	fr-L
 143	Dk-L
 144	PN-L

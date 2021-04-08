@@ -96,7 +96,7 @@
 96	SuG-L
 97	LPAG-L
 98	DLPAG-L
-99	mRT-L
+99	mRt-L
 100	Su3-L
 101	ts-L
 102	Su3C-L
@@ -134,7 +134,7 @@
 134	fmj-L
 135	Post-L
 136	s5-L
-137	V1M
+137	V1M-L
 138	m5-L
 139	MiTg-L
 140	SubB-L
