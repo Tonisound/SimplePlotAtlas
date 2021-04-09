@@ -68,7 +68,7 @@
 68	ANS-R
 69	RSD-R
 70	MoDG-R
-71	RChL*
+71	RCh-L*
 72	region72
 73	mt-R
 74	RSGc-R

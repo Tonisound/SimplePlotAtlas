@@ -73,7 +73,7 @@
 73	region73
 74	sm-R
 75	region75
-76	D3V-R
+76	D3V
 77	AM-R
 78	M2-R
 79	STMPM-R*

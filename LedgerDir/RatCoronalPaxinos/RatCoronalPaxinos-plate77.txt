@@ -47,7 +47,7 @@
 47	PyCA3-R
 48	region48
 49	region49
-50	CA3-R
+50	OrCA3-R
 51	region51
 52	region52
 53	PoDG-R
@@ -139,7 +139,7 @@
 139	ML
 140	region140
 141	region141
-142	DMPAG-R
+142	DMPAG
 143	Dk-R
 144	fr-R
 145	csc
@@ -155,7 +155,7 @@
 155	alv-L
 156	Dk-L
 157	region157
-158	DMPAG-L
+158	DMPAG
 159	pc-L
 160	PBP-L
 161	fr-L

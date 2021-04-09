@@ -67,7 +67,7 @@
 67	DRL-R
 68	PDR-R
 69	Pa4-R
-70	DMPAG-R
+70	DMPAG
 71	ts-R
 72	region72
 73	region73

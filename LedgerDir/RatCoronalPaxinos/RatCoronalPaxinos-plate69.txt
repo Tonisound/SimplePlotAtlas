@@ -20,7 +20,7 @@
 20	PLCo-R
 21	OrCA3-R
 22	PtPR-R
-23	CA3-R
+23	RadCA3-R
 24	region24
 25	Or*
 26	PyCA3-R
@@ -30,7 +30,7 @@
 30	AHiPL-R
 31	region31
 32	region32
-33	PrPD-R
+33	PtPD-R
 34	PyCA1-R
 35	region35
 36	PMCo-R
@@ -194,7 +194,7 @@
 194	region194
 195	VPL-L
 196	DLG-L
-197	CA3-L
+197	RadCA3-L
 198	region198
 199	PtPD-L
 200	SubG-L

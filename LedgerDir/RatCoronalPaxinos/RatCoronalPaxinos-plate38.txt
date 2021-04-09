@@ -66,7 +66,7 @@
 66	StHy-R
 67	PDPO-R
 68	dmch-R
-69	vmch-R
+69	mch-R
 70	BAC-R
 71	TS*
 72	sm-R
@@ -94,7 +94,7 @@
 94	region94
 95	region95
 96	region96
-97	vmch-L
+97	mch-L
 98	MPOC-L
 99	f-L
 100	dmch-L

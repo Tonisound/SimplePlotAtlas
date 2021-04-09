@@ -73,7 +73,7 @@
 73	StA-R
 74	och
 75	SFi-R
-76	A1-R
+76	Al-R
 77	MPOL-R
 78	SHy-R
 79	VMPO-R
@@ -95,7 +95,7 @@
 95	SHy-L
 96	SFi-L
 97	LSI1-L
-98	A1-L
+98	Al-L
 99	M2-L
 100	LSD-L
 101	SHy-L

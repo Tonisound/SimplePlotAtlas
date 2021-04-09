@@ -18,7 +18,7 @@
 18	Or-R*
 19	region19
 20	PtPD-R
-21	CA3-R
+21	RadCA3-R
 22	PLCo-R
 23	BLP-R
 24	PyCA3-R
@@ -130,7 +130,7 @@
 130	region130
 131	region131
 132	p1PAG-L
-133	alv-L
+133	Or-L
 134	region134
 135	Rad-L*
 136	hbc-L
@@ -188,7 +188,7 @@
 188	V2ML-L
 189	region189
 190	region190
-191	CA3-L
+191	RadCA3-L
 192	region192
 193	AHiPM-L
 194	str-L

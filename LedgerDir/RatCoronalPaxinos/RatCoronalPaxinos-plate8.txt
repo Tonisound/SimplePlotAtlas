@@ -5,8 +5,8 @@
 5	AIV-R
 6	LO-R
 7	lo-R
-8	Pir1a-R
-9	Pir1b-R
+8	Pir1-R*
+9	Pir1-R*
 10	Pir2-R
 11	Pir3-R
 12	M2-R
@@ -39,7 +39,7 @@
 39	region39
 40	M2-L
 41	AOVP-L
-42	Pir1a-L
+42	Pir1-L*
 43	VO-L
 44	VTT2-L
 45	VTT3-L
@@ -48,7 +48,7 @@
 48	fmi-L
 49	AOL-L
 50	Pir3-L
-51	Pir1b-L
+51	Pir1-L*
 52	Pir2-L
 53	IEn-L
 54	LO-L

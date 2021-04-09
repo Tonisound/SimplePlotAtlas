@@ -74,7 +74,7 @@
 74	MoDG-R
 75	AVDM-R
 76	MoDG-R
-77	PeFLM-R
+77	PeFLH-R
 78	RChL-R
 79	CM*
 80	region80
