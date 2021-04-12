@@ -5,10 +5,10 @@
 5	PrL
 6	region6
 7	Cg1
-8	DTT2
+8	DTT*
 9	VTT2
 10	region10
-11	DTT2
+11	DTT*
 12	SHi
 13	region13
 14	Nv
@@ -50,7 +50,7 @@
 50	Arc*
 51	3V
 52	region52
-53	CA1Rad*
+53	RadCA1*
 54	region54
 55	D3V
 56	PVA
@@ -77,7 +77,7 @@
 77	RSD
 78	DA
 79	RSGc
-80	CA3Py
+80	PyCA3
 81	DMD
 82	region82
 83	region83
@@ -158,7 +158,7 @@
 158	scp
 159	region159
 160	PMnR
-161	Rdb
+161	Rbd
 162	4V*
 163	region163
 164	DRD
@@ -181,7 +181,7 @@
 181	region181
 182	region182
 183	region183
-184	cerebellum
+184	Cb
 185	region185
 186	DTgP
 187	region187
@@ -190,7 +190,7 @@
 190	region190
 191	region191
 192	region192
-193	cerebellum
+193	Cb
 194	region194
 195	region195
 196	region196
@@ -233,12 +233,12 @@
 233	region233
 234	region234
 235	region235
-236	cerebellum
+236	Cb
 237	region237
 238	IOD
 239	GiV
 240	IOM
-241	cerebellum
+241	Cb
 242	region242
 243	region243
 244	region244

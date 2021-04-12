@@ -65,7 +65,7 @@
 65	Cg2-R
 66	StHy-R
 67	PDPO-R
-68	dmch-R
+68	STMPM-R
 69	mch-R
 70	BAC-R
 71	TS*
@@ -97,7 +97,7 @@
 97	mch-L
 98	MPOC-L
 99	f-L
-100	dmch-L
+100	STMPM-L
 101	LSD-L
 102	M2-L
 103	MPOL-L

@@ -31,7 +31,7 @@
 31	region31
 32	region32
 33	EA*
-34	CA1Rad*
+34	RadCA1*
 35	GP*
 36	ACo
 37	S1Sh
@@ -57,7 +57,7 @@
 57	region57
 58	PMCo
 59	SLu
-60	CA1Py
+60	PyCA1
 61	region61
 62	region62
 63	MePD
@@ -70,7 +70,7 @@
 70	region70
 71	region71
 72	AHiPM
-73	CA3Py
+73	PyCA3
 74	region74
 75	LPtA
 76	LV
@@ -87,7 +87,7 @@
 87	GrDG
 88	DLG
 89	region89
-90	CA1Py*
+90	PyCA1*
 91	region91
 92	region92
 93	region93
@@ -139,8 +139,8 @@
 139	region139
 140	7n
 141	region141
-142	cerebelum
-143	cerebelum
+142	Cb
+143	Cb
 144	region144
 145	region145
 146	region146
@@ -161,7 +161,7 @@
 161	region161
 162	Sp5O
 163	region163
-164	cerebelum
+164	Cb
 165	region165
 166	region166
 167	Sp5I

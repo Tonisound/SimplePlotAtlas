@@ -1,6 +1,6 @@
 Group_name	Atlas_name	Plates	Region
 OrbitalCortex-R	-	-	MO-R VO-R LO-R DLO-RLimbicCortex-R	-	-	PrL-R DP-R IL-R FR3-R
-CingulateCortex-R	-	-	Cg1-R Cg2-R
+CingulateCortex-R	-	-	Cg-R Cg1-R Cg2-R
 InsularCortex-R	-	-	DI-R GI-R AIP-R AID-R AIV-R
 MotorCortex-R	-	-	M1-R M2-R
 SomatosensoryCortex-R	-	-	S1-R S1BF-R S1Tr-R S1HL-R S1FL-R S1J-R S1ULp-R S1Sh-R S1DZ-R S1DZO-R S2-R
@@ -13,15 +13,14 @@ EntorhinalCortex-R	-	-	DLEnt-R DIEnt-R VIEnt-R MEnt-R
 VisualCortex-R	-	-	V1-R V1B-R V1M-R V2L-R V2MM-R V2ML-R
 Septum-R	-	-	TS-R MS-R LSI-R LSI1-R LSI2-R LSI3-R LSI4-R LSD-R LSV-R Ld-R PLd-R SHi-R SHy-R StHy-R
 DentateGyrus-R	-	-	MoDG-R PoDG-R GrDG-R
-CA1Region-R	-	-	OrCA1-R PyCA1-R RadCA1-R
-CA2Region-R	-	-	OrCA2-R PyCA2-R RadCA2-R
-CA3Region-R	-	-	OrCA3-R PyCA3-R RadCA3-R SLuCA3-R
+CA1Region-R	-	-	CA1-R OrCA1-R PyCA1-R RadCA1-R
+CA2Region-R	-	-	CA2-R OrCA2-R PyCA2-R RadCA2-R
+CA3Region-R	-	-	CA3-R OrCA3-R PyCA3-R RadCA3-R SLuCA3-R
 Subiculum-R	-	-	PrS-R PaS-R VS-R DS-R Post-R MoS-R STr-R
-ResidualHippocampus-R	-	-	Or-R Py-R Rad-R SLu-R LMol-R
-Fimbria-R	-	-	SFi-R fi-R
+Fimbria-R	-	-	SFi-R fi-RResidualHippocampus-R	-	-	Or-R Py-R Rad-R SLu-R LMol-R
 Claustrum-R	-	-	DCl-R VCl-R Cl-R
 Striatum-R	-	-	LSS-R CPu-R GP-R 
-NucleusAccumbens-R	-	-	Acb-R AcbC-R AcbSh-R LAcbSh-R
+BasalForebrain-R	-	-	HDB-R VDB-R VP-R cp-R EP-R B-R IPAC-R IPACM-R IPACL-R Nv-R mfb-R PIF-R IF-R IPL-R ICj-R SIB-R Acb-R AcbC-R AcbSh-R LAcbSh-R
 SubstantiaNigra-R	-	-	 SNR-R SNL-R SNCD-R SNCV-R
 SuperiorColliculus-R	-	-	 SuG-R Op-R DpG-R InWh-R InG-R DpWh-R Zo-R
 DPAG-R	-	-	PAG-R PlPAG-R LPAG-R DLPAG-R DMPAG-R
@@ -35,20 +34,19 @@ GeniculateNuclei-R	-	-	DLG-R MGV-R MGD-R MZMG-R MGM-R bic-R SubG-R SubB-R VG-R V
 ReticularFormation-R	-	-	Rt-R mRt-R p1Rt-R
 AnteriorAmygdala-R	-	-	CxA1-R CxA2-R CxA3-R AA-R ACo-R MeAD-R BMA-R I-R BLA-R CeM-R CeC-R EAC-R EAM-R EA-R MeAV-R CeL-R BLV-R LaDL-R IM-R STIA-R MePD-R IMG-R LaVL-R LaVM-R AHiAL-R
 PosteriorAmygdala-R	-	-	PMCO-R APir-R AHiPM-R PLCo-R BLP-R BMP-R AHiPL-R LA-R
-BasalForebrain-R	-	-	HDB-R VDB-R VP-R cp-R EP-R B-R IPAC-R IPACM-R IPACL-R Nv-R mfb-R PIF-R IF-R IPL-R ICj-R SIB-R
-StriataTerminalis-R	-	-	st-R STIA-R STMPM-R STMAL-R STMAM-R STLV-R STLI-R STMA-R STMPL-R STMPI-R STLD-R PS-R
 DHypothalamus-R	-	-	RMC-R RPC-R STh-R scp-R PaR-R F-R A13-R A1-R A11-R PaLM-R PaMM-R PaAP-R PaMP-R PaPo-R PaV-R SPF-R DA-R RI-R SPFPC-R fr-R CLi-R SpA-R Stg-R PHA-R
 LHypothalamus-R	-	-	rs-R PH-R PLH-R PeFLH-R Pe-R PeF-R AVPe-R PHD-R JPLH-R MCLH-R TuLH-R
 VHypothalamus-R	-	-	AH-R AHA-R AHC-R AHP-R LA-R ANS-R DMC-R DMD-R DMV-R VLH-R VMH-R VMHC-R VMHSh-R VMHDM-R VMHVL-R Arc-R ArcD-R ArcL-R ArcMP-R ArcM-R RRF-R tth-R Te-R
 VTegmentalArea-R	-	-	VTAR-R PBP-R PBPI-R PBPm-R PN-R
 PreopticArea-R	-	-	MCPO-R LPO-R MPOL-R MPOM-R MPA-R VOLT-R MnPO-R PDPO-R VLPO-R ESO-R SO-R MPO-R MPOC-R VMPO-RMammillaryNuclei-R	-	-	SuM-R SuMM-R SuML-R LM-R ML-R MM-R MnM-R DTM-R VTM-R PMV-R PMD-R mt-R smt-R pm-R mp-R
 OlfactoryNuclei-R	-	-	MTu-R Tu1-R Tu2-R Tu3-R LOT1-R LOT2-R LOT3-R AOVP-R AOP-R AOM-R AOD-R AOL-R AOV-R AOE-R GrO-R DTT1-R DTT2-R DTT3-R
+StriataTerminalis-R	-	-	st-R STIA-R STMPM-R STMAL-R STMAM-R STLV-R STLI-R STMA-R STMPL-R STMPI-R STLD-R PS-R
 OptChiasm-R	-	-	opt-R SCh-R SChVM-R SChDL-R RCh-R RChL-R sox-R och-R
 CCallosum-R	-	-	alv-R fmj-R fmi-R dcw-R dhc-R ic-R f-R cc-R cg-R csc-R pc-R PrC-R Pcom-R ac-R acp-R aca-R MCPC-R
 Ventricles-R	-	-	D3V-R 3V-R LV-R chp-R IVF-R MRe-R Aq-R
 Vessels-R	-	-	uppervessel-R lowervessel-R ach-R azac-R acer-R mcer-R basalvessel-R vessel-R sinus-R lhia-R anteriorvessel-R
 OrbitalCortex-L	-	-	MO-L VO-L LO-L DLO-LLimbicCortex-L	-	-	PrL-L DP-L IL-L FR3-L
-CingulateCortex-L	-	-	Cg1-L Cg2-L
+CingulateCortex-L	-	-	Cg-L Cg1-L Cg2-L
 InsularCortex-L	-	-	DI-L GI-L AIP-L AID-L AIV-L
 MotorCortex-L	-	-	M1-L M2-L
 SomatosensoryCortex-L	-	-	S1-L S1BF-L S1Tr-L S1HL-L S1FL-L S1J-L S1ULp-L S1Sh-L S1DZ-L S1DZO-L S2-L
@@ -61,15 +59,14 @@ EntorhinalCortex-L	-	-	DLEnt-L DIEnt-L VIEnt-L MEnt-L
 VisualCortex-L	-	-	V1-L V1B-L V1M-L V2L-L V2MM-L V2ML-L
 Septum-L	-	-	TS-L MS-L LSI-L LSI1-L LSI2-L LSI3-L LSI4-L LSD-L LSV-L Ld-L PLd-L SHi-L SHy-L StHy-L
 DentateGyrus-L	-	-	MoDG-L PoDG-L GrDG-L
-CA1Region-L	-	-	OrCA1-L PyCA1-L RadCA1-L
-CA2Region-L	-	-	OrCA2-L PyCA2-L RadCA2-L
-CA3Region-L	-	-	OrCA3-L PyCA3-L RadCA3-L SLuCA3-L
+CA1Region-L	-	-	CA1-L OrCA1-L PyCA1-L RadCA1-L
+CA2Region-L	-	-	CA2-L OrCA2-L PyCA2-L RadCA2-L
+CA3Region-L	-	-	CA3-L OrCA3-L PyCA3-L RadCA3-L SLuCA3-L
 Subiculum-L	-	-	PrS-L PaS-L VS-L DS-L Post-L MoS-L STr-L
-ResidualHippocampus-L	-	-	Or-L Py-L Rad-L SLu-L LMol-L
-Fimbria-L	-	-	SFi-L fi-L
+Fimbria-L	-	-	SFi-L fi-LResidualHippocampus-L	-	-	Or-L Py-L Rad-L SLu-L LMol-L
 Claustrum-L	-	-	DCl-L VCl-L Cl-L
 Striatum-L	-	-	LSS-L CPu-L GP-L 
-NucleusAccumbens-L	-	-	Acb-L AcbC-L AcbSh-L LAcbSh-L
+BasalForebrain-L	-	-	HDB-L VDB-L VP-L cp-L EP-L B-L IPAC-L IPACM-L IPACL-L Nv-L mfb-L PIF-L IF-L IPL-L ICj-L SIB-L Acb-L AcbC-L AcbSh-L LAcbSh-L
 SubstantiaNigra-L	-	-	 SNR-L SNL-L SNCD-L SNCV-L
 SuperiorColliculus-L	-	-	 SuG-L Op-L DpG-L InWh-L InG-L DpWh-L Zo-L
 DPAG-L	-	-	PAG-L PlPAG-L LPAG-L DLPAG-L DMPAG-L
@@ -83,20 +80,19 @@ GeniculateNuclei-L	-	-	DLG-L MGV-L MGD-L MZMG-L MGM-L bic-L SubG-L SubB-L VG-L V
 ReticularFormation-L	-	-	Rt-L mRt-L p1Rt-L
 AnteriorAmygdala-L	-	-	CxA1-L CxA2-L CxA3-L AA-L ACo-L MeAD-L BMA-L I-L BLA-L CeM-L CeC-L EAC-L EAM-L EA-L MeAV-L CeL-L BLV-L LaDL-L IM-L STIA-L MePD-L IMG-L LaVL-L LaVM-L AHiAL-L
 PosteriorAmygdala-L	-	-	PMCO-L APir-L AHiPM-L PLCo-L BLP-L BMP-L AHiPL-L LA-L
-BasalForebrain-L	-	-	HDB-L VDB-L VP-L cp-L EP-L B-L IPAC-L IPACM-L IPACL-L Nv-L mfb-L PIF-L IF-L IPL-L ICj-L SIB-L
-StriataTerminalis-L	-	-	st-L STIA-L STMPM-L STMAL-L STMAM-L STLV-L STLI-L STMA-L STMPL-L STMPI-L STLD-L PS-L
 DHypothalamus-L	-	-	RMC-L RPC-L STh-L scp-L PaR-L F-L A13-L A1-L A11-L PaLM-L PaMM-L PaAP-L PaMP-L PaPo-L PaV-L SPF-L DA-L RI-L SPFPC-L fr-L CLi-L SpA-L Stg-L PHA-L
 LHypothalamus-L	-	-	rs-L PH-L PLH-L PeFLH-L Pe-L PeF-L AVPe-L PHD-L JPLH-L MCLH-L TuLH-L
 VHypothalamus-L	-	-	AH-L AHA-L AHC-L AHP-L LA-L ANS-L DMC-L DMD-L DMV-L VLH-L VMH-L VMHC-L VMHSh-L VMHDM-L VMHVL-L Arc-L ArcD-L ArcL-L ArcMP-L ArcM-L RRF-L tth-L Te-L
 VTegmentalArea-L	-	-	VTAR-L PBP-L PBPI-L PBPm-L PN-L
 PreopticArea-L	-	-	MCPO-L LPO-L MPOL-L MPOM-L MPA-L VOLT-L MnPO-L PDPO-L VLPO-L ESO-L SO-L MPO-L MPOC-L VMPO-LMammillaryNuclei-L	-	-	SuM-L SuMM-L SuML-L LM-L ML-L MM-L MnM-L DTM-L VTM-L PMV-L PMD-L mt-L smt-L pm-L mp-L
 OlfactoryNuclei-L	-	-	MTu-L Tu1-L Tu2-L Tu3-L LOT1-L LOT2-L LOT3-L AOVP-L AOP-L AOM-L AOD-L AOL-L AOV-L AOE-L GrO-L DTT1-L DTT2-L DTT3-L
+StriataTerminalis-L	-	-	st-L STIA-L STMPM-L STMAL-L STMAM-L STLV-L STLI-L STMA-L STMPL-L STMPI-L STLD-L PS-L
 OptChiasm-L	-	-	opt-L SCh-L SChVM-L SChDL-L RCh-L RChL-L sox-L och-L
 CCallosum-L	-	-	alv-L fmj-L fmi-L dcw-L dhc-L ic-L f-L cc-L cg-L csc-L pc-L PrC-L Pcom-L ac-L acp-L aca-L MCPC-L
 Ventricles-L	-	-	D3V-L 3V-L LV-L chp-L IVF-L MRe-L Aq-L
 Vessels-L	-	-	uppervessel-L lowervessel-L ach-L azac-L acer-L mcer-L basalvessel-L vessel-L sinus-L lhia-L anteriorvessel-L
 OrbitalCortex	-	-	MO VO LO DLOLimbicCortex	-	-	PrL DP IL FR3
-CingulateCortex	-	-	Cg1 Cg2
+CingulateCortex	-	-	Cg Cg1 Cg2
 InsularCortex	-	-	DI GI AIP AID AIV
 MotorCortex	-	-	M1 M2
 SomatosensoryCortex	-	-	S1 S1BF S1Tr S1HL S1FL S1J S1ULp S1Sh S1DZ S1DZO S2
@@ -109,15 +105,14 @@ EntorhinalCortex	-	-	DLEnt DIEnt VIEnt MEnt
 VisualCortex	-	-	V1 V1B V1M V2L V2MM V2ML
 Septum	-	-	TS MS LSI LSI1 LSI2 LSI3 LSI4 LSD LSV Ld PLd SHi SHy StHy
 DentateGyrus	-	-	MoDG PoDG GrDG
-CA1Region	-	-	OrCA1 PyCA1 RadCA1
-CA2Region	-	-	OrCA2 PyCA2 RadCA2
-CA3Region	-	-	OrCA3 PyCA3 RadCA3 SLuCA3
+CA1Region	-	-	CA1 OrCA1 PyCA1 RadCA1
+CA2Region	-	-	CA2 OrCA2 PyCA2 RadCA2
+CA3Region	-	-	CA3 OrCA3 PyCA3 RadCA3 SLuCA3
 Subiculum	-	-	PrS PaS VS DS Post MoS STr
-ResidualHippocampus	-	-	Or Py Rad SLu LMol
-Fimbria	-	-	SFi fi
+Fimbria	-	-	SFi fiResidualHippocampus	-	-	Or Py Rad SLu LMol
 Claustrum	-	-	DCl VCl Cl
 Striatum	-	-	LSS CPu GP 
-NucleusAccumbens	-	-	Acb AcbC AcbSh LAcbSh
+BasalForebrain	-	-	HDB VDB VP cp EP B IPAC IPACM IPACL Nv mfb PIF IF IPL ICj SIB Acb AcbC AcbSh LAcbSh
 SubstantiaNigra	-	-	 SNR SNL SNCD SNCV
 SuperiorColliculus	-	-	 SuG Op DpG InWh InG DpWh Zo
 DPAG	-	-	PAG PlPAG LPAG DLPAG DMPAG
@@ -131,14 +126,13 @@ GeniculateNuclei	-	-	DLG MGV MGD MZMG MGM bic SubG SubB VG VG1 VG2 VG3 IGL SG
 ReticularFormation	-	-	Rt mRt p1Rt
 AnteriorAmygdala	-	-	CxA1 CxA2 CxA3 AA ACo MeAD BMA I BLA CeM CeC EAC EAM EA MeAV CeL BLV LaDL IM STIA MePD IMG LaVL LaVM AHiAL
 PosteriorAmygdala	-	-	PMCO APir AHiPM PLCo BLP BMP AHiPL LA
-BasalForebrain	-	-	HDB VDB VP cp EP B IPAC IPACM IPACL Nv mfb PIF IF IPL ICj SIB
-StriataTerminalis	-	-	st STIA STMPM STMAL STMAM STLV STLI STMA STMPL STMPI STLD PS
 DHypothalamus	-	-	RMC RPC STh scp PaR F A13 A1 A11 PaLM PaMM PaAP PaMP PaPo PaV SPF DA RI SPFPC fr CLi SpA Stg PHA
 LHypothalamus	-	-	rs PH PLH PeFLH Pe PeF AVPe PHD JPLH MCLH TuLH
 VHypothalamus	-	-	AH AHA AHC AHP LA ANS DMC DMD DMV VLH VMH VMHC VMHSh VMHDM VMHVL Arc ArcD ArcL ArcMP ArcM RRF tth Te
 VTegmentalArea	-	-	VTAR PBP PBPI PBPm PN
 PreopticArea	-	-	MCPO LPO MPOL MPOM MPA VOLT MnPO PDPO VLPO ESO SO MPO MPOC VMPOMammillaryNuclei	-	-	SuM SuMM SuML LM ML MM MnM DTM VTM PMV PMD mt smt pm mp
 OlfactoryNuclei	-	-	MTu Tu1 Tu2 Tu3 LOT1 LOT2 LOT3 AOVP AOP AOM AOD AOL AOV AOE GrO DTT1 DTT2 DTT3
+StriataTerminalis	-	-	st STIA STMPM STMAL STMAM STLV STLI STMA STMPL STMPI STLD PS
 OptChiasm	-	-	opt SCh SChVM SChDL RCh RChL sox och
 CCallosum	-	-	alv fmj fmi dcw dhc ic f cc cg csc pc PrC Pcom ac acp aca MCPC
 Ventricles	-	-	D3V 3V LV chp IVF MRe Aq

@@ -60,10 +60,10 @@
 60	ICjM-R
 61	ICj-R
 62	Tu-R
-63	DPl-R
+63	DP-R
 64	SHi-R
 65	Nv-R
-66	DPm-R
+66	DP-R
 67	region67
 68	region68
 69	region69
@@ -75,7 +75,7 @@
 75	region75
 76	Cg1-L
 77	Cg2-L
-78	DPm-L
+78	DP-L
 79	SHi-L
 80	Nv-L
 81	region81
@@ -84,7 +84,7 @@
 84	region84
 85	region85
 86	Tu1-L
-87	DPl-L
+87	DP-L
 88	ICj-L
 89	region89
 90	region90

@@ -47,7 +47,7 @@
 47	LV
 48	MoDG*
 49	opt
-50	CA3Py
+50	PyCA3
 51	region51
 52	PtPD
 53	VG
@@ -55,12 +55,12 @@
 55	region55
 56	AHiPL
 57	region57
-58	CA3Py
-59	CA2Py
-60	CA1Py
+58	PyCA3
+59	PyCA2
+60	PyCA1
 61	SLu
 62	PMCo
-63	CA1Py
+63	PyCA1
 64	V1
 65	AHiPM
 66	region66
@@ -80,7 +80,7 @@
 80	V2L
 81	RSD
 82	PRh
-83	ECt
+83	Ect
 84	Fl*
 85	SimA*
 86	region86

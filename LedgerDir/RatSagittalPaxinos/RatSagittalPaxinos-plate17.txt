@@ -98,7 +98,7 @@
 98	region98
 99	AM
 100	PaLM
-101	CA1Rad*
+101	RadCA1*
 102	sm
 103	PaXi
 104	VMH
@@ -107,7 +107,7 @@
 107	MDM
 108	Rh
 109	Arc
-110	CA1Py*
+110	PyCA1*
 111	MHb
 112	region112
 113	region113
@@ -127,7 +127,7 @@
 127	region127
 128	region128
 129	region129
-130	RRE
+130	RRe
 131	region131
 132	region132
 133	PMD
@@ -232,8 +232,8 @@
 232	tz
 233	DRC
 234	ml
-235	cerebellum
-236	cerebellum
+235	Cb
+236	Cb
 237	DTgC
 238	region238
 239	region239

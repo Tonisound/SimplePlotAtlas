@@ -54,7 +54,7 @@
 54	region54
 55	ac
 56	region56
-57	mcet
+57	mcer
 58	region58
 59	MPA
 60	cg
@@ -92,13 +92,13 @@
 92	AD
 93	AHC
 94	region94
-95	CA1Rad*
+95	RadCA1*
 96	PC
 97	region97
 98	ZIR*
 99	region99
 100	region100
-101	CA3Py
+101	PyCA3
 102	region102
 103	SLu
 104	MDL
@@ -125,7 +125,7 @@
 125	region125
 126	region126
 127	region127
-128	CA1Py
+128	PyCA1
 129	region129
 130	region130
 131	MTu
@@ -210,9 +210,9 @@
 210	region210
 211	region211
 212	ECIC
-213	cerebellum
+213	Cb
 214	SubCD
-215	cerebellum
+215	Cb
 216	SubCA
 217	region217
 218	Bar
@@ -223,7 +223,7 @@
 223	EVe
 224	MVePC
 225	MVeMC
-226	cerebellum
+226	Cb
 227	VeCb
 228	VeCb
 229	LPGi
@@ -240,7 +240,7 @@
 240	SolM*
 241	IOPr
 242	region242
-243	cerebellum
+243	Cb
 244	region244
 245	region245
 246	region246

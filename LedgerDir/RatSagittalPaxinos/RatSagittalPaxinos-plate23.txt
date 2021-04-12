@@ -81,12 +81,12 @@
 81	JPLH
 82	MDC*
 83	ZI*
-84	CA1Or*
-85	CA1Rad*
+84	OrCA1*
+85	RadCA1*
 86	VMHSh
 87	region87
 88	VMH
-89	CA3Py
+89	PyCA3
 90	MDL
 91	region91
 92	VRe
@@ -214,7 +214,7 @@
 214	region214
 215	region215
 216	region216
-217	xcsp
+217	xscp
 218	region218
 219	region219
 220	region220
@@ -248,10 +248,10 @@
 248	LDTg
 249	CIC
 250	V1M
-251	cerebellum
+251	Cb
 252	region252
 253	region253
-254	cerebellum
+254	Cb
 255	region255
 256	region256
 257	region257
