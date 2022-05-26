@@ -26,7 +26,7 @@ val_atlas = 1;
 val_obj = 2;
 val_mode = 2;
 
-% % Tab2 Parameters
+% Tab2 Parameters
 temp = which('viewer_atlas.m');
 Params.dir_atlas = strrep(temp,strcat(filesep,'viewer_atlas.m'),'');
 Params.dir_values = fullfile(Params.dir_atlas,'Values');
@@ -64,6 +64,30 @@ panel2 = uipanel('Units','normalized',...
     'bordertype','etchedin',...
     'Tag','Panel2',...
     'Parent',f);
+tabgp = uitabgroup('Units','normalized',...
+    'Position',[0 0 1 1],...
+    'Parent',panel2,...
+    'Tag','TabGroup');
+tab1 = uitab('Parent',tabgp,...
+    'Units','normalized',...
+    'Title','Slices',...
+    'Tag','Tab1');
+tab2 = uitab('Parent',tabgp,...
+    'Units','normalized',...
+    'Title','2D Projections',...
+    'Tag','Tab2');
+tab3 = uitab('Parent',tabgp,...
+    'Units','normalized',...
+    'Title','3D Volume (full)',...
+    'Tag','Tab3');
+tab4 = uitab('Parent',tabgp,...
+    'Units','normalized',...
+    'Title','3D Volume (partial)',...
+    'Tag','Tab4');
+tab5 = uitab('Parent',tabgp,...
+    'Units','normalized',...
+    'Title','3D Volume (binary)',...
+    'Tag','Tab5');
 
 h1 = .03;
 uicontrol('Units','normalized',...
@@ -102,13 +126,29 @@ uicontrol('Units','normalized',...
     'TooltipString','Value to Display',...
     'Tag','Popup4');
 uicontrol('Units','normalized',...
-    'Position',[.02 1-5*h1 .96 h1],...
+    'Position',[.02 1-5*h1 .46 h1],...
     'Style','edit',...
     'Parent',panel1,...
     'String',str_plates,...
     'TooltipString','PlateList',...
     'UserData',str_plates,...
     'Tag','Edit1');
+uicontrol('Units','normalized',...
+    'Position',[.5 1-5*h1 .25 h1],...
+    'Style','edit',...
+    'Parent',panel1,...
+    'String',0,...
+    'TooltipString','Lower Threshold Value',...
+    'UserData',0,...
+    'Tag','Edit2');
+uicontrol('Units','normalized',...
+    'Position',[.75 1-5*h1 .25 h1],...
+    'Style','edit',...
+    'Parent',panel1,...
+    'String',100,...
+    'TooltipString','Lower Threshold Value',...
+    'UserData',100,...
+    'Tag','Edit3');
 uicontrol('Units','normalized',...
     'Position',[0 1-6*h1 .5 h1],...
     'Style','pushbutton',...
@@ -146,7 +186,7 @@ uicontrol('Units','normalized',...
     'String','0',...
     'TooltipString','CLim(1)',...
     'UserData','0',...
-    'Tag','Edit2');
+    'Tag','Edit11');
 uicontrol('Units','normalized',...
     'Position',[.8 3*h1 .2 h1],...
     'Style','edit',...
@@ -154,7 +194,7 @@ uicontrol('Units','normalized',...
     'String','1',...
     'TooltipString','CLim(2)',...
     'UserData','1',...
-    'Tag','Edit3');
+    'Tag','Edit12');
 ax = axes('Parent',panel1,'Visible','off');
 c = colorbar(ax,'Parent',panel1,'Location','south');
 c.Position = [.25 3.2*h1 .5 .6*h1];
@@ -163,47 +203,60 @@ c.Ticks = [];
 c.Tag = 'Colorbar1';
 
 uicontrol('Units','normalized',...
-    'Position',[.02 2*h1 .5 h1],...
+    'Position',[0 2*h1 .5 h1],...
     'Style','checkbox',...
     'Parent',panel1,...
-    'String','Collapse/Expand',...
-    'TooltipString','Axes disposition',...
+    'TooltipString','Collapse/Expand Axes',...
     'Tag','Checkbox1');
 uicontrol('Units','normalized',...
-    'Position',[.5 2*h1 .1 h1],...
+    'Position',[.1 2*h1 .1 h1],...
     'Style','checkbox',...
     'Parent',panel1,...
     'Value',0,...
     'TooltipString','Title on/off',...
     'Tag','Checkbox1b');
 uicontrol('Units','normalized',...
-    'Position',[.6 2*h1 .1 h1],...
+    'Position',[.2 2*h1 .1 h1],...
     'Style','checkbox',...
     'Parent',panel1,...
     'Value',1,...
     'TooltipString','Plate on/off',...
     'Tag','Checkbox2');
 uicontrol('Units','normalized',...
-    'Position',[.7 2*h1 .1 h1],...
+    'Position',[.3 2*h1 .1 h1],...
     'Style','checkbox',...
     'Parent',panel1,...
     'Value',1,...
     'TooltipString','Mask on/off',...
     'Tag','Checkbox3');
 uicontrol('Units','normalized',...
-    'Position',[.8 2*h1 .1 h1],...
+    'Position',[.4 2*h1 .1 h1],...
     'Style','checkbox',...
     'Parent',panel1,...
     'Value',0,...
     'TooltipString','Sticker on/off',...
     'Tag','Checkbox4');
 uicontrol('Units','normalized',...
-    'Position',[.9 2*h1 .1 h1],...
+    'Position',[.82 2*h1 .1 h1],...
     'Style','checkbox',...
     'Parent',panel1,...
     'Value',0,...
     'TooltipString','CLim mode (manual/auto)',...
     'Tag','Checkbox5');
+uicontrol('Units','normalized',...
+    'Position',[.92 0 .1 h1],...
+    'Style','checkbox',...
+    'Parent',panel1,...
+    'Value',0,...
+    'TooltipString','Lock plot',...
+    'Tag','Checkbox6');
+uicontrol('Units','normalized',...
+    'Position',[.92 2*h1 .1 h1],...
+    'Style','checkbox',...
+    'Parent',panel1,...
+    'Value',1,...
+    'TooltipString','Lock CAxis Volumes',...
+    'Tag','Checkbox7');
 
 uicontrol('Units','normalized',...
     'Position',[0 h1 .5 h1],...
@@ -226,19 +279,13 @@ uicontrol('Units','normalized',...
     'String','Plot',...
     'TooltipString','View Atlas',...
     'Tag','Button2');
-uicontrol('Units','normalized',...
-    'Position',[.88 0 .1 h1],...
-    'Style','checkbox',...
-    'Parent',panel1,...
-    'Value',0,...
-    'TooltipString','Lock plot',...
-    'Tag','Checkbox6');
+
 
 % Callback attribution
 handles = guihandles(f);
 table1.CellSelectionCallback={@template_uitable_select,handles};
-handles.Edit2.Callback = {@checkbox5_callback,handles};
-handles.Edit3.Callback = {@checkbox5_callback,handles};
+handles.Edit11.Callback = {@checkbox5_callback,handles};
+handles.Edit12.Callback = {@checkbox5_callback,handles};
 
 handles.MainFigure.KeyPressFcn={@key_press_fcn,handles};
 
@@ -271,13 +318,20 @@ handles.Popup4.Enable = 'off';
 handles.Edit1.String = handles.Edit1.UserData;
 handles.Edit2.String = handles.Edit2.UserData;
 handles.Edit3.String = handles.Edit3.UserData;
+handles.Edit11.String = handles.Edit11.UserData;
+handles.Edit12.String = handles.Edit12.UserData;
 handles.Table1.Data = [];
 handles.Table1.UserData.Selection = [];
 handles.Table1.Units = 'pixels';
 handles.Table1.ColumnWidth ={handles.Table1.Position(3)};
 handles.Table1.Units = 'normalized';
 
-delete(handles.Panel2.Children);
+% delete(handles.Panel2.Children);
+delete(handles.Tab1.Children);
+delete(handles.Tab2.Children);
+delete(handles.Tab3.Children);
+delete(handles.Tab4.Children);
+delete(handles.Tab5.Children);
 Params = handles.MainFigure.UserData.Params;
 handles.MainFigure.UserData = [];
 handles.MainFigure.UserData.Params = Params;
@@ -371,7 +425,11 @@ elseif strcmp(DisplayMode,'bilateral')
 end
 
 % clear
-delete(handles.Panel2.Children);
+delete(handles.Tab1.Children);
+delete(handles.Tab2.Children);
+delete(handles.Tab3.Children);
+delete(handles.Tab4.Children);
+delete(handles.Tab5.Children);
 
 % Setting up
 n_columns = ceil(sqrt(n_plates));
@@ -399,7 +457,8 @@ for ii = 1:n_rows
         end
         x = mod(index-1,n_columns)/n_columns;
         y = (n_rows-1-(floor((index-1)/n_columns)))/n_rows;
-        ax = axes('Parent',handles.Panel2);
+        % ax = axes('Parent',handles.Panel2);
+        ax = axes('Parent',handles.Tab1);
         ax.Position= [x+margin_w y (1/n_columns)-margin_w (1/n_rows)-margin_h];
         ax.XAxisLocation ='origin';
         ax.Title.String = sprintf('Ax-%02d',index);
@@ -442,11 +501,33 @@ for ii = 1:n_rows
     end
 end
 
+% Creating projection axes
+ax1 = axes('Parent',handles.Tab2,'Position',[.025 .675 .3 .275],'Visible','on');
+ax1b = axes('Parent',handles.Tab2,'Position',[.025 .35 .3 .275],'Visible','on');
+ax1c = axes('Parent',handles.Tab2,'Position',[.025 .025 .3 .275],'Visible','on');
+% ax1.Title.String = 'Coronal';
+% set(ax1,'XTick',[],'XTickLabel',[],'YTick',[],'YTickLabel',[]);
+% set(ax1b,'XTick',[],'XTickLabel',[],'YTick',[],'YTickLabel',[]);
+ax2 = axes('Parent',handles.Tab2,'Position',[.35 .675 .3 .275],'Visible','on');
+ax2b = axes('Parent',handles.Tab2,'Position',[.35 .35 .3 .275],'Visible','on');
+ax2c = axes('Parent',handles.Tab2,'Position',[.35 .025 .3 .275],'Visible','on');
+% set(ax2,'XTick',[],'XTickLabel',[],'YTick',[],'YTickLabel',[]);
+% set(ax2b,'XTick',[],'XTickLabel',[],'YTick',[],'YTickLabel',[]);
+% ax2.Title.String = 'Sagittal';
+ax3 = axes('Parent',handles.Tab2,'Position',[.675 .675 .3 .275],'Visible','on');
+ax3b = axes('Parent',handles.Tab2,'Position',[.675 .35 .3 .275],'Visible','on');
+ax3c = axes('Parent',handles.Tab2,'Position',[.675 .025 .3 .275],'Visible','on');
+% set(ax3,'XTick',[],'XTickLabel',[],'YTick',[],'YTickLabel',[]);
+% set(ax3b,'XTick',[],'XTickLabel',[],'YTick',[],'YTickLabel',[]);
+% ax3.Title.String = 'Transverse';
+projection_axes = [ax1,ax1b,ax1c;ax2,ax2b,ax2c;ax3,ax3b,ax3c];
+
 % Storing
 f.UserData.id_show = id_show;
 f.UserData.list_show = list_show;
 f.UserData.mask_show = mask_show;
 f.UserData.all_axes = all_axes;
+f.UserData.projection_axes = projection_axes;
 f.UserData.all_positions = all_positions;
 f.UserData.margin_w = margin_w;
 f.UserData.margin_h = margin_h;
@@ -554,8 +635,18 @@ answer = inputdlg(prompt,name,[1 100],{defaultans});
 
 if ~isempty(answer)
     saveas(f,strcat(char(answer),'.pdf'));
-    fprintf('Figure Saved [%s]',strcat(char(answer),'.pdf'));
+    fprintf('Figure Saved [%s].\n',strcat(char(answer),'.pdf'));
 end
+
+% Storing
+if isfield(f.UserData,'full_volume')
+    full_volume_thresholded=f.UserData.full_volume_thresholded;
+    full_volume_binary=f.UserData.full_volume_binary;
+    full_volume=f.UserData.full_volume;
+    save(strcat(char(answer),'.mat'),'full_volume','full_volume_thresholded','full_volume_binary');
+    fprintf('Data Saved [%s].\n',strcat(char(answer),'.mat'));
+end
+
 
 end
 
@@ -624,6 +715,10 @@ id_show = f.UserData.id_show;
 list_show = f.UserData.list_show;
 mask_show = f.UserData.mask_show;
 all_axes = f.UserData.all_axes;
+projection_axes = f.UserData.projection_axes;
+
+full_volume = NaN(size(mask_show));
+% label_volume = cell(size(mask_show));
 
 f.Pointer = 'watch';
 drawnow;
@@ -643,15 +738,16 @@ for index=1:n_plates
         value_regions = cell2mat(handles.Table1.Data(handles.Table1.UserData.Selection,2));
         M = max(value_regions(:));
         m = min(value_regions(:));
-        handles.Edit2.String = sprintf('%.2f',m);
-        handles.Edit3.String = sprintf('%.2f',M);
+        handles.Edit11.String = sprintf('%.2f',m);
+        handles.Edit12.String = sprintf('%.2f',M);
 %         handles.Colorbar1.Limits = [m M];
     else
         value_regions = ones(length(list_regions),1);
     end
     
     % Building full_mask
-    full_mask = zeros(size(data_plate.Mask,1),size(data_plate.Mask,2));
+    full_mask = NaN(size(data_plate.Mask,1),size(data_plate.Mask,2));
+%     label_mask = cell(size(data_plate.Mask,1),size(data_plate.Mask,2));
     all_ids = [];
     all_regions = [];
     for i =1:length(list_regions)
@@ -661,11 +757,16 @@ for index=1:n_plates
                 cur_id = id_show(ind_region(j));
                 cur_region = list_show(ind_region(j));
                 full_mask(cur_mask==cur_id)=value_regions(i);
+%                 label_mask(cur_mask==cur_id)=cur_region;
                 all_ids = [all_ids;cur_id];
                 all_regions = [all_regions;cur_region]; 
             end
         end
     end
+    
+    % 3D rendering
+    full_volume(:,:,xyfig) = full_mask;
+%     label_volume(:,:,xyfig) = label_mask;
 
     % Storing data
     ax.UserData.cur_mask = cur_mask;
@@ -674,19 +775,177 @@ for index=1:n_plates
     
     % Plotting final mask
     im=imagesc(full_mask,'Tag','FullMask','Parent',ax);
-    im.AlphaData = double(full_mask~=0);
-    %uistack(im,'top');
+    im.AlphaData = double(~isnan(full_mask));
+    % uistack(im,'top');
     
     if isfield(handles.MainFigure.UserData,'values_txt')%size(handles.Table1.Data,2)>1
         ax.CLim = [m M];
     end
 end
+
+% Removing empty sections in full_volume
+mean_xy = mean(full_volume,3,'omitnan');
+mean_xz = squeeze(mean(full_volume,2,'omitnan'));
+ind_keep_1 = ~isnan(mean(mean_xy,1,'omitnan'));
+ind_keep_2 = ~isnan(mean(mean_xy,2,'omitnan'));
+ind_keep_3 = ~isnan(mean(mean_xz,1,'omitnan'));
+full_volume = full_volume(ind_keep_2,ind_keep_1,ind_keep_3);
+
+% Interpolation Step
+[Xq,Yq,Zq] = meshgrid(1:size(full_volume,2),1:size(full_volume,1),1:.75:size(full_volume,3));
+full_volume = interp3(full_volume,Xq,Yq,Zq);
+% full_volume = interp3(full_volume,interp_value);
+
+% Thresholded Volume
+thresh_1 = str2double(handles.Edit2.String);
+thresh_2 = str2double(handles.Edit3.String);
+full_volume_thresholded = full_volume;
+full_volume_thresholded(full_volume<thresh_1) = NaN;
+full_volume_thresholded(full_volume>thresh_2) = NaN;
+
+% Binary Volume
+full_volume_binary = full_volume_thresholded;
+full_volume_binary(~isnan(full_volume_binary)) = 1;
+
+% Recomputing slices
+mean_xy = mean(full_volume,3,'omitnan');
+mean_xz = squeeze(mean(full_volume,2,'omitnan'));
+mean_yz = squeeze(mean(full_volume,1,'omitnan'));
+
+mean_xy_thresholded = mean(full_volume_thresholded,3,'omitnan');
+mean_xz_thresholded = squeeze(mean(full_volume_thresholded,2,'omitnan'));
+mean_yz_thresholded = squeeze(mean(full_volume_thresholded,1,'omitnan'));
+mean_xy_thresholded(mean_xy_thresholded==0)=NaN;
+mean_xz_thresholded(mean_xz_thresholded==0)=NaN;
+mean_yz_thresholded(mean_yz_thresholded==0)=NaN;
+
+mean_xy_binary = sum(full_volume_binary,3,'omitnan')./sum(~isnan(full_volume),3);
+mean_xz_binary = squeeze(sum(full_volume_binary,2,'omitnan'))./squeeze(sum(~isnan(full_volume),2));
+mean_yz_binary = squeeze(sum(full_volume_binary,1,'omitnan'))./squeeze(sum(~isnan(full_volume),1));
+mean_xy_binary(mean_xy_binary==0)=NaN;
+mean_xz_binary(mean_xz_binary==0)=NaN;
+mean_yz_binary(mean_yz_binary==0)=NaN;
+
+ax1 =  projection_axes(1,1);
+im1 = imagesc(mean_xy,'Parent',ax1);
+ax1.Title.String = 'Coronal';
+set(ax1,'XTick',[],'XTickLabel',[],'YTick',[],'YTickLabel',[]);
+ax1b =  projection_axes(1,2);
+im1b = imagesc(mean_xy_thresholded,'Parent',ax1b);
+ax1b.Title.String = 'Coronal (thresholded)';
+set(ax1b,'XTick',[],'XTickLabel',[],'YTick',[],'YTickLabel',[]);
+ax1c =  projection_axes(1,3);
+im1c = imagesc(mean_xy_binary,'Parent',ax1c);
+ax1c.Title.String = 'Coronal (binary)';
+set(ax1c,'XTick',[],'XTickLabel',[],'YTick',[],'YTickLabel',[]);
+colorbar(ax1);
+colorbar(ax1b);
+colorbar(ax1c);
+
+ax2 =  projection_axes(2);
+im2 = imagesc(mean_xz,'Parent',ax2);
+set(ax2,'XTick',[],'XTickLabel',[],'YTick',[],'YTickLabel',[]);
+ax2.Title.String = 'Sagittal';
+ax2b =  projection_axes(2,2);
+im2b = imagesc(mean_xz_thresholded,'Parent',ax2b);
+set(ax2b,'XTick',[],'XTickLabel',[],'YTick',[],'YTickLabel',[]);
+ax2b.Title.String = 'Sagittal (thresholded)';
+ax2c =  projection_axes(2,3);
+im2c = imagesc(mean_xz_binary,'Parent',ax2c);
+ax2c.Title.String = 'Sagittal (binary)';
+set(ax2c,'XTick',[],'XTickLabel',[],'YTick',[],'YTickLabel',[]);
+colorbar(ax2);
+colorbar(ax2b);
+colorbar(ax2c);
+
+ax3 =  projection_axes(3);
+im3 = imagesc(mean_yz,'Parent',ax3);
+set(ax3,'XTick',[],'XTickLabel',[],'YTick',[],'YTickLabel',[]);
+ax3.Title.String = 'Transverse';
+ax3b =  projection_axes(3,2);
+im3b = imagesc(mean_yz_thresholded,'Parent',ax3b);
+set(ax3b,'XTick',[],'XTickLabel',[],'YTick',[],'YTickLabel',[]);
+ax3b.Title.String = 'Transverse (thresholded)';
+ax3c =  projection_axes(3,3);
+im3c = imagesc(mean_yz_binary,'Parent',ax3c);
+ax3c.Title.String = 'Transverse (binary)';
+set(ax3c,'XTick',[],'XTickLabel',[],'YTick',[],'YTickLabel',[]);
+colorbar(ax3);
+colorbar(ax3b);
+colorbar(ax3c);
+
+% Clearing background
+all_images=[im1;im1b;im1c;im2;im2b;im2c;im3;im3b;im3c];
+for i=1:length(all_images)
+    im = all_images(i);
+    im.AlphaData = ~isnan(im.CData);
+end
+
+% Plotting final Volume
+f.Renderer='opengl';
+% Recreate panel
+delete(handles.Tab3.Children);
+delete(handles.Tab4.Children);
+delete(handles.Tab5.Children);
+panel3 = uipanel('Units','normalized',...
+    'Position',[0 0 1 1],...
+    'bordertype','etchedin',...
+    'Tag','Panel3',...
+    'Parent',handles.Tab3);
+panel4 = uipanel('Units','normalized',...
+    'Position',[0 0 1 1],...
+    'bordertype','etchedin',...
+    'Tag','Panel4',...
+    'Parent',handles.Tab4);
+panel5 = uipanel('Units','normalized',...
+    'Position',[0 0 1 1],...
+    'bordertype','etchedin',...
+    'Tag','Panel5',...
+    'Parent',handles.Tab5);
+
+% Display Volumes
+% V = volshow(cat(2,full_volume,full_volume_thresholded),'Parent',panel3);
+V = volshow(full_volume,'Parent',panel3);
+V.Colormap = f.Colormap;
+V.BackgroundColor = 'w';
+V.Renderer = 'MaximumIntensityProjection';
+
+% Adding extreme values as pixels in full_volume_thresholded 
+if handles.Checkbox7.Value
+    full_volume_thresholded(1,1,1)=m;
+    full_volume_thresholded(end,end,end)=M;
+end
+
+V2 = volshow(full_volume_thresholded,'Parent',panel4);
+V2.Colormap = f.Colormap;
+V2.BackgroundColor = 'w';
+V2.Renderer = 'MaximumIntensityProjection';
+
+V3 = volshow(full_volume_binary,'Parent',panel5);
+V3.Colormap = f.Colormap;
+V3.BackgroundColor = 'w';
+V3.Renderer = 'MaximumIntensityProjection';
+
+% Storing
+f.UserData.full_volume_thresholded=full_volume_thresholded;
+f.UserData.full_volume_binary=full_volume_binary;
+f.UserData.full_volume=full_volume;
+
 checkbox3_callback(handles.Checkbox3,[],handles);
 checkbox4_callback(handles.Checkbox4,[],handles);
 checkbox5_callback(handles.Checkbox5,[],handles);
 toc
 
 f.Pointer = 'arrow';
+
+end
+
+function e4_Callback(hObj,~,handles)
+
+f = handles.MainFigure;
+panel3 = findobj(f,'Tag','Panel3');
+panel4 = findobj(f,'Tag','Panel4');
+val = str2double(hObj.String);
 
 end
 
@@ -829,20 +1088,26 @@ function checkbox5_callback(hObj,~,handles)
 if ~isfield(handles.MainFigure.UserData,'all_axes')
     return;
 end
+if ~isfield(handles.MainFigure.UserData,'projection_axes')
+    return;
+end
 
-% handles.Colorbar1.Limits = [str2double(handles.Edit2.String) str2double(handles.Edit3.String)];
+% handles.Colorbar1.Limits = [str2double(handles.Edit11.String) str2double(handles.Edit12.String)];
 all_axes = handles.MainFigure.UserData.all_axes;
+projection_axes = handles.MainFigure.UserData.projection_axes;
+all_andpro_axes = [all_axes;projection_axes(:,1);projection_axes(:,2)];
+
 if hObj.Value
     % clim mode auto
-    for i = 1:length(all_axes)
-        all_axes(i).CLimMode = 'auto';
+    for i = 1:length(all_andpro_axes)
+        all_andpro_axes(i).CLimMode = 'auto';
     end
     fprintf('CLimMode set to auto.\n');
 else
     % clim mode manual
-    for i = 1:length(all_axes)
-        all_axes(i).CLimMode = 'manual';
-        all_axes(i).CLim = [str2double(handles.Edit2.String) str2double(handles.Edit3.String)];
+    for i = 1:length(all_andpro_axes)
+        all_andpro_axes(i).CLimMode = 'manual';
+        all_andpro_axes(i).CLim = [str2double(handles.Edit11.String) str2double(handles.Edit12.String)];
     end
     fprintf('CLimMode set to manual.\n');
 end
