@@ -137,9 +137,9 @@ uicontrol('Units','normalized',...
     'Position',[.5 1-5*h1 .25 h1],...
     'Style','edit',...
     'Parent',panel1,...
-    'String',0,...
+    'String',-100,...
     'TooltipString','Lower Threshold Value',...
-    'UserData',0,...
+    'UserData',-100,...
     'Tag','Edit2');
 uicontrol('Units','normalized',...
     'Position',[.75 1-5*h1 .25 h1],...
@@ -796,6 +796,10 @@ full_volume = full_volume(ind_keep_2,ind_keep_1,ind_keep_3);
 full_volume = interp3(full_volume,Xq,Yq,Zq);
 % full_volume = interp3(full_volume,interp_value);
 
+% Only for plotting
+% full_volume(1,1,1)=-5;
+% full_volume(end,end,end)=50;
+
 % Thresholded Volume
 thresh_1 = str2double(handles.Edit2.String);
 thresh_2 = str2double(handles.Edit3.String);
@@ -909,9 +913,11 @@ V = volshow(full_volume,'Parent',panel3);
 V.Colormap = f.Colormap;
 V.BackgroundColor = 'w';
 V.Renderer = 'MaximumIntensityProjection';
+V.CameraPosition = [1.0802 -2.6265 -2.1782];
+V.CameraUpVector = [0.0400 -0.8979 0.4384];
 
 % Adding extreme values as pixels in full_volume_thresholded 
-if handles.Checkbox7.Value
+if handles.Checkbox7.Value && isfield(handles.MainFigure.UserData,'values_txt')
     full_volume_thresholded(1,1,1)=m;
     full_volume_thresholded(end,end,end)=M;
 end
@@ -920,16 +926,23 @@ V2 = volshow(full_volume_thresholded,'Parent',panel4);
 V2.Colormap = f.Colormap;
 V2.BackgroundColor = 'w';
 V2.Renderer = 'MaximumIntensityProjection';
+V2.CameraPosition = V.CameraPosition;
+V2.CameraUpVector = V.CameraUpVector;
 
 V3 = volshow(full_volume_binary,'Parent',panel5);
 V3.Colormap = f.Colormap;
 V3.BackgroundColor = 'w';
 V3.Renderer = 'MaximumIntensityProjection';
+V3.CameraPosition = V.CameraPosition;
+V3.CameraUpVector = V.CameraUpVector;
 
 % Storing
 f.UserData.full_volume_thresholded=full_volume_thresholded;
 f.UserData.full_volume_binary=full_volume_binary;
 f.UserData.full_volume=full_volume;
+f.UserData.V=V;
+f.UserData.V2=V2;
+f.UserData.V3=V3;
 
 checkbox3_callback(handles.Checkbox3,[],handles);
 checkbox4_callback(handles.Checkbox4,[],handles);
