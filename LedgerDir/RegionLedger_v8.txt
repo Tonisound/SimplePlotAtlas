@@ -33,12 +33,9 @@ ZonaIncerta-R	-	-	ZI-R ZIC-R ZIR-R ZID-R ZIV-R SubI-R
 PretectalNuclei-R	-	-	PPT-R OPT-R MPT-R APTD-R APTV-R
 GeniculateNuclei-R	-	-	DLG-R MGV-R MGD-R MZMG-R MGM-R bic-R SubG-R SubB-R VG-R VG1-R VG2-R VG3-R IGL-R SG-R
 ReticularFormation-R	-	-	Rt-R mRt-R p1Rt-R
-BasalAmygdala-R	-	-	BMA-R BLA-R BLV-R BLP-R BMP-R
-LateralAmygdala-R	-	-	LaDL-R LaVL-R LaVM-R LA-R
-CentromedialAmygdala-R	-	-	MeAD-R CeM-R CeC-R MeAV-R CeL-R MePD-R MePV-R
-CorticalAmygdala-R	-	-	ACo-R PMCo-R PLCo-R PLCo1-R
-ResidualAmygdala-R	-	-	CxA1-R CxA2-R CxA3-R AA-R I-R EAC-R EAM-R EA-R IM-R STIA-R IMG-R AHiAL-R ASt-R APir-R AHiPM-R AHiPL-R
-StriataTerminalis-R	-	-	st-R STIA-R STMPM-R STMAL-R STMAM-R STLV-R STLI-R STLP-R STMA-R STMPL-R STMPI-R STLD-R PS-R
+AnteriorAmygdala-R	-	-	CxA1-R CxA2-R CxA3-R AA-R ACo-R MeAD-R BMA-R I-R BLA-R CeM-R CeC-R EAC-R EAM-R EA-R MeAV-R CeL-R BLV-R LaDL-R IM-R STIA-R MePD-R IMG-R LaVL-R LaVM-R AHiAL-R MePV-R ASt-R
+PosteriorAmygdala-R	-	-	PMCo-R APir-R AHiPM-R PLCo-R PLCo1-R BLP-R BMP-R AHiPL-R LA-R
+StriaTerminalis-R	-	-	st-R STIA-R STMPM-R STMAL-R STMAM-R STLV-R STLI-R STLP-R STMA-R STMPL-R STMPI-R STLD-R PS-R
 DHypothalamus-R	-	-	RMC-R RPC-R STh-R scp-R PR-R PaR-R F-R A13-R A1-R A11-R PaLM-R PaMM-R PaAP-R PaMP-R PaPo-R PaV-R SPF-R DA-R RI-R SPFPC-R fr-R CLi-R SpA-R Stg-R PHA-R
 LHypothalamus-R	-	-	rs-R PH-R PLH-R PeFLH-R Pe-R PeF-R AVPe-R PHD-R JPLH-R MCLH-R TuLH-R
 VHypothalamus-R	-	-	AH-R AHA-R AHC-R AHP-R LA-R ANS-R DMC-R DMD-R DMV-R VLH-R VMH-R VMHC-R VMHSh-R VMHDM-R VMHVL-R Arc-R ArcD-R ArcL-R ArcMP-R ArcM-R RRF-R tth-R Te-R
@@ -96,12 +93,9 @@ ZonaIncerta-L	-	-	ZI-L ZIC-L ZIR-L ZID-L ZIV-L SubI-L
 PretectalNuclei-L	-	-	PPT-L OPT-L MPT-L APTD-L APTV-L
 GeniculateNuclei-L	-	-	DLG-L MGV-L MGD-L MZMG-L MGM-L bic-L SubG-L SubB-L VG-L VG1-L VG2-L VG3-L IGL-L SG-L
 ReticularFormation-L	-	-	Rt-L mRt-L p1Rt-L
-BasalAmygdala-L	-	-	BMA-L BLA-L BLV-L BLP-L BMP-L
-LateralAmygdala-L	-	-	LaDL-L LaVL-L LaVM-L LA-L
-CentromedialAmygdala-L	-	-	MeAD-L CeM-L CeC-L MeAV-L CeL-L MePD-L MePV-L
-CorticalAmygdala-L	-	-	ACo-L PMCo-L PLCo-L PLCo1-L
-ResidualAmygdala-L	-	-	CxA1-L CxA2-L CxA3-L AA-L I-L EAC-L EAM-L EA-L IM-L STIA-L IMG-L AHiAL-L ASt-L APir-L AHiPM-L AHiPL-L
-StriataTerminalis-L	-	-	st-L STIA-L STMPM-L STMAL-L STMAM-L STLV-L STLI-L STLP-L STMA-L STMPL-L STMPI-L STLD-L PS-L
+AnteriorAmygdala-L	-	-	CxA1-L CxA2-L CxA3-L AA-L ACo-L MeAD-L BMA-L I-L BLA-L CeM-L CeC-L EAC-L EAM-L EA-L MeAV-L CeL-L BLV-L LaDL-L IM-L STIA-L MePD-L IMG-L LaVL-L LaVM-L AHiAL-L MePV-L ASt-L
+PosteriorAmygdala-L	-	-	PMCo-L APir-L AHiPM-L PLCo-L PLCo1-L BLP-L BMP-L AHiPL-L LA-L
+StriaTerminalis-L	-	-	st-L STIA-L STMPM-L STMAL-L STMAM-L STLV-L STLI-L STLP-L STMA-L STMPL-L STMPI-L STLD-L PS-L
 DHypothalamus-L	-	-	RMC-L RPC-L STh-L scp-L PR-L PaR-L F-L A13-L A1-L A11-L PaLM-L PaMM-L PaAP-L PaMP-L PaPo-L PaV-L SPF-L DA-L RI-L SPFPC-L fr-L CLi-L SpA-L Stg-L PHA-L
 LHypothalamus-L	-	-	rs-L PH-L PLH-L PeFLH-L Pe-L PeF-L AVPe-L PHD-L JPLH-L MCLH-L TuLH-L
 VHypothalamus-L	-	-	AH-L AHA-L AHC-L AHP-L LA-L ANS-L DMC-L DMD-L DMV-L VLH-L VMH-L VMHC-L VMHSh-L VMHDM-L VMHVL-L Arc-L ArcD-L ArcL-L ArcMP-L ArcM-L RRF-L tth-L Te-L
@@ -160,12 +154,9 @@ ZonaIncerta	-	-	ZI ZIC ZIR ZID ZIV SubI
 PretectalNuclei	-	-	PPT OPT MPT APTD APTV
 GeniculateNuclei	-	-	DLG MGV MGD MZMG MGM bic SubG SubB VG VG1 VG2 VG3 IGL SG
 ReticularFormation	-	-	Rt mRt p1Rt
-BasalAmygdala	-	-	BMA BLA BLV BLP BMP
-LateralAmygdala	-	-	LaDL LaVL LaVM LA
-CentromedialAmygdala	-	-	MeAD CeM CeC MeAV CeL MePD MePV
-CorticalAmygdala	-	-	ACo PMCo PLCo PLCo1
-ResidualAmygdala	-	-	CxA1 CxA2 CxA3 AA I EAC EAM EA IM STIA IMG AHiAL ASt APir AHiPM AHiPL
-StriataTerminalis	-	-	st STIA STMPM STMAL STMAM STLV STLI STLP STMA STMPL STMPI STLD PS
+AnteriorAmygdala	-	-	CxA1 CxA2 CxA3 AA ACo MeAD BMA I BLA CeM CeC EAC EAM EA MeAV CeL BLV LaDL IM STIA MePD IMG LaVL LaVM AHiAL MePV ASt
+PosteriorAmygdala	-	-	PMCo APir AHiPM PLCo PLCo1 BLP BMP AHiPL LA
+StriaTerminalis	-	-	st STIA STMPM STMAL STMAM STLV STLI STLP STMA STMPL STMPI STLD PS
 DHypothalamus	-	-	RMC RPC STh scp PR PaR F A13 A1 A11 PaLM PaMM PaAP PaMP PaPo PaV SPF DA RI SPFPC fr CLi SpA Stg PHA
 LHypothalamus	-	-	rs PH PLH PeFLH Pe PeF AVPe PHD JPLH MCLH TuLH
 VHypothalamus	-	-	AH AHA AHC AHP LA ANS DMC DMD DMV VLH VMH VMHC VMHSh VMHDM VMHVL Arc ArcD ArcL ArcMP ArcM RRF tth Te
